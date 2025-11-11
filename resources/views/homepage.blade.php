@@ -8,5 +8,6 @@
 <body>
     @include('navbar')
     @include('heroSection')
+    @include('welcome')
 </body>
 </html>
