@@ -9,6 +9,5 @@
 <body>
     @include('navbar')
     @include('heroSection')
-    @include('visiMisi')
 </body>
 </html>
