@@ -20,6 +20,9 @@
     padding: 0px 8px;
   }
   .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
     display: flex;
     background-color: #ffff;
     padding: 0 20px;
@@ -52,3 +55,8 @@
     width: auto;
     margin-right: 15px;
   }
+.navbar-content a.active {
+    border-bottom: 3px solid #0a7685;
+    padding-bottom: 6px;
+    font-weight: 600;
+}

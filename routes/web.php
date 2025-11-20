@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('homepage');
 });
 Route::get('/header', function () {
     return view('/header/header');
@@ -25,4 +25,6 @@ Route::get('/homepage', function () {
 
 Route::get('/lab_description', function () {
     return view('lab_info');
+Route::get('/visi-mission', function () {
+    return view('/vision_mission');
 });
