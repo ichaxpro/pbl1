@@ -13,5 +13,6 @@
     @include('lastestNews')
     @include('lab_info')
     @include('galery')
+    @include('footer')
 </body>
 </html>
