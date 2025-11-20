@@ -11,6 +11,7 @@
     @include('heroSection')
     @include('vision_mission')
     @include('lastestNews')
+    @include('lab_info')
     @include('galery')
 </body>
 </html>
