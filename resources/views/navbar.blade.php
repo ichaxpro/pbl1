@@ -18,7 +18,7 @@
        <img class="logo-image" src="{{ asset('images/Jti_polinema.png') }}" alt="">
        <img class="logo-image" src="{{ asset('images/logo_dt1.png') }}" alt="">
     <div class="navbar-content">
-      <a href="#" class="active">Profile</a>
+      <a href="{{ asset('resources/views/profile.blade.php') }}" class="{{ Request::is('profile') ? 'active' : '' }}">Profile</a>
       <a href="#">News</a>
       <a href="#">Gallery</a>
       <a href="#">Publications</a>

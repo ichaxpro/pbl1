@@ -52,3 +52,8 @@
     width: auto;
     margin-right: 15px;
   }
+.navbar-content a.active {
+    border-bottom: 3px solid #0a7685;
+    padding-bottom: 6px;
+    font-weight: 600;
+}
