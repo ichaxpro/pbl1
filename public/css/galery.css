@@ -1,0 +1,106 @@
+.gallery-wrapper {
+    position: relative;  /* Penting: agar tombol absolute relative ke wrapper */
+    display: flex;
+    align-items: center;
+    margin: 50px 0;
+    padding: 0 50px;
+    overflow: hidden;
+    width: 100%;  /* Pastikan lebar penuh */
+    height: auto;
+    box-sizing: border-box;
+}
+
+.gallery-container {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto; 
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding: 20px 0;
+    flex: 1;
+    
+    /* Sembunyikan scrollbar untuk semua browser */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge lama */
+}
+
+.gallery-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+.gallery-container img {
+    width: 350px;
+    height: 200px;
+    object-fit: cover;
+    scroll-snap-align: start;
+    transition: transform .3s ease;
+    cursor: pointer;
+}
+
+.gallery-container img:hover {
+    transform: scale(1.4);
+}
+
+/* Button */
+.gallery-btn {
+    position: absolute;
+    z-index: 10;
+    background: #009EDF;
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+/* Left & right positions */
+.gallery-btn.left { left: 10px; }
+.gallery-btn.right { right: 10px; }
+
+/* Hide button ketika mentok */
+.gallery-wrapper.no-left .gallery-btn.left { display: none; }
+.gallery-wrapper.no-right .gallery-btn.right { display: none; }
+
+/* Optional Fade Shadow */
+.gallery-wrapper.no-left::before,
+.gallery-wrapper.no-right::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 70px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-wrapper::before {
+    left: 0;
+    background: linear-gradient(to left, transparent, white);
+}
+/* Fade di kanan (jika bisa scroll ke kanan, artinya ada gambar di kanan) */
+.gallery-wrapper::after {
+    right: 0;
+    background: linear-gradient(to right, transparent, white);
+}
+/* Munculkan fade jika ada gambar tersembunyi */
+.gallery-wrapper.can-scroll-left::before { opacity: 1; }
+.gallery-wrapper.can-scroll-right::after { opacity: 1; }
+
+.gallery-wrapper.no-left::after {
+    right: 0;
+    background: linear-gradient(to right, transparent, white);
+}
+
+.gallery-wrapper.no-right::before {
+    left: 0;
+    background: linear-gradient(to left, transparent, white);
+}
+
+.gallery-wrapper.can-scroll-left::before { opacity: 1; }
+.gallery-wrapper.can-scroll-right::after { opacity: 1; }
