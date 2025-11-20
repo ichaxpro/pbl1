@@ -9,5 +9,7 @@
 <body>
     @include('navbar')
     @include('heroSection')
+    @include('lastestNews')
+    @include('galery')
 </body>
 </html>
