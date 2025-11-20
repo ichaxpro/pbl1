@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <div class="news-section">
+    <div class="news-section" style="background-color: white">
     <h2 class="title">LATEST NEWS</h2>
 
     <div class="news-wrapper">

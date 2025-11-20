@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/galery.css') }}"/>
 </head>
 <body>
-    <div class="gallery-wrapper no-left">
+    <div class="gallery-wrapper no-left" style="background-color: white">
     <button class="gallery-btn left" onclick="scrollGallery(-1)">&#8249;</button>
 
     <div class="gallery-container" id="gallerySlider">
