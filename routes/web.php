@@ -16,3 +16,7 @@ Route::get('/navbar', function () {
 Route::get('/vision-mission', function () {
     return view('vision_mission');
 });
+
+Route::get('/lab_description', function () {
+    return view('lab_info');
+});
