@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Link to the dedicated CSS file -->
     <link rel="stylesheet" href="{{ asset('css/lab_info.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
 </head>
 <body>
 
@@ -16,12 +15,12 @@
     <div class="page-wrapper">
         
         <!-- Hero Section with Background Image -->
-        <div class="hero-section">
+        <div class="gambar">
             <!-- The background image is set via CSS in lab_info.css -->
         </div>
 
         <!-- The White Content Card Overlay -->
-        <div class="content-card">
+        <div class="description-card">
             
             <h1>Laboratory of Data Technology</h1>
             
