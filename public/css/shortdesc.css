@@ -1,0 +1,46 @@
+.lab-section {
+    display: flex;
+    width: 100%;
+    background: white;
+    margin-top: 40px;
+}
+
+.lab-image img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+}
+
+.lab-image {
+    flex: 1.3;                 /* image = bigger */
+}
+
+.lab-content {
+    flex: 1;
+    padding: 50px 40px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.lab-content h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.lab-content p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.read-more {
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #999;
+    font-weight: 600;
+    margin-top: 10px;
+}
