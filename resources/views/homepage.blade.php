@@ -9,6 +9,7 @@
 <body>
     @include('navbar')
     @include('heroSection')
+    @include('vision_mission')
     @include('lastestNews')
     @include('galery')
 </body>
