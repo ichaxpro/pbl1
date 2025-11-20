@@ -12,3 +12,7 @@ Route::get('/header', function () {
 Route::get('/navbar', function () {
     return view('/navbar');
 });
+
+Route::get('/homepage', function () {
+    return view('/homepage');
+});
