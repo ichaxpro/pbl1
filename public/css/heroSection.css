@@ -1,6 +1,6 @@
 .hero{
     position: relative;
-    height: 545px;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: bottom;
