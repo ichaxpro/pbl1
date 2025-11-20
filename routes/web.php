@@ -13,6 +13,18 @@ Route::get('/navbar', function () {
     return view('/navbar');
 });
 
+
+Route::get('/vision-mission', function () {
+    return view('vision_mission');
+});
+
+Route::get('/homepage', function () {
+    return view('/homepage');
+});
+
+
+Route::get('/lab_description', function () {
+    return view('lab_info');
 Route::get('/visi-mission', function () {
     return view('/vision_mission');
 });
