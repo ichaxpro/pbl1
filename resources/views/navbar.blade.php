@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="{{ asset('css/navbar.css') }}"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   <title>Navbar</title>
-
-  
-  
 </head>
 <body>
   <div class= "container">
