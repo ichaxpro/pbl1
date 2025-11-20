@@ -1,0 +1,34 @@
+.footer{
+  background-color: #014651;
+    padding: 15px 30px;
+    display: flex;          
+    justify-content: space-between; 
+    align-items: center;     
+    width: 100%;           
+    height: 200px;   
+    justify-content: flex-end; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.footer-image {
+    height: 60px;
+    width: auto;
+    margin-right: auto;
+    margin-left: 15px;
+    margin-bottom: 15px; /* Jarak ke address */
+    margin-top: -20px; /* Naikin dikit ke atas */
+    position: relative; /* Untuk adjust posisi image */
+    flex-direction: column; /* Ubah ke column biar sejajar vertikal */
+    justify-content: center; /* Rata tengah vertikal */
+    align-items: center; /* Rata tengah horizontal */
+}
+
+.footer-address {
+    text-align: left;
+    color: white;
+}
+
+.footer-address p {
+    margin: 5px 0;
+    font-size: 14px;
+}
