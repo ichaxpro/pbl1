@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('homepage');
+    return view('home/homepage');
 });
 Route::get('/header', function () {
     return view('/header/header');
