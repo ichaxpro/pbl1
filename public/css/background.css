@@ -21,14 +21,12 @@ body {
 .gambar {
     position: relative;
     width: 100%;
-    height: 700px; /* Fixed height for visual impact on desktop */
-    overflow: hidden;
+    height: 600px; /* Fixed height for visual impact on desktop */
     /* Placeholder for the large, curved building image */
-    background-image: url(/images/background_lab_description.png);
+    background-image: url(/images/backgroundnyabackground.png);
     background-repeat: no-repeat;
     background-position: center top;
     background-size: normal;
-    display: normal;
     justify-content: center;
     align-items: normal; 
     z-index: 1;
@@ -40,12 +38,12 @@ body {
 .description-card {
     position: relative;
     bottom: 0px; /* Pulls it up 150px over the bottom edge */
-    width: 90%;
+    width: 87%;
     max-width: 1600px;
     background-color: #ffffff;
     border-radius: 0px; /* Subtle rounded corners */
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0.15); /* Soft, deep shadow */
-    padding-top: 30px;
+    padding-top: 10px;
     padding-left: 60px;
     padding-right: 60px;
     z-index: 10; 
