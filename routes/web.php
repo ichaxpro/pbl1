@@ -13,15 +13,20 @@ Route::get('/navbar', function () {
     return view('/navbar');
 });
 
-
-Route::get('/vision-mission', function () {
-    return view('vision_mission');
+Route::get('/profile_vision', function () {
+    return view('profile/profile_vision');
 });
 
+Route::get('/profile_vision_mission', function () {
+    return view('profile/profile_vision_mission');
+});
 
+Route::get('/background', function () {
+    return view('profile/background');
+});
 
 Route::get('/lab_description', function () {
-    return view('lab_info');
+    return view('home/lab_info');
 });
 
 Route::get('/footer', function () {
