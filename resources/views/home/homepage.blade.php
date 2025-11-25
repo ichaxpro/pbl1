@@ -8,9 +8,11 @@
 </head>
 <body>
     @include('navbar')
-    @include('heroSection')
-    @include('vision_mission')
-    @include('lastestNews')
-    @include('galery')
+    @include('home/heroSection')
+    @include('home/vision_mission')
+    @include('home/lastestNews')
+    @include('home/lab_info')
+    @include('home/galery')
+    @include('footer')
 </body>
 </html>
