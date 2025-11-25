@@ -8,7 +8,7 @@
   <title>Navbar</title>
 </head>
 <body>
-  <div class= "container">
+  <div class= "top-navbar">
       <img class="flag-image" src="{{ asset('images/bendera_indo.png') }}" alt="Bendera Indonesia">
       <img class="flag-image" src="{{ asset('images/bendera_inggris.png') }}" alt="Bendera Inggris">
 </div>
