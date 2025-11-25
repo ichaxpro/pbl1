@@ -18,11 +18,11 @@ Route::get('/profile_vision', function () {
 });
 
 Route::get('/profile_vision_mission', function () {
-    return view('profile_vision_mission');
+    return view('profile/profile_vision_mission');
 });
 
 Route::get('/background', function () {
-    return view('background');
+    return view('profile/background');
 });
 
 Route::get('/lab_description', function () {
@@ -31,4 +31,8 @@ Route::get('/lab_description', function () {
 
 Route::get('/footer', function () {
     return view('footer');
+});
+
+Route::get('/profile', function () {
+    return view('profile/profile_page');
 });
