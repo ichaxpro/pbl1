@@ -18,11 +18,11 @@ Route::get('/profile_vision', function () {
 });
 
 Route::get('/profile_vision_mission', function () {
-    return view('profile/profile_vision_mission');
+    return view('profile_vision_mission');
 });
 
 Route::get('/background', function () {
-    return view('profile/background');
+    return view('background');
 });
 
 Route::get('/lab_description', function () {
