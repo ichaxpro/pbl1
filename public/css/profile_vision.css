@@ -1,0 +1,111 @@
+.vm-section {
+  padding: 40px 16px;
+  font-family: "Montserrat";
+  color: #0f1724;
+  background: #ffffff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.vm-row {
+  display: flex;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  justify-content: center;
+}
+
+/* Column wrapper */
+.vm-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+}
+
+/* Badge / title */
+.vm-badge {
+  display: inline-block;
+  background: #043f3f;         /* deep teal from screenshot */
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 0;
+  font-size: 20px;
+  box-shadow: 0 6px 0 rgba(4,63,63,0.05) inset;
+  align-self: center;
+  font-size: 32px;
+}
+
+/* Card box */
+.vm-card {
+  background: #f4fbfb; /* very light teal/white */ 
+  border-radius: 0; 
+  box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.06), 0px 10px 25px rgba(0,0,0,0.25); 
+  border-left: 6px solid rgba(0,0,0,0.02); 
+  min-height: 250px; 
+  max-height: 250px; /* fixed card height so inner scroll matches screenshot */ 
+  overflow: hidden; 
+  width: 600px; 
+  position: relative; 
+  letter-spacing: 3px; 
+  padding-top: 15px; 
+  padding-left: 10px; 
+  padding-right: 10px; 
+  padding-bottom: 20px; 
+  margin-top: 15px; 
+  margin-bottom: 10px; 
+  line-height: 1.5;
+  overflow-y: auto;
+}
+
+/* Inner scrollable area */
+.vm-card-inner {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 12px; /* make room for scrollbar */
+  line-height: 1.2;
+  font-size: 20px;
+  color: #0f1724;
+  letter-spacing: 0.3px;
+  font-weight: 500;
+}
+
+/* Bullet list styling for mission */
+.vm-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.vm-list li {
+  margin-bottom: 12px;
+}
+
+/* Small screens stack columns */
+@media (max-width: 880px) {
+  .vm-row {
+    grid-template-columns: 1fr;
+  }
+  .vm-card {
+    max-height: none;
+    min-height: 160px;
+  }
+}
+
+.vm-card-inner::-webkit-scrollbar {
+    width: 6px;
+    background: #aaa;
+    border-radius: 15px;
+    padding-right: 10px;
+}
+
+.vm-card-inner::-webkit-scrollbar-thumb {
+    width: 3px;
+    background: #e2e2e2;
+    border-radius: 20px;
+}
+
