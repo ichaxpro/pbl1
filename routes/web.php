@@ -31,3 +31,7 @@ Route::get('/login', function()  {
 Route::get('/footer', function () {
     return view('footer');
 });
+
+Route::get('/profile', function () {
+    return view('profile/profile_page');
+});
