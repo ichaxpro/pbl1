@@ -1,0 +1,116 @@
+/* ------------------------------------------------------------------
+   FOOTER STYLING (Based on image_2bbce2.png)
+------------------------------------------------------------------ */
+.footer {
+    background-color: #014651; /* Dark teal/blue background */
+    color: #ffffff; /* White text */
+    padding: 50px 0;
+    margin-top: 100px; /* Add space between main content and footer */
+    width: 100%;
+    font-family: 'Montserrat';
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    gap: 15px;
+}
+
+.footer-section {
+    flex: 1; /* Allows sections to grow */
+    min-width: 200px; /* Minimum width before wrapping */
+    margin-left: 100px;
+    color: #ffffff;
+}
+
+/* Logo and Address Section */
+.footer-logo-section {
+    min-width: 250px;
+    max-width: 300px;
+    margin-left: -70px;
+}
+
+.footer-logo {
+    height: 70px; /* Adjust size of the logo */
+    width: auto;
+    margin-bottom: 15px;
+    filter: brightness(0) invert(1); /* Ensures the logo is white */
+}
+
+.footer-address {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #a0c0cf; /* Lighter text for address */
+    width: 500px;
+    margin-top: -10px;
+}
+
+/* Contact, Find Us, Admin Sections (Headings) */
+.footer-section h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ffffff; /* Thin line under heading */
+    padding-bottom: 5px;
+    display: inline-block; /* Makes the border only as wide as the text */
+    width: 70%;
+}
+
+/* Contact Info */
+.contact-info a {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+}
+
+.contact-info-link {
+    color: #ffffff;
+}
+
+/* Find Us (Social Icons) */
+.social-icons a {
+    color: #ffffff;
+    font-size: 0.001rem;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+.social-icons img.custom-icon {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.social-icons a:hover {
+    color: #ffffff; /* Example hover color */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .footer-section {
+        margin-bottom: 30px;
+        min-width: 100%;
+        margin-left: 30px;
+    }
+    
+    .footer-section h4 {
+        border-bottom: none; /* Remove line on mobile for cleaner look */
+        padding-bottom: 0;
+    }
+
+    .social-icons {
+        margin-top: 10px;
+    }
+}
