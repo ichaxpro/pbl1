@@ -10,6 +10,7 @@
     @include('navbar')
     @include('profile/background')
     @include('profile/profile_vision_mission')
+    @include('profile/research_focus')
     @include('footer')
 </body>
 </html>

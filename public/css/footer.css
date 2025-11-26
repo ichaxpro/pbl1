@@ -13,17 +13,16 @@
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 40px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap; /* Allows wrapping on smaller screens */
-    gap: 15px;
+    gap: 30px;
 }
 
 .footer-section {
     flex: 1; /* Allows sections to grow */
     min-width: 200px; /* Minimum width before wrapping */
-    margin-left: 100px;
     color: #ffffff;
 }
 
@@ -31,7 +30,6 @@
 .footer-logo-section {
     min-width: 250px;
     max-width: 300px;
-    margin-left: -70px;
 }
 
 .footer-logo {
