@@ -17,9 +17,9 @@
        <img class="logo-image" src="{{ asset('images/logo_dt1.png') }}" alt="">
     <div class="navbar-content">
       <a href="{{ asset('resources/views/profile.blade.php') }}" class="{{ Request::is('profile') ? 'active' : '' }}">Profile</a>
-      <a href="#">News</a>
-      <a href="#">Gallery</a>
-      <a href="#">Publications</a>
+      <a href="{{ asset('resources/views/news.blade.php') }}" class="{{ Request::is('news') ? 'active' : '' }}">News</a>
+      <a href="{{ asset('resources/views/gallery.blade.php') }}" class="{{ Request::is('galery') ? 'active' : '' }}">Gallery</a>
+      <a href="{{ asset('resources/views/publcations.blade.php') }}" class="{{ Request::is('publications') ? 'active' : '' }}">Publications</a>
     </div>
     
   </nav>

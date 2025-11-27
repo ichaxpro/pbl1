@@ -11,6 +11,7 @@
     @include('profile/background')
     @include('profile/profile_vision_mission')
     @include('profile/research_focus')
+    @include('profile/laboratory_structure')
     @include('footer')
 </body>
 </html>
