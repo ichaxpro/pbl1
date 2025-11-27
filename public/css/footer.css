@@ -13,17 +13,18 @@
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 20px; /* Padding responsif */
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap; /* Allows wrapping on smaller screens */
-    gap: 30px;
+    gap: 30px; /* Gap untuk jarak antar section */
 }
 
 .footer-section {
     flex: 1; /* Allows sections to grow */
     min-width: 200px; /* Minimum width before wrapping */
     color: #ffffff;
+    min-height: 150px; /* Tambahkan min-height agar tinggi section konsisten di berbagai device */
 }
 
 /* Logo and Address Section */
@@ -40,10 +41,10 @@
 }
 
 .footer-address {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     line-height: 1.5;
     color: #a0c0cf; /* Lighter text for address */
-    width: 500px;
+    max-width: 100%; /* Responsif */
     margin-top: -10px;
 }
 
@@ -55,7 +56,7 @@
     border-bottom: 2px solid #ffffff; /* Thin line under heading */
     padding-bottom: 5px;
     display: inline-block; /* Makes the border only as wide as the text */
-    width: 70%;
+    width: auto; /* Border sesuai teks */
 }
 
 /* Contact Info */
@@ -74,7 +75,7 @@
 /* Find Us (Social Icons) */
 .social-icons a {
     color: #ffffff;
-    font-size: 0.001rem;
+    font-size: 0; /* Sembunyikan teks sepenuhnya */
     margin-right: 15px;
     transition: color 0.3s;
 }
@@ -88,27 +89,105 @@
     color: #ffffff; /* Example hover color */
 }
 
+/* Large Screens (Desktop besar) */
+@media (min-width: 1201px) {
+    .footer-container {
+        gap: 40px; /* Gap lebih besar untuk layar besar */
+    }
+    
+    .footer-section h4 {
+        font-size: 1.2rem; /* Font sedikit lebih besar */
+    }
+}
+
+/* Tablet Responsiveness */
+@media (max-width: 1024px) {
+    .footer-container {
+        gap: 20px; /* Kurangi gap pada tablet */
+    }
+    
+    .footer-logo-section {
+        min-width: 200px;
+        max-width: 250px;
+    }
+    
+    .footer-section h4 {
+        font-size: 1rem; /* Kurangi ukuran font */
+    }
+    
+    .footer-section {
+        min-height: 130px; /* Kurangi min-height untuk tablet */
+    }
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .footer-container {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 20px;
+        gap: 20px; /* Kurangi gap pada mobile */
+        padding: 0 15px; /* Kurangi padding */
     }
     
     .footer-section {
-        margin-bottom: 30px;
+        margin-bottom: 20px; /* Kurangi margin-bottom */
         min-width: 100%;
-        margin-left: 30px;
+        min-height: auto; /* Hapus min-height pada mobile agar fleksibel */
     }
     
     .footer-section h4 {
         border-bottom: none; /* Remove line on mobile for cleaner look */
         padding-bottom: 0;
+        width: auto; /* Border sesuai teks */
     }
-
+    
+    .footer-logo-section {
+        min-width: 100%;
+        max-width: 100%;
+    }
+    
+    .footer-address {
+        width: 100%; /* Address memenuhi lebar */
+    }
+    
     .social-icons {
         margin-top: 10px;
+        display: flex;
+        justify-content: center; /* Pusatkan ikon sosial */
+    }
+    
+    .social-icons a {
+        margin-right: 10px; /* Kurangi margin antar ikon */
+    }
+}
+
+/* Small Mobile Responsiveness */
+@media (max-width: 480px) {
+    .footer {
+        padding: 30px 0; /* Kurangi padding atas/bawah untuk layar kecil */
+        margin-top: 50px; /* Kurangi margin-top */
+    }
+    
+    .footer-container {
+        padding: 0 10px; /* Padding lebih kecil */
+        gap: 15px; /* Gap lebih kecil */
+    }
+    
+    .footer-logo {
+        height: 50px; /* Kurangi ukuran logo */
+    }
+    
+    .footer-section h4 {
+        font-size: 0.9rem; /* Font lebih kecil */
+    }
+    
+    .footer-address {
+        font-size: 0.8rem; /* Font address lebih kecil */
+    }
+    
+    .social-icons img.custom-icon {
+        height: 1.2rem;
+        width: 1.2rem; /* Ikon sosial lebih kecil */
     }
 }
