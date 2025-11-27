@@ -13,20 +13,19 @@ Route::get('/navbar', function () {
     return view('/navbar');
 });
 
-Route::get('/profile_vision', function () {
-    return view('profile/profile_vision');
+
+Route::get('/vision-mission', function () {
+    return view('vision_mission');
 });
 
-Route::get('/profile_vision_mission', function () {
-    return view('profile/profile_vision_mission');
-});
 
-Route::get('/background', function () {
-    return view('profile/background');
-});
 
 Route::get('/lab_description', function () {
-    return view('home/lab_info');
+    return view('lab_info');
+});
+
+Route::get('/login', function()  {
+    return view('/login');
 });
 
 Route::get('/footer', function () {

@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #dcdcdc; /* solid base color */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top & Bottom Green Bars */
+.top-bar, .bottom-bar {
+    height: 80px;
+    background-color: #014651;
+    width: 100%;
+}
+
+/* Background Container (fills screen) */
+.background-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Solid color gap above */
+.bg-top-space {
+    height: 12%;           /* adjust spacing */
+    background-color: #dcdcdc;
+}
+
+/* Main middle background image */
+.bg-image {
+    flex: 1;
+    background-image: url('/images/news/news1.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Solid color gap below */
+.bg-bottom-space {
+    height: 12%;          /* adjust */
+    background-color: #dcdcdc;
+}
+
+/* Login Box container */
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    font-size: 15px;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    background-color: #014651;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    background-color: #066500;
+}
