@@ -1,5 +1,5 @@
 .lab-structure {
-    padding: 40px 0;
+    padding: 20px 0;
     background: rgba(0, 50, 60, 0.5);
     text-align: center;
     font-family: 'Montserrat', sans-serif;
@@ -46,8 +46,8 @@
 
 /* Card Styling */
 .card {
-    width: 140px;
-    height: 200px; /* Tinggi tetap agar semua card sama rata */
+    width: 150px;
+    height: 210px; /* Tinggi tetap agar semua card sama rata */
     background: white;
     overflow: hidden; /* Pastikan konten tidak keluar dari card */
     box-shadow: 0 4px 8px rgba(0,0,0,.15);
@@ -90,6 +90,7 @@
 
 .role {
     color: #0077b6;
+    font-family: 'Encode Sans Condensed', sans-serif;
     font-size: 10px;
     font-weight: 600;
     margin-top: auto;
