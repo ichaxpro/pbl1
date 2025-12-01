@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home/homepage');
-});
+})->name('homepage');
 Route::get('/header', function () {
     return view('/header/header');
 });
@@ -34,4 +34,12 @@ Route::get('/footer', function () {
 
 Route::get('/profile', function () {
     return view('profile/profile_page');
-});
+})->name('profile');
+
+Route::get('/news', function () {
+    return view('news/news_page');
+})->name('news');
+
+Route::get('/publication', function () {
+    return view('publication/publication_page');
+})->name('publication');
