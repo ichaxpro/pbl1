@@ -25,6 +25,6 @@ class LaboratoryStructure extends Component
 
     public function render(): View|Closure|string
     {
-        return view('components.laboratory_structure');
+        return view('profile.laboratory_structure');
     }
 }

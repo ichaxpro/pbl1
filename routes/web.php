@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DatabaseController;
+use App\Http\Controllers\DashboardController;
+// Dashboard
 
-
+Route::get('/dashboard', [DashboardController::class, 'index']);
 use App\Http\Controllers\LaboratoryStructureController;
 
 Route::get('/lab-structure', [LaboratoryStructureController::class, 'index']);

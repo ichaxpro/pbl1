@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
-// HAPUS use App\Models\Position; // Tidak perlu karena tidak langsung digunakan
-
 class LaboratoryStructureController extends Controller
 {
     public function index()

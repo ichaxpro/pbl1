@@ -7,7 +7,7 @@
     <div class="head-wrapper">
         <div class="card head-card">
             <div class="card-content">
-                <img src="{{ asset($head->photo_url) }}" alt="{{ $head->name }}" class="profile-image">
+                <img src="{{ (filter_var($head->photo_url, FILTER_VALIDATE_URL) ? $head->photo_url : asset(ltrim($head->photo_url, '/'))) }}" alt=" {{$head->name }}" class="profile-image">
                 <a href="{{ $head->sinta_link }}" target="_blank" class="name-link">{{ $head->name }}</a>
                 <p class="role">{{ $head->position->name }}</p>  <!-- AMBIL DARI DATABASE -->
             </div>
@@ -20,7 +20,7 @@
         @forelse($researchers as $researcher)
         <div class="card">
             <div class="card-content">
-                <img src="{{ asset($researcher->photo_url) }}" alt="{{ $researcher->name }}" class="profile-image">
+                <img src="{{ (filter_var($researcher->photo_url, FILTER_VALIDATE_URL) ? $researcher->photo_url : asset(ltrim($researcher->photo_url, '/'))) }}" alt="{{ $researcher->name }}" class="profile-image">
                 <a href="{{ $researcher->sinta_link }}" target="_blank" class="name-link">{{ $researcher->name }}</a>
                 <p class="role">{{ $researcher->position->name }}</p>  <!-- AMBIL DARI DATABASE -->
             </div>
