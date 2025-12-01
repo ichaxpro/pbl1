@@ -25,7 +25,7 @@
             <h1>Laboratory of Data Technology</h1>
             
             <p>
-                Laboratorium Digital Transformation (Lab DT) adalah pusat pembelajaran dan riset yang berfokus pada pengolahan serta pemanfaatan data modern. Bidang utamanya mencakup Cloud Computing, Artificial Intelligence & Machine Learning, Data Science, Big Data, Data Visualization, dan Database & SQL.
+                Laboratorium Teknologi Data (Lab DT) adalah pusat pembelajaran dan riset yang berfokus pada pengolahan serta pemanfaatan data modern. Bidang utamanya mencakup Cloud Computing, Artificial Intelligence & Machine Learning, Data Science, Big Data, Data Visualization, dan Database & SQL.
             </p>
             
             <p>

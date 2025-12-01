@@ -16,10 +16,10 @@
        <img class="logo-image" src="{{ asset('images/Jti_polinema.png') }}" alt="">
        <img class="logo-image" src="{{ asset('images/logo_dt1.png') }}" alt="">
     <div class="navbar-content">
-      <a href="{{ asset('resources/views/profile.blade.php') }}" class="{{ Request::is('profile') ? 'active' : '' }}">Profile</a>
-      <a href="{{ asset('resources/views/news.blade.php') }}" class="{{ Request::is('news') ? 'active' : '' }}">News</a>
-      <a href="{{ asset('resources/views/gallery.blade.php') }}" class="{{ Request::is('galery') ? 'active' : '' }}">Gallery</a>
-      <a href="{{ asset('resources/views/publcations.blade.php') }}" class="{{ Request::is('publications') ? 'active' : '' }}">Publications</a>
+      <a href="{{ url('/profile') }}" class="{{ Request::is('profile') ? 'active' : '' }}">Profile</a>
+      <a href="{{ url('/news') }}" class="{{ Request::is('news') ? 'active' : '' }}">News</a>
+      <a href="{{ url('/galery') }}" class="{{ Request::is('galery') ? 'active' : '' }}">Gallery</a>
+      <a href="{{ url('/publications') }}" class="{{ Request::is('publications') ? 'active' : '' }}">Publications</a>
     </div>
     
   </nav>
