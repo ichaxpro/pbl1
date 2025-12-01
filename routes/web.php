@@ -36,3 +36,7 @@ Route::get('/footer', function () {
 Route::get('/profile', function () {
     return view('profile/profile_page');
 });
+
+Route::get('/sidebar', function () {
+    return view('admin/sidebar');
+});
