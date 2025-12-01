@@ -108,6 +108,7 @@ body {
 
 /* ===== BUTTON ===== */
 .login-box button {
+    margin-top: 40px;
     background: #00a651;
     border: none;
     color: white;
