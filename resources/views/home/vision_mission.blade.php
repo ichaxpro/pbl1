@@ -44,12 +44,22 @@
                     pemerintahan guna meningkatkan daya saing lulusan JTI Polinema.
                 </li>
                 <li>
-                    Mengembangkan inovasi teknologi data yang dapat diterapkan dalam dunia industri, pendidikan, dan 
-                    pemerintahan guna meningkatkan daya saing lulusan JTI Polinema.
+                    Membangun infrastruktur dan sistem data yang skalabel dan efisien untuk mendukung kebutuhan analitik, kecerdasan buatan, dan Big Data, serta memperkuat keunggulan akademik JTI Polinema.
                 </li>
                 <li>
-                    Mengembangkan inovasi teknologi data yang dapat diterapkan dalam dunia industri, pendidikan, dan 
-                    pemerintahan guna meningkatkan daya saing lulusan JTI Polinema.
+                    Menjalin kolaborasi dengan akademisi, industri, dan pemerintah dalam pengembangan solusi teknologi data yang inovatif, sejalan dengan misi JTI Polinema dalam memperkuat sinergi dengan dunia kerja.
+                </li>
+                <li>
+                    Meningkatkan kapasitas dan kompetensi sumber daya manusia di lingkungan JTI Polinema melalui pelatihan, penelitian, seminar, dan publikasi ilmiah di bidang teknologi data.
+                </li>
+                <li>
+                    Menyediakan layanan dan rekomendasi berbasis riset bagi JTI Polinema serta mitra industri dan akademik untuk mengoptimalkan pengelolaan dan pemanfaatan data.
+                </li>
+                <li>
+                    Menjaga etika dan keamanan data dalam setiap penelitian dan pengembangan teknologi, mendukung prinsip tata kelola data yang baik dalam lingkungan akademik dan industri.
+                </li>
+                <li>
+                    Mengembangkan praktik riset dan infrastruktur teknologi data yang berkelanjutan melalui penerapan prinsip efisiensi energi, optimalisasi sumber daya, serta pengelolaan siklus hidup data yang ramah lingkungan.
                 </li>
             </ul>
         </div>

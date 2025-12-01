@@ -1,0 +1,19 @@
+
+        /* Ensure `.card` wins over Tailwind's `.bg-white` (CDN may inject styles after this file). */
+        .card,
+        .bg-white.card {
+            background-color: #CDE3E7 !important;
+            box-shadow: 0 6px 14px rgba(2,6,23,0.06);
+            border: 1px solid rgba(2,6,23,0.06);
+        }
+        .card .section-title {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+        }
+        .approval-columns > div {
+            padding: 1rem 0;
+        }
+        .approval-columns > div:not(:last-child) {
+            border-right: 1px solid rgba(2,6,23,0.06);
+        }

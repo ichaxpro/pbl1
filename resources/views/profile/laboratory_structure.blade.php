@@ -2,65 +2,37 @@
 <section img src="images/LabDT/gedung-sipil.png" alt="background" class="lab-structure">
     <h2 class="section-title">LABORATORY STRUCTURE</h2>
 
-    <!-- Head of Lab -->
+<!-- Head of Lab -->
+    @if($head)
     <div class="head-wrapper">
         <div class="card head-card">
-            <img class="card-image">
             <div class="card-content">
-                <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6681213" target="_blank">Yoppy Yunhasnawa, S.ST., M.Sc.</a>
-                <p class="role">Head of Lab</p>
+                <img src="{{ (filter_var($head->photo_url, FILTER_VALIDATE_URL) ? $head->photo_url : asset(ltrim($head->photo_url, '/'))) }}" alt=" {{$head->name }}" class="profile-image">
+                <a href="{{ $head->sinta_link }}" target="_blank" class="name-link">{{ $head->name }}</a>
+                <p class="role">{{ $head->position->name }}</p>  <!-- AMBIL DARI DATABASE -->
             </div>
         </div>
     </div>
+    @endif
 
     <!-- Researchers -->
     <div class="researcher-wrapper">
+        @forelse($researchers as $researcher)
         <div class="card">
-            <img class="card-image">
             <div class="card-content">
-                <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6875198" target="_blank">M. Hasyim Ratsanjani, S.Kom., M.Kom</a>
-                <p class="role">Researcher</p>
+                <img src="{{ (filter_var($researcher->photo_url, FILTER_VALIDATE_URL) ? $researcher->photo_url : asset(ltrim($researcher->photo_url, '/'))) }}" alt="{{ $researcher->name }}" class="profile-image">
+                <a href="{{ $researcher->sinta_link }}" target="_blank" class="name-link">{{ $researcher->name }}</a>
+                <p class="role">{{ $researcher->position->name }}</p>  <!-- AMBIL DARI DATABASE -->
             </div>
         </div>
-
+        @empty
         <div class="card">
-            <img class="card-image">
             <div class="card-content">
-                <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6018763" target="_blank">Luqman Affandi, S.Kom., MMSI</a>
-                <p class="role">Researcher</p>
+                <p>No researchers data available</p>
             </div>
         </div>
-
-        <div class="card">
-            <img class="card-image">
-            <div class="card-content">
-                <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6744684" target="_blank">Gunawan Budiprasetyo, ST., MMT., Ph.D.</a>
-                <p class="role">Researcher</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img class="card-image">
-            <div class="card-content">
-                <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6874619" target="_blank">Vit Zuraida, S.Kom., M.Kom.</a>
-                <p class="role">Researcher</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img class="card-image">
-            <div class="card-content">
-                <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6713413" target="_blank">Habibie Ed Dien, S.Kom., M.T.</a>
-                <p class="role">Researcher</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img class="card-image">
-            <div class="card-content">
-                <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6665515" target="_blank">Dika Rizky Yunianto, S.Kom., M.Kom</a>
-                <p class="role">Researcher</p>
-            </div>
-        </div>
+        @endforelse
     </div>
 </section>
+
+    
