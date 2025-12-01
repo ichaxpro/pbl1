@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/galery.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/galery.css') }}">
 </head>
 <body>
     <div class="gallery-wrapper no-left" style="background-color: white">

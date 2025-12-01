@@ -1,7 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DatabaseController;
+use App\Http\Controllers\DashboardController;
+// Dashboard
 
+Route::get('/dashboard', [DashboardController::class, 'index']);
+use App\Http\Controllers\LaboratoryStructureController;
+
+Route::get('/lab-structure', [LaboratoryStructureController::class, 'index']);
+
+
+Route::get('/test-db', [DatabaseController::class, 'test']);
 Route::get('/', function () {
     return view('home/homepage');
 });
@@ -13,20 +23,19 @@ Route::get('/navbar', function () {
     return view('/navbar');
 });
 
-Route::get('/profile_vision', function () {
-    return view('profile/profile_vision');
+
+Route::get('/vision-mission', function () {
+    return view('vision_mission');
 });
 
-Route::get('/profile_vision_mission', function () {
-    return view('profile/profile_vision_mission');
-});
 
-Route::get('/background', function () {
-    return view('profile/background');
-});
 
 Route::get('/lab_description', function () {
-    return view('home/lab_info');
+    return view('lab_info');
+});
+
+Route::get('/login', function()  {
+    return view('/login');
 });
 
 Route::get('/footer', function () {
@@ -35,8 +44,4 @@ Route::get('/footer', function () {
 
 Route::get('/profile', function () {
     return view('profile/profile_page');
-});
-
-Route::get('/sidebar', function () {
-    return view('admin/sidebar');
 });
