@@ -1,0 +1,111 @@
+.publication-search-section {
+    padding: 60px 120px;
+    background: #f3f8f9;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.publication-search-section h2 {
+    font-size: 36px;
+    margin-bottom: 25px;
+}
+
+/* Search box */
+.publication-search-box {
+    position: relative;
+    margin-bottom: 20px;
+    width: 260px;
+}
+
+.publication-search-box input {
+    width: 100%;
+    padding: 10px 12px 10px 36px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Icon search */
+.publication-search-box .publication-search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #706c6c6f;
+}
+
+.publication-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;    /* biar di HP turun ke bawah */
+    gap: 25px;
+}
+
+.publication-dropdown {
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ==============================
+      RESPONSIVE SETTINGS
+============================== */
+
+/* Tablet (900px ke bawah) */
+@media (max-width: 900px) {
+    .publication-search-section {
+        padding: 50px 60px;
+    }
+
+    .publication-search-section h2 {
+        font-size: 30px;
+    }
+
+    .publication-search-box {
+        width: 220px;
+    }
+}
+
+/* HP besar (600px ke bawah) */
+@media (max-width: 600px) {
+    .publication-search-section {
+        padding: 40px 30px;
+    }
+
+    .publication-search-section h2 {
+        font-size: 26px;
+        text-align: center;
+    }
+
+    .publication-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .publication-search-box {
+        width: 100%;      /* search jadi full width */
+    }
+
+    .publication-dropdown {
+        font-size: 13px;
+        justify-content: flex-start;
+    }
+}
+
+/* HP kecil (430px ke bawah) */
+@media (max-width: 430px) {
+    .publication-search-section {
+        padding: 35px 20px;
+    }
+
+    .publication-search-section h2 {
+        font-size: 24px;
+    }
+
+    .publication-search-box input {
+        font-size: 13px;
+    }
+}

@@ -14,7 +14,7 @@ Route::get('/lab-structure', [LaboratoryStructureController::class, 'index']);
 Route::get('/test-db', [DatabaseController::class, 'test']);
 Route::get('/', function () {
     return view('home/homepage');
-});
+})->name('homepage');
 Route::get('/header', function () {
     return view('/header/header');
 });
@@ -45,8 +45,3 @@ Route::get('/footer', function () {
 Route::get('/profile', function () {
     return view('profile/profile_page');
 });
-
-Route::get('/dashboard_admin', function () {
-    return view('admin/dashboard');
-});
-

@@ -1,0 +1,141 @@
+.activities-section {
+    width: 100%;
+    padding: 20px 40px;
+    background: white;
+}
+
+.activities-title {
+    font-size: 28px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.activities-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.activities-container {
+    display: flex;
+    gap: 40px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+}
+.activities-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Card */
+.activity-card {
+    min-width: 320px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.activity-thumb {
+    width: 100%;
+    height: 200px; /* uniform thumbnail height */
+    overflow: hidden;
+}
+
+.activity-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.activity-title {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.3;
+    max-width: 310px;
+}
+
+/* Arrows
+.activities-btn {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    background: white;
+    border: 2px solid #009EDF;
+    color: #009EDF;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.activities-btn.left { left: -10px; }
+.activities-btn.right { right: -10px; } */
+
+/* Arrows Ini */
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #129DCE;
+    border: 2px solid #129DCE;
+    font-size: 30px;
+    padding: 8px 12px;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    transition: .2s;
+    z-index: 20;
+    color: white;
+}
+
+.arrow.left {
+    left: 0;
+}
+
+.arrow.right {
+    right: 0;
+}
+
+.no-left .arrow.left,
+.no-right .arrow.right {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* --- Fade edges to white --- */
+.fade-left, .fade-right {
+    position: absolute;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    z-index: 15;
+    pointer-events: none;
+    transition: opacity .2s ease;
+}
+
+.fade-left {
+    left: 0;
+    background: linear-gradient(to right, white, transparent);
+}
+
+.fade-right {
+    right: 0;
+    background: linear-gradient(to left, white, transparent);
+}
+
+.no-left .fade-left {
+    opacity: 0;
+}
+
+.no-right .fade-right {
+    opacity: 0;
+}
