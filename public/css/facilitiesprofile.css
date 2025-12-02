@@ -1,0 +1,115 @@
+.facilities-section {
+    width: 100%;
+    padding: 20px 40px;
+    background: white;
+}
+
+.facilities-title {
+    font-size: 28px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.facilities-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.facilities-container {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    padding: 20px 10px;
+}
+
+.facilities-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Card */
+.facility-card {
+    width: 300px;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.facility-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
+
+.facility-thumb {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.facility-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.facility-title {
+    font-size: 17px;
+    padding: 12px 15px 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Arrows */
+.fac-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #129DCE;
+    border: 2px solid #129DCE;
+    font-size: 30px;
+    padding: 8px 12px;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    transition: .2s;
+    z-index: 20;
+    color: white;
+}
+
+.fac-arrow.left { left: 5px; }
+.fac-arrow.right { right: 5px; }
+
+.no-left .fac-arrow.left,
+.no-right .fac-arrow.right {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Fade Edges */
+.fac-fade-left, .fac-fade-right {
+    position: absolute;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+    transition: opacity .2s ease;
+}
+
+.fac-fade-left {
+    left: 0;
+    background: linear-gradient(to right, white, transparent);
+}
+
+.fac-fade-right {
+    right: 0;
+    background: linear-gradient(to left, white, transparent);
+}
+
+.no-left .fac-fade-left { opacity: 0; }
+.no-right .fac-fade-right { opacity: 0; }
