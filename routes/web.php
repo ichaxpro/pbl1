@@ -45,3 +45,19 @@ Route::get('/footer', function () {
 Route::get('/profile', function () {
     return view('profile/profile_page');
 });
+
+Route::get('/news', function () {
+    return view('news/news_page');
+});
+
+Route::get('/publications', function () {
+    return view('publication/publication_page');
+});
+
+Route::get('/add-activities', function () {
+    return view('operator/addActivities');
+});
+
+Route::get('/add-facilities', function () {
+    return view('operator/addFacilities');
+});
