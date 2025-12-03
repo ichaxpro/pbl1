@@ -45,3 +45,15 @@ Route::get('/footer', function () {
 Route::get('/profile', function () {
     return view('profile/profile_page');
 });
+
+Route::get('/sidebar-admin', function () {
+    return view('admin/sidebar');
+});
+
+Route::get('/sidebar-operator', function () {
+    return view('operator/sidebar');
+});
+
+Route::get('/sidebar-collapse', function () {
+    return view('admin/sidebar_collapse');
+});
