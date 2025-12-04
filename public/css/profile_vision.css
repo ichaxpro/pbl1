@@ -109,3 +109,19 @@
     border-radius: 20px;
 }
 
+@media (max-width: 1300px) {
+  .vm-row {
+    flex-direction: column;     /* stack vertically */
+    align-items: center;
+  }
+
+  .vm-card {
+    width: 100%;                /* responsive width */
+    max-width: 600px;
+
+    /* IMPORTANT → allow scroll on small screen */
+    max-height: 300px;          /* you can change to 250 / 280 / 320 */
+    min-height: auto;
+    overflow-y: auto;
+  }
+}

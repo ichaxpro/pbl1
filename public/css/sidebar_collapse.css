@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+.sidebar {
+    width: 100px;
+    background-color: #215C66;
+    height: 100vh;
+    padding: 20px;
+    color: white;
+    font-family: "Poppins", sans-serif;
+}
+
+
+.sidebar-header {
+    display: flex;
+    align-items: center;   /* vertically center text + logo */
+    gap: 12px;             /* spacing between logo and text */
+    margin-bottom: 2px;
+    text-align: left;      /* make text align normally */
+}
+
+.logo {
+    width: 70px;
+    margin-bottom: -17px;
+    margin-top: -10px;
+}
+
+.header-text{
+    margin-bottom: -10;
+    margin-left: -13px;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+
+.subtitle {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-bottom: -10px;
+}
+
+
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 2px 15px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    opacity: 0.8;
+}
+
+
+.menu-item:hover {
+    background-color: #063F46;
+    opacity: 1;
+}
+
+
+.menu-item.active {
+    background-color: #063F46;
+    opacity: 1;
+}
+
+
+.icon {
+    width: 27px;
+    object-fit: contain;
+    margin-bottom: -4px;
+    margin-top: -4px;
+}
+
+.icon2 {
+    font-size: 18px;
+    width : 55px;
+    margin-left: -15px;
+    margin-top: -13px;
+    margin-bottom: -13px;
+    margin-right: -10px;
+}
+    
+
+.icon3 {
+    font-size: 18px;
+    width : 30px;
+    margin-top: -8px;
+    margin-bottom: -8px;
+}
+
+.divider {
+    border: none;
+    border-top: 2px solid rgba(255, 255, 255, 0.4);
+    margin: 20px 0;
+}
