@@ -1,0 +1,122 @@
+/* publication_single_article.css (FINAL - DOI PISAH BARIS) */
+
+/* --- TATA LETAK UTAMA (Melebar Penuh & Rata Kiri) --- */
+
+.publication-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: #ffffff; 
+    margin: 0;
+    padding: 0;
+}
+
+.publication-box {
+    width: 100%;
+    background: #ffffff;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.publication-container {
+    width: 100%;
+    padding: 40px 6%; 
+    margin: 0; 
+    
+    font-family: 'Montserrat', sans-serif;
+    color: #000; 
+    max-width: 1000px; 
+}
+
+.publication-item {
+    margin: 0;
+    padding: 0;
+}
+
+/* --- GAYA DETAIL PUBLIKASI PADAT --- */
+
+.article-category {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333; 
+    margin: 0 0 5px 0; 
+    padding: 0;
+}
+
+.article-title {
+    font-size: 24px; 
+    font-weight: 700; 
+    color: #000;
+    margin: 0 0 5px 0; 
+    padding: 0;
+}
+
+.article-details {
+    /* Container untuk Detail (Authors, Link) */
+    margin: 0 0 15px 0; /* Memberi jarak ke HR di bawah */
+    padding: 0;
+    font-size: 13px;
+}
+
+.article-authors {
+    color: #666; 
+    display: block; /* Penulis mengambil 1 baris */
+    line-height: 1.5;
+    margin-bottom: 2px; /* Jarak kecil ke DOI di bawahnya */
+}
+
+.article-link {
+    color: #0056b3; 
+    text-decoration: none;
+    font-weight: 500;
+    
+    /* PENTING: Mengubah DOI menjadi block agar pindah ke baris baru */
+    display: block; 
+    margin-top: 0;
+    margin-bottom: 0; 
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 20px 0;
+    padding: 0;
+}
+
+/* --- GAYA LABEL ABSTRACT CENTER BOLD --- */
+.abstract-label {
+    font-size: 16px;
+    font-weight: 700; 
+    text-align: center; 
+    margin: 0 0 10px 0; 
+    padding: 0;
+    text-transform: uppercase;
+}
+
+/* --- GAYA ISI ABSTRAK --- */
+.article-abstract-content {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #222;
+    margin: 0 0 15px 0; 
+    padding: 0;
+    text-align: justify; 
+}
+
+/* --- MEDIA QUERIES --- */
+@media (max-width: 900px) {
+    .publication-container {
+        padding: 40px 4%; 
+    }
+}
+
+@media (max-width: 480px) {
+    .publication-container {
+        padding: 40px 30px; 
+    }
+    .article-title {
+        font-size: 20px;
+    }
+}

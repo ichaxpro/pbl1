@@ -23,6 +23,9 @@ Route::get('/navbar', function () {
     return view('/navbar');
 });
 
+Route::get('/publications', function () {
+    return view('publications/page_publication_article');
+});
 
 Route::get('/vision-mission', function () {
     return view('vision_mission');
