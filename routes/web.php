@@ -6,10 +6,14 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 // Dashboard
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+// Route::get('/dashboard', [DashboardController::class, 'index']);
 use App\Http\Controllers\LaboratoryStructureController;
 
 Route::get('/lab-structure', [LaboratoryStructureController::class, 'index']);
+
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware('auth')
+    ->name('dashboard');
 
 
 Route::get('/test-db', [DatabaseController::class, 'test']);
@@ -47,9 +51,9 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard', function() {
-    return view('admin/dashboard');
-})->middleware('auth');
+// Route::get('/dashboard', function() {
+//     return view('admin/dashboard');
+// })->middleware('auth');
 
 
 Route::get('/footer', function () {
