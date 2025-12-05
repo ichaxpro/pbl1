@@ -127,3 +127,10 @@ Route::middleware(['auth'])->group(function() {
 
 });
 
+Route::get('/content-management', function () {
+    return view('operator/content_management');
+});
+
+Route::get('/topbar-admin', function () {
+    return view('topbar');
+});
