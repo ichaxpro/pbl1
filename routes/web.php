@@ -70,6 +70,7 @@ Route::get('/sidebar-operator', function () {
 
 Route::get('/sidebar-collapse', function () {
     return view('admin/sidebar_collapse');
+});
 Route::get('/news', function () {
     return view('news/news_page');
 });
