@@ -1,7 +1,7 @@
 /* TOPBAR */
 .topbar {
     width: 100%;
-    background: #1f5f6b;
+    background: #215C66;
     padding: 10px 20px;
     display: flex;
     justify-content: flex-end;
@@ -48,6 +48,8 @@
     opacity: 0;
     transform: translateY(-5px);
     transition: 0.2s ease;
+
+    z-index: 9999;
 }
 
 /* Muncul */

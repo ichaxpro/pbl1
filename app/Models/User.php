@@ -17,10 +17,21 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+
+    protected $table = 'members';   // ← Use members table
+    protected $primaryKey = 'id';   // ← UUID primary key
+    public $incrementing = false;
+    protected $keyType = 'string';
+    
     protected $fillable = [
         'name',
         'email',
         'password',
+        'role',
+        'photo_url',
+        'position_id',
+        'sinta_link',
+        'status'
     ];
 
     /**
@@ -33,16 +44,16 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    // /**
+    //  * Get the attributes that should be cast.
+    //  *
+    //  * @return array<string, string>
+    //  */
+    // protected function casts(): array
+    // {
+    //     return [
+    //         'email_verified_at' => 'datetime',
+    //         'password' => 'hashed',
+    //     ];
+    // }
 }
