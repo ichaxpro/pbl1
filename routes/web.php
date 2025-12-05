@@ -41,6 +41,8 @@ Route::get('/login', function()  {
     return view('/login');
 });
 
+
+
 Route::get('/footer', function () {
     return view('footer');
 });
