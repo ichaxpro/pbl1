@@ -1,0 +1,78 @@
+/* Container utama */
+.publication-container {
+    padding: 40px 80px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* JUDUL — RATA KIRI */
+.title {
+    font-size: 28px;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/* Toolbar (search – sort – filter) */
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.search-box {
+    padding: 7px 10px;
+    width: 180px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.toolbar-right {
+    display: flex;
+    gap: 15px;
+}
+
+.sort-box,
+.filter-box {
+    padding: 7px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+}
+
+/* LIST ITEM */
+.publication-item {
+    margin-top: 20px;
+}
+
+.pub-journal {
+    color: #444;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.pub-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+    text-decoration: none;
+}
+
+.pub-title:hover {
+    text-decoration: underline;
+}
+
+.pub-date,
+.pub-authors,
+.pub-doi {
+    font-size: 14px;
+    margin-top: 3px;
+    color: #333;
+}
+
+/* Garis pemisah antar artikel */
+.divider {
+    margin: 25px 0;
+    border: none;
+    border-top: 1px solid #cfcfcf;
+}
