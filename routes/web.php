@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DatabaseController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoginController;
 // Dashboard
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -34,9 +35,19 @@ Route::get('/lab_description', function () {
     return view('lab_info');
 });
 
-Route::get('/login', function()  {
-    return view('/login');
-});
+// Route::get('/login', function()  {
+//     return view('/login');
+// });
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/dashboard', function() {
+    return view('admin/dashboard');
+})->middleware('auth');
+
 
 Route::get('/footer', function () {
     return view('footer');
