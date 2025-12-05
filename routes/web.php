@@ -23,6 +23,9 @@ Route::get('/navbar', function () {
     return view('/navbar');
 });
 
+Route::get('/publications', function () {
+    return view('publications/page_publication_article');
+});
 
 Route::get('/vision-mission', function () {
     return view('vision_mission');
@@ -46,12 +49,23 @@ Route::get('/profile', function () {
     return view('profile/profile_page');
 });
 
+Route::get('/sidebar-admin', function () {
+    return view('admin/sidebar');
+});
+
+Route::get('/sidebar-operator', function () {
+    return view('operator/sidebar');
+});
+
+Route::get('/sidebar-collapse', function () {
+    return view('admin/sidebar_collapse');
+});
 Route::get('/news', function () {
     return view('news/news_page');
 });
 
 Route::get('/publications', function () {
-    return view('publication/publication_page');
+    return view('publications/page_publication');
 });
 
 Route::get('/add-activities', function () {
