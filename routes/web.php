@@ -76,7 +76,7 @@ Route::get('/news', function () {
 });
 
 Route::get('/publications', function () {
-    return view('publication/publication_page');
+    return view('publications/page_publication');
 });
 
 Route::get('/add-activities', function () {
