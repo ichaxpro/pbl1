@@ -44,7 +44,7 @@
 
         <!-- Sidebar (hidden on small screens) -->
         <aside class="w-64 h-screen border-r flex flex-col sticky top-0">
-            @include('admin.sidebar')
+            @include('operator.sidebaroperator')
         </aside>
 
 
@@ -54,7 +54,7 @@
             <!-- Topbar -->
             
                 <div class="w-full">
-                    @include('admin.topbar')
+                    @include('operator.topbar')
                 </div> 
             
 

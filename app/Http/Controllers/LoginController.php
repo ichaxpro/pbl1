@@ -27,7 +27,18 @@ class LoginController extends Controller
         // Attempt login
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+
+            $user = Auth::user(); // ← get the logged in user
+
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.dashboard');
+            }
+
+            if ($user->role === 'operator') {
+                return redirect()->route('operator.dashboard');
+            }
+
+             return redirect()->route('login.page')->with('error', 'Your account has no valid role.');
         }
 
         return back()->withErrors([

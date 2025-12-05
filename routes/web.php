@@ -3,17 +3,28 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DatabaseController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\OperatorDashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LaboratoryStructureController;
+
 // Dashboard
 
-// Route::get('/dashboard', [DashboardController::class, 'index']);
-use App\Http\Controllers\LaboratoryStructureController;
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/lab-structure', [LaboratoryStructureController::class, 'index']);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware('auth')
-    ->name('dashboard');
+// Route::get('/dashboard', [DashboardController::class, 'index'])
+//     ->middleware('auth')
+//     ->name('dashboard');
+
+// Route::get('/admin-dashboard', [DashboardController::class, 'index'])
+//     ->middleware('auth')
+//     ->name('admin-dashboard');
+
+// Route::get('/operator_dashboard', [DashboardController::class, 'index'])
+//     ->middleware('auth')
+//     ->name('operator_dashboard');
 
 
 Route::get('/test-db', [DatabaseController::class, 'test']);
@@ -46,10 +57,10 @@ Route::get('/lab_description', function () {
 //     return view('/login');
 // });
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+// Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+// Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+// Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Route::get('/dashboard', function() {
 //     return view('admin/dashboard');
@@ -90,3 +101,29 @@ Route::get('/add-activities', function () {
 Route::get('/add-facilities', function () {
     return view('operator/addFacilities');
 });
+
+Route::get('/topbar-admin', function () {
+    return view('admin/topbar');
+});
+
+// LOGIN PAGE
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.page');
+
+// LOGIN ACTION
+Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+
+// LOGOUT
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::middleware(['auth'])->group(function() {
+
+    Route::get('/admin/dashboard', 
+        [AdminDashboardController::class, 'index']
+    )->name('admin.dashboard');
+
+    Route::get('/operator/dashboard', 
+        [OperatorDashboardController::class, 'index']
+    )->name('operator.dashboard');
+
+});
+
