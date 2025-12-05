@@ -59,12 +59,13 @@ Route::get('/sidebar-operator', function () {
 
 Route::get('/sidebar-collapse', function () {
     return view('admin/sidebar_collapse');
+});
 Route::get('/news', function () {
     return view('news/news_page');
 });
 
 Route::get('/publications', function () {
-    return view('publication/publication_page');
+    return view('publications/page_publication');
 });
 
 Route::get('/add-activities', function () {
