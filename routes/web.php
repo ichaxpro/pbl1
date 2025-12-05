@@ -79,3 +79,7 @@ Route::get('/add-facilities', function () {
 Route::get('/content-management', function () {
     return view('operator/content_management');
 });
+
+Route::get('/topbar-admin', function () {
+    return view('topbar');
+});
