@@ -61,3 +61,7 @@ Route::get('/add-activities', function () {
 Route::get('/add-facilities', function () {
     return view('operator/addFacilities');
 });
+
+Route::get('/content-management', function () {
+    return view('operator/content_management');
+});
