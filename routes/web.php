@@ -3,12 +3,28 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DatabaseController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\OperatorDashboardController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LaboratoryStructureController;
+
 // Dashboard
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
-use App\Http\Controllers\LaboratoryStructureController;
 
 Route::get('/lab-structure', [LaboratoryStructureController::class, 'index']);
+
+// Route::get('/dashboard', [DashboardController::class, 'index'])
+//     ->middleware('auth')
+//     ->name('dashboard');
+
+// Route::get('/admin-dashboard', [DashboardController::class, 'index'])
+//     ->middleware('auth')
+//     ->name('admin-dashboard');
+
+// Route::get('/operator_dashboard', [DashboardController::class, 'index'])
+//     ->middleware('auth')
+//     ->name('operator_dashboard');
 
 
 Route::get('/test-db', [DatabaseController::class, 'test']);
@@ -40,8 +56,6 @@ Route::get('/lab_description', function () {
 Route::get('/login', function()  {
     return view('/login');
 });
-
-
 
 Route::get('/footer', function () {
     return view('footer');
@@ -76,4 +90,12 @@ Route::get('/add-activities', function () {
 
 Route::get('/add-facilities', function () {
     return view('operator/addFacilities');
+});
+
+Route::get('/content-management', function () {
+    return view('operator/content_management');
+});
+
+Route::get('/topbar-admin', function () {
+    return view('topbar');
 });

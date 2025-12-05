@@ -34,12 +34,19 @@
             <div class="login-box">
                 <h2>Login Admin</h2>
 
-                <form>
+                {{-- SHOW ERROR MESSAGE --}}
+                @if(session('error'))
+                    <p class="error-message">{{ session('error') }}</p>
+                @endif
+
+                <form method="POST" action="{{ route('login.submit') }}">
+                    @csrf
+
                     <label>Email:</label>
-                    <input type="text">
+                    <input type="text" name="email" required>
 
                     <label>Password:</label>
-                    <input type="password">
+                    <input type="password" name="password" required>
 
                     <button>Log In</button>
                 </form>
