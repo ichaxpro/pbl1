@@ -53,9 +53,19 @@ Route::get('/lab_description', function () {
     return view('lab_info');
 });
 
-Route::get('/login', function()  {
-    return view('/login');
-});
+// Route::get('/login', function()  {
+//     return view('/login');
+// });
+
+// Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+// Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+
+// Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Route::get('/dashboard', function() {
+//     return view('admin/dashboard');
+// })->middleware('auth');
+
 
 Route::get('/footer', function () {
     return view('footer');
@@ -94,6 +104,33 @@ Route::get('/add-facilities', function () {
 
 Route::get('/user-management', function () {
     return view('admin/user_management');
+Route::get('/topbar-admin', function () {
+    return view('admin/topbar');
+});
+
+// LOGIN PAGE
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.page');
+
+// LOGIN ACTION
+Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+
+// LOGOUT
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::middleware(['auth'])->group(function() {
+
+    Route::get('/admin/dashboard', 
+        [AdminDashboardController::class, 'index']
+    )->name('admin.dashboard');
+
+    Route::get('/operator/dashboard', 
+        [OperatorDashboardController::class, 'index']
+    )->name('operator.dashboard');
+
+});
+
+Route::get('/content-management', function () {
+    return view('operator/content_management_fix');
 });
 
 Route::get('/edit-member', function () {
