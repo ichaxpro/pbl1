@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
+
         <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
-    </head>
-    <body>
+
+
         <div class="sidebar">
             <div class="sidebar-header">
                 <img src="{{ asset ('images/logo_dt3.png') }}" alt="Logo" class="logo">
@@ -29,5 +27,3 @@
                 </li>
             </ul>
         </div>
-    </body>
-</html>

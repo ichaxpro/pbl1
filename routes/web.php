@@ -2,13 +2,29 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DatabaseController;
-use App\Http\Controllers\DashboardController;
-// Dashboard
-
-Route::get('/dashboard', [DashboardController::class, 'index']);
+// use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\OperatorDashboardController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LaboratoryStructureController;
 
+// Dashboard
+
+// Route::get('/dashboard', [DashboardController::class, 'index']);
+
 Route::get('/lab-structure', [LaboratoryStructureController::class, 'index']);
+
+// Route::get('/dashboard', [DashboardController::class, 'index'])
+//     ->middleware('auth')
+//     ->name('dashboard');
+
+// Route::get('/admin-dashboard', [DashboardController::class, 'index'])
+//     ->middleware('auth')
+//     ->name('admin-dashboard');
+
+// Route::get('/operator_dashboard', [DashboardController::class, 'index'])
+//     ->middleware('auth')
+//     ->name('operator_dashboard');
 
 
 Route::get('/test-db', [DatabaseController::class, 'test']);
@@ -23,6 +39,9 @@ Route::get('/navbar', function () {
     return view('/navbar');
 });
 
+Route::get('/publications', function () {
+    return view('publications/page_publication_article');
+});
 
 Route::get('/vision-mission', function () {
     return view('vision_mission');
@@ -62,7 +81,7 @@ Route::get('/news', function () {
 });
 
 Route::get('/publications', function () {
-    return view('publication/publication_page');
+    return view('publications/page_publication');
 });
 
 Route::get('/add-activities', function () {
