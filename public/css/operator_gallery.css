@@ -1,0 +1,198 @@
+/* --- MAIN CONTENT --- */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+/* Placeholder Foto Profil (Bulat Kosong) */
+.profile-placeholder {
+    width: 35px;
+    height: 35px;
+    background-color: #ccc;
+    border-radius: 50%;
+}
+
+/* --- ISI KONTEN --- */
+.content-body {
+    padding: 30px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+/* --- TOOLBAR (Search & Add) --- */
+.actions-toolbar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    display: flex;
+    align-items: center;
+    background-color: #eef2f3;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 250px;
+}
+
+.icon-placeholder-small {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #999;
+    border-radius: 50%; /* Lingkaran kecil pura-pura kaca pembesar */
+    margin-right: 8px;
+}
+
+.search-input input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+}
+
+.btn-add {
+    background-color: #dbe4e6;
+    border: 1px solid #bdc3c7;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+    transition: background-color 0.2s;
+}
+.btn-add:hover {
+    background-color: #c9d5d8;
+}
+
+/* --- TABEL --- */
+.table-wrapper {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden; /* Untuk memastikan border-radius terlihat */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #e0e0e0; /* Abu-abu header */
+}
+
+th, td {
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd; /* Garis vertikal */
+    font-size: 14px;
+    color: #333;
+}
+
+th:last-child, td:last-child {
+    border-right: none;
+    text-align: center;
+}
+
+/* Placeholder Tombol Aksi (Kotak Kecil di tabel) */
+.action-cell {
+    display: flex;
+    justify-content: center;
+    gap: 5px; /* Sedikit dirapatkan */
+}
+
+/* Base style for action buttons */
+.btn-action {
+    background: none;
+    border: none;
+    padding: 4px; /* Padding lebih kecil */
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+/* Gaya spesifik untuk tombol Copy */
+.btn-copy {
+    color: #3498db; /* Warna biru */
+}
+.btn-copy:hover {
+    background-color: #eef7ff;
+    color: #2980b9;
+}
+
+/* Gaya spesifik untuk tombol Delete */
+.btn-delete {
+    color: #e74c3c; /* Warna merah */
+}
+.btn-delete:hover {
+    background-color: #ffebeb;
+    color: #c0392b;
+}
+
+/* Ukuran ikon di dalam tombol */
+.btn-action svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+
+/* Hapus placeholder lama */
+.btn-placeholder {
+    display: none;
+}
+
+/* Baris Kosong */
+.empty-row td {
+    height: 35px; /* Tinggi baris kosong */
+}
+
+/* --- PAGINATION --- */
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 15px;
+    gap: 5px;
+    font-size: 14px;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 8px;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+}
+
+.pagination a:hover:not(.page-active) {
+    background-color: #f0f0f0;
+}
+
+.pagination .page-active {
+    background-color: #4a90e2; /* Ubah ke warna biru yang lebih baik */
+    color: white;
+    font-weight: bold;
+    padding: 5px 8px;
+}
