@@ -128,7 +128,7 @@ Route::middleware(['auth'])->group(function() {
 });
 
 Route::get('/content-management', function () {
-    return view('operator/content_management');
+    return view('operator/content_management_fix');
 });
 
 Route::get('/topbar-admin', function () {
