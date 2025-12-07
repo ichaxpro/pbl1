@@ -57,3 +57,11 @@ Route::get('/sidebar-operator', function () {
 Route::get('/sidebar-collapse', function () {
     return view('admin/sidebar_collapse');
 });
+
+Route::get('/user-management', function () {
+    return view('admin/user_management');
+});
+
+Route::get('/edit-member', function () {
+    return view('admin/edit_member');
+});
