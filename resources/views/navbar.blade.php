@@ -13,8 +13,10 @@
       <img class="flag-image" src="{{ asset('images/bendera_inggris.png') }}" alt="Bendera Inggris">
 </div>
     <nav class="navbar">
+      <a href="{{ route('homepage') }}" class="logo-wrapper">
        <img class="logo-image" src="{{ asset('images/Jti_polinema.png') }}" alt="">
        <img class="logo-image" src="{{ asset('images/logo_dt1.png') }}" alt="">
+      </a>
     <div class="navbar-content">
       <a href="{{ url('/profile') }}" class="{{ Request::is('profile') ? 'active' : '' }}">Profile</a>
       <a href="{{ url('/news') }}" class="{{ Request::is('news') ? 'active' : '' }}">News</a>

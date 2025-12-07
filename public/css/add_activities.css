@@ -1,0 +1,170 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #0f5f68;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Background luar – DIUBAH, tidak memakai flex lagi */
+.outer-bg {
+    width: 100%;
+    padding: 20px 0;
+    padding-top: 100px;
+}
+
+/* Frame putih besar */
+.inner-bg {
+    background: #f4f7fa;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 20px 40px;
+    position: relative;
+}
+
+/* Logo pojok kiri */
+.header-logo {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+}
+
+.header-logo .logo {
+    width: 40px;
+}
+
+.title,
+.subtitle1,
+.subtitle2 {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+.title {
+    font-size: 7px;
+    letter-spacing: 1.2px;
+    color: rgba(255,255,255,0.8);
+}
+
+.subtitle1 {
+    font-size: 8px;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.subtitle2 {
+    font-size: 10px;
+    font-weight: 1000;
+}
+
+/* Form container */
+.form-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-title {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #36454F;
+    text-decoration: underline;
+    font-family: "Montserrat", sans-serif;
+}
+
+.form-box {
+    width: 70%;
+    background: #e4eff3;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 14px rgba(0,0,0,0.12);
+}
+
+.form-box input,
+.form-box textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 14px;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* Buttons */
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    padding: 10px 25px;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.cancel { background: #d9534f; }
+.save   { background: #42b883; }
+
+/* -------------------------
+   RESPONSIVE FIX MAXIMAL
+--------------------------*/
+
+/* Tablet */
+@media (max-width: 900px) {
+    .form-box {
+        width: 85%;
+    }
+}
+
+/* HP Besar */
+@media (max-width: 600px) {
+    .inner-bg {
+        padding: 60px 15px;
+    }
+
+    .header-logo {
+        top: 10px;
+        left: 10px;
+    }
+
+    .form-title {
+        font-size: 26px;
+    }
+
+    .form-box {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .btn-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+/* HP Kecil */
+@media (max-width: 400px) {
+    .header-logo .logo {
+        width: 28px;
+    }
+
+    .subtitle1,
+    .title {
+        font-size: 7px;
+    }
+
+    .subtitle2 {
+        font-size: 9px;
+    }
+}

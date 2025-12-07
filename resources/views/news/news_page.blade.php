@@ -4,16 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
-    <title>Homepage</title>
+    <title>News</title>
 </head>
 <body>
     @include('navbar')
-    @include('profile/background')
-    @include('profile/profile_vision_mission')
-    @include('profile/research_focus')
-   <x-laboratory-structure />
-    @include('profile/profile_activities')
-    @include('profile/profile_facilities')
+    @include('news/searchNewsSection')
+    @include('news/news_list')
     @include('footer')
 </body>
 </html>

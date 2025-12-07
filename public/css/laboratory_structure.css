@@ -46,8 +46,8 @@
 
 /* Card Styling */
 .card {
-    width: 150px;
-    height: 210px; /* Tinggi tetap agar semua card sama rata */
+    width: 160px;
+    height: 220px; /* Tinggi tetap agar semua card sama rata */
     background: white;
     overflow: hidden; /* Pastikan konten tidak keluar dari card */
     box-shadow: 0 4px 8px rgba(0,0,0,.15);
