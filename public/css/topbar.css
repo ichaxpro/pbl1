@@ -48,6 +48,8 @@
     opacity: 0;
     transform: translateY(-5px);
     transition: 0.2s ease;
+
+    z-index: 9999;
 }
 
 /* Muncul */
