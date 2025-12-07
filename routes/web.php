@@ -102,6 +102,8 @@ Route::get('/add-facilities', function () {
     return view('operator/addFacilities');
 });
 
+Route::get('/user-management', function () {
+    return view('admin/user_management');
 Route::get('/topbar-admin', function () {
     return view('admin/topbar');
 });
@@ -131,6 +133,6 @@ Route::get('/content-management', function () {
     return view('operator/content_management_fix');
 });
 
-Route::get('/topbar-admin', function () {
-    return view('topbar');
+Route::get('/edit-member', function () {
+    return view('admin/edit_member');
 });
