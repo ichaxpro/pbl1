@@ -22,8 +22,12 @@
                     <span>Management Content</span>
                 </li>
                 <li class="menu-item">
-                    <img src="{{ asset('images/User_Management_Logo.png') }}" class="icon3">
+                    <img src="{{ asset('images/approval_icon.png') }}" class="icon4">
                     <span>Approval</span>
+                </li>
+                <li class="menu-item">
+                    <img src="{{ asset('images/gallery_icon.png') }}" class="icon4">
+                    <span>Gallery</span>
                 </li>
             </ul>
         </div>
