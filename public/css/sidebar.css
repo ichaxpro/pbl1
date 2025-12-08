@@ -98,9 +98,18 @@
 
 .icon3 {
     font-size: 18px;
-    width : 30px;
+    width : 35px;
     margin-top: -8px;
     margin-bottom: -8px;
+    margin-left: -5px;
+}
+
+.icon4 {
+    font-size: 18px;
+    width : 35px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: -5px;
 }
 
 .divider {

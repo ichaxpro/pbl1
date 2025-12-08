@@ -52,106 +52,134 @@
         <div class="flex-1 flex flex-col min-h-screen">
 
             <!-- Topbar -->
-            
-                <div class="w-full">
-                    @include('operator.topbar')
-                </div> 
-            
+
+            <div class="w-full">
+                @include('operator.topbar')
+            </div>
+
 
             <!-- Page Content -->
             <main class="flex-1 overflow-auto p-8">
 
                 <div class="container mx-auto px-2 sm:px-4 lg:px-6">
+                    <!-- ========================= -->
+                    <!-- ROW 1: Stats + Add Buttons -->
+                    <!-- ========================= -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
 
-                    <!-- === Statistics Grid === -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-                        <!-- Total News Card -->
-                        <div class="bg-white card rounded-xl shadow-sm p-6 border border-gray-100">
-                            <div class="flex items-center justify-between mb-4">
-                                <h3 class="text-sm font-medium text-gray-500">Total News</h3>
-                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-newspaper text-blue-600 text-sm"></i>
+                        <!-- === LEFT: Statistics (4 cards) === -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6">
+
+                            <!-- Total News -->
+                            <div class="bg-white card rounded-xl shadow-sm p-6 border border-gray-100">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-sm font-medium text-gray-500">Total News</h3>
+                                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-newspaper text-blue-600 text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="flex items-end justify-between">
+                                    <div>
+                                        <h2 class="text-3xl font-bold text-gray-800">{{ $totalNews }}</h2>
+                                        <p
+                                            class="text-sm {{ $newsDiff > 0 ? 'text-green-500' : ($newsDiff < 0 ? 'text-red-500' : 'text-gray-500') }} mt-1">
+                                            @if ($newsDiff > 0)
+                                                +{{ $newsDiff }} vs yesterday
+                                            @elseif ($newsDiff < 0)
+                                                {{ $newsDiff }} vs yesterday
+                                            @else
+                                                0 vs yesterday
+                                            @endif
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="flex items-end justify-between">
-                                <div>
-                                    <h2 class="text-3xl font-bold text-gray-800">{{ $totalNews }}</h2>
-                                    <p class="text-sm {{ $newsDiff > 0 ? 'text-green-500' : ($newsDiff < 0 ? 'text-red-500' : 'text-gray-500') }} mt-1">
-                                        @if ($newsDiff > 0)
-                                            +{{ $newsDiff }} vs yesterday
-                                        @elseif ($newsDiff < 0)
-                                            {{ $newsDiff }} vs yesterday
-                                        @else
-                                            0 vs yesterday
-                                        @endif
-                                    </p>
+
+                            <!-- Total Publication -->
+                            <div class="bg-white card rounded-xl shadow-sm p-6 border border-gray-100">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-sm font-medium text-gray-500">Total Publication</h3>
+                                    <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-book text-green-600 text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="flex items-end justify-between">
+                                    <div>
+                                        <h2 class="text-3xl font-bold text-gray-800">{{ $totalPublications }}</h2>
+                                        <p
+                                            class="text-sm {{ $publicationsDiff > 0 ? 'text-green-500' : ($publicationsDiff < 0 ? 'text-red-500' : 'text-gray-500') }} mt-1">
+                                            @if ($publicationsDiff > 0)
+                                                +{{ $publicationsDiff }} vs yesterday
+                                            @elseif ($publicationsDiff < 0)
+                                                {{ $publicationsDiff }} vs yesterday
+                                            @else
+                                                0 vs yesterday
+                                            @endif
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
+
+                            <!-- Total Member (you had commented, so keeping removed) -->
+
                         </div>
 
-                        <!-- Total Publication -->
-                        <div class="bg-white card rounded-xl shadow-sm p-6 border border-gray-100">
-                            <div class="flex items-center justify-between mb-4">
-                                <h3 class="text-sm font-medium text-gray-500">Total Publication</h3>
-                                <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-book text-green-600 text-sm"></i>
+                        <!-- === RIGHT: 2x2 Add Buttons === -->
+                        <div class="grid grid-cols-2 gap-4">
+
+                            <!-- Add Member -->
+                            <div class="bg-white card rounded-xl shadow-sm p-6 cursor-pointer transition-all duration-200">
+                                <div class="flex flex-col items-center text-gray-800">
+                                    <div
+                                        class="w-10 h-6 bg-blue-100 rounded-full flex items-center justify-center mb-3">
+                                        <i class="fas fa-user-plus text-blue-600 text-xl"></i>
+                                    </div>
+                                    <h3 class="text-lg font-semibold">Add Member</h3>
                                 </div>
                             </div>
-                            <div class="flex items-end justify-between">
-                                <div>
-                                    <h2 class="text-3xl font-bold text-gray-800">{{ $totalPublications }}</h2>
-                                    <p class="text-sm {{ $publicationsDiff > 0 ? 'text-green-500' : ($publicationsDiff < 0 ? 'text-red-500' : 'text-gray-500') }} mt-1">
-                                        @if ($publicationsDiff > 0)
-                                            +{{ $publicationsDiff }} vs yesterday
-                                        @elseif ($publicationsDiff < 0)
-                                            {{ $publicationsDiff }} vs yesterday
-                                        @else
-                                            0 vs yesterday
-                                        @endif
-                                    </p>
+
+                            <!-- Add News -->
+                            <div class="bg-white card rounded-xl shadow-sm p-6 cursor-pointer transition-all duration-200">
+                                <div class="flex flex-col items-center text-gray-800">
+                                    <div
+                                        class="w-10 h-6 bg-green-100 rounded-full flex items-center justify-center mb-3">
+                                        <i class="fas fa-newspaper text-green-600 text-xl"></i>
+                                    </div>
+                                    <h3 class="text-lg font-semibold">Add News</h3>
                                 </div>
                             </div>
+
+                            <!-- Add Publication -->
+                            <div class="bg-white card rounded-xl shadow-sm p-6 cursor-pointer transition-all duration-200">
+                                <div class="flex flex-col items-center text-gray-800">
+                                    <div
+                                        class="w-10 h-6 bg-yellow-100 rounded-full flex items-center justify-center mb-3">
+                                        <i class="fas fa-book text-yellow-600 text-xl"></i>
+                                    </div>
+                                    <h3 class="text-lg font-semibold">Add Publication</h3>
+                                </div>
+                            </div>
+
+                            <!-- Add Activity -->
+                            <div class="bg-white card rounded-xl shadow-sm p-6 cursor-pointer transition-all duration-200">
+                                <div class="flex flex-col items-center text-gray-800">
+                                    <div
+                                        class="w-10 h-6 bg-purple-100 rounded-full flex items-center justify-center mb-3">
+                                        <i class="fas fa-calendar-plus text-purple-600 text-xl"></i>
+                                    </div>
+                                    <h3 class="text-lg font-semibold">Add Activity</h3>
+                                </div>
+                            </div>
+
                         </div>
 
-                        <!-- Total Members -->
-                        <div class="bg-white card rounded-xl shadow-sm p-6 border border-gray-100">
-                            <div class="flex items-center justify-between mb-4">
-                                <h3 class="text-sm font-medium text-gray-500">Total Member</h3>
-                                <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-users text-purple-600 text-sm"></i>
-                                </div>
-                            </div>
-                            <div class="flex items-end justify-between">
-                                <div>
-                                    <h2 class="text-3xl font-bold text-gray-800">{{ $totalMembers }}</h2>
-                                    <p class="text-sm {{ $membersDiff > 0 ? 'text-green-500' : ($membersDiff < 0 ? 'text-red-500' : 'text-gray-500') }} mt-1">
-                                        @if ($membersDiff > 0)
-                                            +{{ $membersDiff }} vs yesterday
-                                        @elseif ($membersDiff < 0)
-                                            {{ $membersDiff }} vs yesterday
-                                        @else
-                                            0 vs yesterday
-                                        @endif
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Add Member -->
-                        <div class="bg-white card rounded-xl shadow-sm p-6 cursor-pointer transition-all duration-200">
-                            <div class="flex flex-col items-center justify-center h-full text-gray-800">
-                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-3">
-                                    <i class="fas fa-user-plus text-blue-600 text-xl"></i>
-                                </div>
-                                <h3 class="text-lg font-semibold">Add Member</h3>
-                            </div>
-                        </div>
                     </div>
 
-                    <!-- === Second Row: Approval & Notifications === -->
+                    <!-- ============================= -->
+                    <!-- ROW 2: Approval + Notification -->
+                    <!-- ============================= -->
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-                        <!-- Approval Status -->
                         <div class="bg-white card rounded-xl shadow-sm p-6 border border-gray-100 lg:col-span-2">
                             <h3 class="text-lg font-semibold text-gray-800 mb-6 section-title">
                                 <span class="inline-block text-blue-600"><i class="fas fa-check-circle"></i></span>
@@ -164,7 +192,8 @@
                                     <div class="text-sm text-gray-700 mb-3">Requested</div>
                                     <div class="text-3xl font-bold text-gray-800">{{ $requestedCount }}</div>
                                     @isset($requestedDiff)
-                                        <p class="text-sm mt-1 {{ $requestedDiff > 0 ? 'text-green-500' : ($requestedDiff < 0 ? 'text-red-500' : 'text-gray-500') }}">
+                                        <p
+                                            class="text-sm mt-1 {{ $requestedDiff > 0 ? 'text-green-500' : ($requestedDiff < 0 ? 'text-red-500' : 'text-gray-500') }}">
                                             {{ $requestedDiff > 0 ? '+' . $requestedDiff : $requestedDiff }} vs yesterday
                                         </p>
                                     @else
@@ -177,7 +206,8 @@
                                     <div class="text-sm text-gray-700 mb-3">Approved</div>
                                     <div class="text-3xl font-bold text-gray-800">{{ $approvedCount }}</div>
                                     @isset($approvedDiff)
-                                        <p class="text-sm mt-1 {{ $approvedDiff > 0 ? 'text-green-500' : ($approvedDiff < 0 ? 'text-red-500' : 'text-gray-500') }}">
+                                        <p
+                                            class="text-sm mt-1 {{ $approvedDiff > 0 ? 'text-green-500' : ($approvedDiff < 0 ? 'text-red-500' : 'text-gray-500') }}">
                                             {{ $approvedDiff > 0 ? '+' . $approvedDiff : $approvedDiff }} vs yesterday
                                         </p>
                                     @else
@@ -190,7 +220,8 @@
                                     <div class="text-sm text-gray-700 mb-3">Declined</div>
                                     <div class="text-3xl font-bold text-gray-800">{{ $rejectedCount }}</div>
                                     @isset($rejectedDiff)
-                                        <p class="text-sm mt-1 {{ $rejectedDiff > 0 ? 'text-green-500' : ($rejectedDiff < 0 ? 'text-red-500' : 'text-gray-500') }}">
+                                        <p
+                                            class="text-sm mt-1 {{ $rejectedDiff > 0 ? 'text-green-500' : ($rejectedDiff < 0 ? 'text-red-500' : 'text-gray-500') }}">
                                             {{ $rejectedDiff > 0 ? '+' . $rejectedDiff : $rejectedDiff }} vs yesterday
                                         </p>
                                     @else
@@ -204,7 +235,8 @@
                         <div class="bg-white card rounded-xl shadow-sm p-6 border border-gray-100">
                             <h3 class="text-lg font-semibold text-gray-800 mb-6">Notification</h3>
                             <div class="space-y-4">
-                                <div class="flex items-start space-x-3 p-3 bg-blue-50 rounded-lg border border-blue-100">
+                                <div
+                                    class="flex items-start space-x-3 p-3 bg-blue-50 rounded-lg border border-blue-100">
                                     <div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
                                     <div>
                                         <p class="text-sm text-gray-700">Admin menyetujui 1 permintaan</p>
@@ -242,7 +274,8 @@
                                         @php
                                             $newsWidth = $totalNews > 0 ? min(($monthlyNews / $totalNews) * 100, 100) : 0;
                                         @endphp
-                                        <div class="bg-blue-600 h-2 rounded-full" style="width: {{ $newsWidth }}%"></div>
+                                        <div class="bg-blue-600 h-2 rounded-full" style="width: {{ $newsWidth }}%">
+                                        </div>
                                     </div>
                                 </div>
 
@@ -250,13 +283,15 @@
                                 <div>
                                     <div class="flex justify-between items-center mb-1">
                                         <span class="text-sm text-gray-600">Publication</span>
-                                        <span class="text-sm font-medium text-gray-800">{{ $monthlyPublications }}</span>
+                                        <span
+                                            class="text-sm font-medium text-gray-800">{{ $monthlyPublications }}</span>
                                     </div>
                                     <div class="w-full bg-gray-200 rounded-full h-2">
                                         @php
                                             $pubWidth = $totalPublications > 0 ? min(($monthlyPublications / $totalPublications) * 100, 100) : 0;
                                         @endphp
-                                        <div class="bg-green-500 h-2 rounded-full" style="width: {{ $pubWidth }}%"></div>
+                                        <div class="bg-green-500 h-2 rounded-full" style="width: {{ $pubWidth }}%">
+                                        </div>
                                     </div>
                                 </div>
 
@@ -270,7 +305,8 @@
                                         @php
                                             $memberWidth = $totalMembers > 0 ? min(($monthlyMembers / $totalMembers) * 100, 100) : 0;
                                         @endphp
-                                        <div class="bg-purple-500 h-2 rounded-full" style="width: {{ $memberWidth }}%"></div>
+                                        <div class="bg-purple-500 h-2 rounded-full" style="width: {{ $memberWidth }}%">
+                                        </div>
                                     </div>
                                 </div>
 
@@ -284,15 +320,16 @@
                                         @php
                                             $activityWidth = $monthlyActivities > 0 ? min(($monthlyActivities / max($monthlyActivities, 1)) * 100, 100) : 0;
                                         @endphp
-                                        <div class="bg-orange-500 h-2 rounded-full" style="width: {{ $activityWidth }}%"></div>
+                                        <div class="bg-orange-500 h-2 rounded-full"
+                                            style="width: {{ $activityWidth }}%"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                </div>
 
+                </div>
             </main>
         </div>
     </div>
@@ -329,4 +366,5 @@
     </script>
 
 </body>
+
 </html>
