@@ -30,16 +30,16 @@
                 </li>
             
                 <li>
-                    <a href="{{ url('/user-management') }}" 
-                       class="menu-item {{ Request::is('user-management') ? 'active' : '' }}">
+                    <a href="{{ url('/approval_status') }}" 
+                       class="menu-item {{ Request::is('approval_status') ? 'active' : '' }}">
                         <img src="{{ asset('images/approval_icon.png') }}" class="icon4">
                         <span>Approval Status</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ url('/user-management') }}" 
-                       class="menu-item {{ Request::is('user-management') ? 'active' : '' }}">
+                    <a href="{{ url('/operator_gallery') }}" 
+                       class="menu-item {{ Request::is('operator_gallery') ? 'active' : '' }}">
                         <img src="{{ asset('images/gallery_icon.png') }}" class="icon4">
                         <span>Gallery</span>
                     </a>

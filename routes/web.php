@@ -141,10 +141,14 @@ Route::get('/edit-member', function () {
     return view('admin/edit_member');
 });
 
-Route::get('/approval-status', function () {
+Route::get('/approval_status', function () {
     return view('operator/approval_status');
 });
 
 Route::get('/user-management', function () {
     return view('admin/user_management');
+});
+
+Route::get('/operator_gallery', function () {
+    return view('operator/operator_gallery');
 });
