@@ -14,6 +14,7 @@
     padding: 20px 30px;
     border: 1px solid #cdd6df;
     width: 560px;
+    position: relative;
 }
 
 .edit-header h2 {
@@ -96,4 +97,23 @@
 
 .btn-save:hover {
     background: #005059;
+}
+
+/* Close (X) Button */
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.close-btn:hover {
+    color: #ffcccc;
+    transform: scale(1.1);
 }

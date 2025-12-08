@@ -149,6 +149,7 @@
                 <link rel="stylesheet" href="{{ asset('css/edit_member.css') }}">
 
                 <div class="edit-header">
+                    <button class="close-btn" onclick="closeModalAdd()">×</button>
                     <h2>Add Member</h2>
                 </div>
 
@@ -183,6 +184,7 @@
                 <link rel="stylesheet" href="{{ asset('css/edit_member.css') }}">
 
                 <div class="edit-header">
+                    <button class="close-btn" onclick="closeModalEdit()">×</button>
                     <h2>Edit Member</h2>
                 </div>
 
