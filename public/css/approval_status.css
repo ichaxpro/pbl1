@@ -1,125 +1,128 @@
-.page-container {
-    padding: 20px 40px;
-    font-family: "Poppins", sans-serif;
-    color: #1e1e1e;
-}
-
-/* STATUS CARD */
+/* Card */
 .status-card {
-    background: #f5f9fc;
+    background: white;
     padding: 20px;
     border-radius: 12px;
-    width: 380px;
-    border: 1px solid #d8e0e6;
-    margin-bottom: 25px;
+    max-width: 360px;
 }
 
-.status-header {
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-    font-size: 16px;
-    margin-bottom: 15px;
-}
-
-.status-icon {
-    width: 24px;
-    margin-right: 10px;
-}
-
-.status-grid {
-    display: flex;
-    justify-content: space-between;
-}
-
-.status-box {
-    text-align: center;
-}
-
-.status-box .label {
-    color: #555;
+.status-card .label {
     font-size: 14px;
+    color: #555;
 }
 
-.status-box .value {
-    font-size: 30px;
-    font-weight: 600;
+.status-card .value {
+    font-size: 32px;
+    font-weight: bold;
 }
 
-.status-box .compare {
+.status-card .diff {
     font-size: 12px;
-    color: #8aa6c8;
+    color: #4e8df5;
 }
 
-/* SEARCH BAR */
-.search-wrapper {
-    margin: 15px 0;
-    background: #eaf1f5;
-    padding: 8px 12px;
-    width: 260px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-}
-
-.search-wrapper .search-icon {
-    width: 18px;
-    margin-right: 8px;
-}
-
+/* Search bar */
 .search-input {
-    border: none;
-    background: none;
+    width: 250px;
+    background: #eaf3f4;
+    padding: 10px 16px;
+    border-radius: 8px;
     outline: none;
+    border: 1px solid #d9e3e4;
 }
 
-/* TABLE */
+/* Table */
 .table-wrapper {
     margin-top: 20px;
+    background: white;
+    padding: 0px;
+    border: 1px solid #cdd6df;
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 .custom-table {
     width: 100%;
     border-collapse: collapse;
+    text-align: left;
+}
+
+.custom-table thead {
+    background: #e8e6e1;
 }
 
 .custom-table th {
-    background: #e3e8eb;
     padding: 12px;
     font-weight: 600;
-    font-size: 14px;
+    color: #555;
+    border-bottom: 1px solid #ddd;
 }
 
 .custom-table td {
-    padding: 10px;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
     font-size: 14px;
-    border-bottom: 1px solid #e0e0e0;
 }
 
-/* BADGE COLORS */
+/* Status badges */
 .badge {
     padding: 4px 12px;
-    border-radius: 8px;
+    border-radius: 10px;
     color: white;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .badge.accepted {
-    background: #59c38f;
+    background: #4CAF50;
 }
 
 .badge.declined {
-    background: #dc6565;
+    background: #d9534f;
 }
 
 .badge.requested {
-    background: #4a96ff;
+    background: #5dade2;
 }
 
-/* PAGINATION */
-.pagination {
-    margin-top: 20px;
-    text-align: right;
-    padding-right: 20px;
+/* Pagination */
+.page-number {
+    padding: 4px 8px;
+    cursor: pointer;
+    color: #555;
+}
+
+.page-number.active {
+    font-weight: bold;
+    border-bottom: 2px solid #555;
+}
+
+.logo {
+    width: 20px;   /* change this value */
+    height: auto;  /* keeps correct aspect ratio */
+}
+
+/* Search Box */
+.search-box {
+    position: relative;
+    width: 260px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 14px 10px 40px; /* space for icon */
+    border: 1px solid #d9e3e4;
+    border-radius: 8px;
+    background: #eaf3f4;
+    outline: none;
+    font-size: 14px;
+}
+
+.search-box i {
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    transform: translateY(-50%);
+    color: #6c7980;
+    font-size: 15px;
 }
