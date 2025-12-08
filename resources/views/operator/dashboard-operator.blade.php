@@ -37,7 +37,7 @@
     </style>
 </head>
 
-<body class="bg-gray-50 min-h-screen flex">
+<body class="bg-gray-50 min-h-screen">
 
     <!-- Responsive Layout -->
     <div class="flex w-full min-h-screen">
@@ -47,20 +47,17 @@
             @include('operator.sidebaroperator')
         </aside>
 
-
-        <!-- Main Content -->
-        <div class="flex-1 flex flex-col min-h-screen">
-
+        <div class="flex-1 flex flex flex-col min-h screen">
             <!-- Topbar -->
-
             <div class="w-full">
                 @include('operator.topbar')
             </div>
 
-
+        </div>
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto px-8 py-6">
             <!-- Page Content -->
-            <main class="flex-1 overflow-auto p-8">
-
+            <div class="max-w-full pl-12">
                 <div class="container mx-auto px-2 sm:px-4 lg:px-6">
                     <!-- ========================= -->
                     <!-- ROW 1: Stats + Add Buttons -->
@@ -330,8 +327,8 @@
                     </div>
 
                 </div>
-            </main>
-        </div>
+            </div>
+        </main>
     </div>
 
     <script>
