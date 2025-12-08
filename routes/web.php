@@ -47,7 +47,7 @@ Route::get('/vision-mission', function () {
     return view('vision_mission');
 });
 
-Route::get('/operator', function () {
+Route::get('/gallery', function () {
     return view('operator/operator_gallery');
 });
 
