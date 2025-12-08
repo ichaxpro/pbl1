@@ -13,17 +13,28 @@
 
             <hr class="divider">
             <ul class="menu">
-                <li class="menu-item active">
-                    <img src="{{ asset('images/Dashboard_Logo.png') }}" class="icon">
-                    <span>Dashboard</span>
+                <li>
+                    <a href="{{ route('admin.dashboard') }}" 
+                       class="menu-item {{ Request::is('admin/dashboard') ? 'active' : '' }}">
+                        <img src="{{ asset('images/Dashboard_Logo.png') }}" class="icon">
+                        <span>Dashboard</span>
+                    </a>
                 </li>
-                <li class="menu-item">
-                    <img src="{{ asset('images/Management_Content_Logo.png') }}" class="icon2">
-                    <span>Management Content</span>
+
+                <li>
+                    <a href="{{ url('/content-management-admin') }}" 
+                       class="menu-item {{ Request::is('management-content') ? 'active' : '' }}">
+                        <img src="{{ asset('images/Management_Content_Logo.png') }}" class="icon2">
+                        <span>Management Content</span>
+                    </a>
                 </li>
-                <li class="menu-item">
-                    <img src="{{ asset('images/User_Management_Logo.png') }}" class="icon3">
-                    <span>User Management</span>
+
+                <li>
+                    <a href="{{ url('/user-management') }}" 
+                       class="menu-item {{ Request::is('user-management') ? 'active' : '' }}">
+                        <img src="{{ asset('images/approval_icon.png') }}" class="icon4">
+                        <span>User Management</span>
+                    </a>
                 </li>
             </ul>
         </div>
