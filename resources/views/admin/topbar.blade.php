@@ -34,8 +34,3 @@
             dropdown.classList.remove("show");
         });
     </script>
-<<<<<<< HEAD
-=======
-</body>
-</html>
->>>>>>> 5d2662ab78eafb1a68f8f053774103bbc26a4320
