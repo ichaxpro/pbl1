@@ -1,0 +1,125 @@
+.page-container {
+    padding: 20px 40px;
+    font-family: "Poppins", sans-serif;
+    color: #1e1e1e;
+}
+
+/* STATUS CARD */
+.status-card {
+    background: #f5f9fc;
+    padding: 20px;
+    border-radius: 12px;
+    width: 380px;
+    border: 1px solid #d8e0e6;
+    margin-bottom: 25px;
+}
+
+.status-header {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.status-icon {
+    width: 24px;
+    margin-right: 10px;
+}
+
+.status-grid {
+    display: flex;
+    justify-content: space-between;
+}
+
+.status-box {
+    text-align: center;
+}
+
+.status-box .label {
+    color: #555;
+    font-size: 14px;
+}
+
+.status-box .value {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.status-box .compare {
+    font-size: 12px;
+    color: #8aa6c8;
+}
+
+/* SEARCH BAR */
+.search-wrapper {
+    margin: 15px 0;
+    background: #eaf1f5;
+    padding: 8px 12px;
+    width: 260px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.search-wrapper .search-icon {
+    width: 18px;
+    margin-right: 8px;
+}
+
+.search-input {
+    border: none;
+    background: none;
+    outline: none;
+}
+
+/* TABLE */
+.table-wrapper {
+    margin-top: 20px;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.custom-table th {
+    background: #e3e8eb;
+    padding: 12px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.custom-table td {
+    padding: 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* BADGE COLORS */
+.badge {
+    padding: 4px 12px;
+    border-radius: 8px;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.badge.accepted {
+    background: #59c38f;
+}
+
+.badge.declined {
+    background: #dc6565;
+}
+
+.badge.requested {
+    background: #4a96ff;
+}
+
+/* PAGINATION */
+.pagination {
+    margin-top: 20px;
+    text-align: right;
+    padding-right: 20px;
+}

@@ -8,10 +8,10 @@
 
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-gray-50 min h-screen">
 
     <!-- Responsive Layout -->
-    <div class="flex min-h-screen">
+    <div class="flex w-full min-h-screen">
 
         <!-- Sidebar (hidden on small screens) -->
         <aside class="w-64 h-screen border-r sticky top-0">
@@ -23,8 +23,12 @@
             <div class="w-full">
                 @include('admin.topbar')
             </div>
+        </div>
 
-            <main class="flex-1 p-6 overflow-y-auto">
+
+        <main class="flex-1 overflow-y-auto px-8 py-6">
+            <div class="max-w-full pl-12">
+
                 <div class="page-container">
 
                     <h2 class="page-title">User Management</h2>
@@ -137,8 +141,10 @@
                     </div>
 
                 </div>
-            </main>
-        </div>
+            </div>
+
+        </main>
+
 
 
         <!-- MODAL ADD MEMBER -->
