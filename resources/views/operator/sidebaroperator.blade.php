@@ -38,8 +38,8 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('/user-management') }}" 
-                       class="menu-item {{ Request::is('user-management') ? 'active' : '' }}">
+                    <a href="{{ url('/gallery') }}" 
+                       class="menu-item {{ Request::is('gallery') ? 'active' : '' }}">
                         <img src="{{ asset('images/gallery_icon.png') }}" class="icon4">
                         <span>Gallery</span>
                     </a>

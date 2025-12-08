@@ -47,6 +47,9 @@ Route::get('/vision-mission', function () {
     return view('vision_mission');
 });
 
+Route::get('/gallery', function () {
+    return view('operator/operator_gallery');
+});
 
 
 Route::get('/lab_description', function () {
@@ -102,6 +105,9 @@ Route::get('/add-facilities', function () {
     return view('operator/addFacilities');
 });
 
+Route::get('/user-management', function () {
+    return view('admin/user_management');
+});
 Route::get('/topbar-admin', function () {
     return view('admin/topbar');
 });
