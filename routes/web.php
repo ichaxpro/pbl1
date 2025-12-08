@@ -93,7 +93,7 @@ Route::get('/add-facilities', function () {
 });
 
 Route::get('/user-management', function () {
-    return view('admin/user_management');
+    return view('admin/user_management1');
 });
 
 Route::get('/edit-member', function () {

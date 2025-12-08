@@ -23,7 +23,7 @@
                 </li>
                 <li class="menu-item">
                     <img src="{{ asset('images/User_Management_Logo.png') }}" class="icon3">
-                    <span>User Management</span>
+                    <span>Approval</span>
                 </li>
             </ul>
         </div>
