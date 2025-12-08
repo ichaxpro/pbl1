@@ -1,26 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- File CSS -->
     <link rel="stylesheet" href="{{ asset('css/topbar.css') }}">
-</head>
 
-<body>
     <div class="topbar">
         <div class="topbar-right">
-            <span class="user-name">Haechan Lee</span>
+           <span class="user-name">
+            {{ Auth::user()->name }}
+        </span>
 
-            <div class="user-menu">
-                <img src="{{ asset('images/lee_haechan.jpg') }}" class="user-avatar" id="userAvatar">
+        <div class="user-menu">
+            <img src="{{ Auth::user()->photo_url ? asset(Auth::user()->photo_url) : asset('images/default.png') }}"
+                 class="user-avatar"
+                 id="userAvatar">
 
-                <!-- Dropdown (dummy) -->
-                <div class="dropdown" id="dropdownMenu">
-                    <a href="#" class="dropdown-item">Logout</a>
-                </div>
-            </div>
+            <div class="dropdown" id="dropdownMenu">
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button class="dropdown-item">Logout</button>
+                </form>
         </div>
     </div>
 
@@ -37,5 +34,3 @@
             dropdown.classList.remove("show");
         });
     </script>
-</body>
-</html>

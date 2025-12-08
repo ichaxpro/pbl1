@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Member extends Model
+class Member extends Authenticatable
 {
     protected $fillable = [
         'name', 'password', 'email', 'role', 'photo_url', 
@@ -12,6 +13,9 @@ class Member extends Model
     ];
 
     protected $hidden = ['password'];
+
+    public $incrementing = false;
+    protected $keyType = 'string';
 
     // Relationship ke Position - METHOD NAME: position()
     public function position()
