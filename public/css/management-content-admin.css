@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -120,17 +119,26 @@ tbody td {
     color: #1E4A52;
 }
 
+/* ACTIONS (Ditambahkan untuk konsistensi) */
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 /* ICONS */
 .icon {
     width: 20px;
     cursor: pointer;
+    transition: all 0.2s; /* Smooth hover transition */
 }
 
-.danger:hover line {
+/* HOVER EFFECTS (Diperbaiki: Menggunakan svg sebagai parent untuk lebih robust) */
+.danger:hover svg line {
     stroke: red;
 }
 
-.success:hover polyline {
+.success:hover svg polyline {
     stroke: green;
 }
 
