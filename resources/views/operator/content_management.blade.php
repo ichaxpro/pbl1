@@ -57,19 +57,19 @@
 
 <body class="bg-gray-50">
 
-<div class="flex min-h-screen">
+ <div class="flex w-full min-h-screen">
 
-    <!-- Sidebar -->
-    
-        @include('operator.sidebaroperator')
-    
+        <!-- Sidebar (hidden on small screens) -->
+        <aside class="w-64 h-screen border-r flex flex-col sticky top-0">
+            @include('operator.sidebaroperator')
+        </aside>
 
-    <!-- Main area -->
-    <div class="flex-grow flex flex-col overflow-hidden">
+        <div class="flex-1 flex flex flex-col min-h screen">
+            <!-- Topbar -->
+            <div class="w-full">
+                @include('operator.topbar')
+            </div>
 
-        <!-- Topbar -->
-        <div class="flex-shrink-0">
-            @include('operator.topbar')
         </div>
 
         <!-- Content -->

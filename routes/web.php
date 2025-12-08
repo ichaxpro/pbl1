@@ -47,9 +47,7 @@ Route::get('/vision-mission', function () {
     return view('vision_mission');
 });
 
-Route::get('/operator', function () {
-    return view('operator/operator_gallery');
-});
+
 
 Route::get('/lab_description', function () {
     return view('lab_info');
@@ -82,7 +80,7 @@ Route::get('/sidebar-admin', function () {
 });
 
 Route::get('/sidebar-operator', function () {
-    return view('operator/sidebaroperator');
+    return view('operator/sidebar');
 });
 
 Route::get('/sidebar-collapse', function () {
@@ -115,6 +113,7 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.pag
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
 // LOGOUT
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function() {
@@ -137,8 +136,8 @@ Route::get('/content-management-admin', function () {
     return view('admin/management-content');
 });
 
-Route::get('/edit-member', function () {
-    return view('admin/edit_member');
+Route::get('/topbar-admin', function () {
+    return view('topbar');
 });
 
 Route::get('/approval_status', function () {

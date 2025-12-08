@@ -11,16 +11,23 @@
 
 <body class="bg-gray-50">
 
-<div class="flex min-h-screen">
+<div class="flex w-full min-h-screen">
 
-    @include('admin.sidebar_collapse')
+        <!-- Sidebar (hidden on small screens) -->
+        <aside class="w-64 h-screen border-r flex flex-col sticky top-0">
+            @include('admin.sidebar')
+        </aside>
 
-    <!-- Main content -->
-    <div class="flex-grow flex flex-col overflow-hidden">
+        <div class="flex-1 flex flex-col min-h screen">
+            <!-- Topbar -->
+            <div class="w-full">
+                @include('admin.topbar')
+            </div>
 
-        @include('admin.topbar')
 
-        <main class="flex-grow p-6 sm:p-10 overflow-auto pl-20">
+        </div>
+
+        <main class="flex-grow p-8 overflow-auto pl-20">
 
             <h1 class="page-title">Content Management</h1>
 
@@ -67,7 +74,6 @@
                             <td><span class="tag accepted">Accepted</span></td>
                             <td></td>
                             <td class="actions">
-                                <!-- Eye -->
                                 <button>
                                     @include('components.icons.eye')
                                 </button>
@@ -83,11 +89,13 @@
                             <td><span class="tag rejected">Rejected</span></td>
                             <td></td>
                             <td class="actions">
-                                @include('components.icons.eye')
+                                <button>
+                                    @include('components.icons.eye')
+                                </button>
                             </td>
                         </tr>
 
-                        <!-- Requested Row -->
+                        <!-- Requested Row (Diperbaiki: Semua ikon dibungkus dalam button dengan class untuk hover) -->
                         <tr>
                             <td>Lorem Ipsum</td>
                             <td>Lorem Ipsum</td>
@@ -96,9 +104,9 @@
                             <td><span class="tag requested">Requested</span></td>
                             <td></td>
                             <td class="actions flex gap-2">
-                                @include('components.icons.eye')
-                                @include('components.icons.cross')
-                                @include('components.icons.check')
+                                <button>@include('components.icons.eye')</button>
+                                <button class="danger">@include('components.icons.cross')</button>
+                                <button class="success">@include('components.icons.check')</button>
                             </td>
                         </tr>
 
