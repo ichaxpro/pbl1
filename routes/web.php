@@ -47,7 +47,9 @@ Route::get('/vision-mission', function () {
     return view('vision_mission');
 });
 
-
+Route::get('/operator', function () {
+    return view('operator/operator_gallery');
+});
 
 Route::get('/lab_description', function () {
     return view('lab_info');
@@ -80,7 +82,7 @@ Route::get('/sidebar-admin', function () {
 });
 
 Route::get('/sidebar-operator', function () {
-    return view('operator/sidebar');
+    return view('operator/sidebaroperator');
 });
 
 Route::get('/sidebar-collapse', function () {
@@ -128,9 +130,9 @@ Route::middleware(['auth'])->group(function() {
 });
 
 Route::get('/content-management', function () {
-    return view('operator/content_management_fix');
+    return view('operator/content_management');
 });
 
-Route::get('/topbar-admin', function () {
-    return view('topbar');
+Route::get('/edit-member', function () {
+    return view('admin/edit_member');
 });

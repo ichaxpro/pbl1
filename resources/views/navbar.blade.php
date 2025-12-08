@@ -20,7 +20,7 @@
     <div class="navbar-content">
       <a href="{{ url('/profile') }}" class="{{ Request::is('profile') ? 'active' : '' }}">Profile</a>
       <a href="{{ url('/news') }}" class="{{ Request::is('news') ? 'active' : '' }}">News</a>
-      <a href="{{ url('/galery') }}" class="{{ Request::is('galery') ? 'active' : '' }}">Gallery</a>
+      <!-- <a href="{{ url('/galery') }}" class="{{ Request::is('galery') ? 'active' : '' }}">Gallery</a> -->
       <a href="{{ url('/publications') }}" class="{{ Request::is('publications') ? 'active' : '' }}">Publications</a>
     </div>
     

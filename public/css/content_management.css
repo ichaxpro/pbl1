@@ -108,6 +108,8 @@ tbody td {
     cursor: pointer;
     font-size: 18px;
     margin-right: 6px;
+    gap: 8px;
+    flex-wrap: nowrap;
 }
 
 .badge {
@@ -161,6 +163,20 @@ tbody td {
 /* Supaya konten tidak terlalu mepet sidebar */
 .main-content-spacing {
     padding-left: 20px;
+}
+
+.icon-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    width: 24px;
+    display: inline-block;
+    margin: 0;
+}
+
+.search-icon{
+    width: 30px;
 }
 
 /* ====== RESPONSIVE DESIGN ====== */
@@ -248,4 +264,81 @@ tbody td {
         font-size: 14px;
         padding: 10px;
     }
+}
+
+/* Overlay background */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+/* White popup box */
+.overlay-box {
+    background: white;
+    padding: 30px;
+    width: 350px;
+    text-align: center;
+    font-family: 'Montserrat';
+    animation: fadeIn 0.2s ease-out;
+}
+
+.overlay-header {
+    background: #013F4E;
+    color: white;
+    padding: 14px 0;
+    margin: -30px -30px 25px -30px; /* buat nempel kiri-kanan dan atas */
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Buttons */
+.overlay-btn {
+    display: block;
+    padding: 12px;
+    background: #dadada;
+    margin: 12px 0;
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.overlay-btn:hover {
+    background: #c2c2c2;
+}
+
+/* Close button */
+.close-overlay {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #013F4E;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Trigger button demo style */
+.open-overlay-btn {
+    padding: 12px 20px;
+    background: #013F4E;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
 }
