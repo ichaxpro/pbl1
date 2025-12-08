@@ -82,7 +82,7 @@ Route::get('/sidebar-admin', function () {
 });
 
 Route::get('/sidebar-operator', function () {
-    return view('operator/sidebar');
+    return view('operator/sidebaroperator');
 });
 
 Route::get('/sidebar-collapse', function () {
