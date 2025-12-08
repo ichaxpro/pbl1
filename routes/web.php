@@ -47,7 +47,9 @@ Route::get('/vision-mission', function () {
     return view('vision_mission');
 });
 
-
+Route::get('/operator', function () {
+    return view('operator/operator_gallery');
+});
 
 Route::get('/lab_description', function () {
     return view('lab_info');
@@ -131,7 +133,7 @@ Route::middleware(['auth'])->group(function() {
 });
 
 Route::get('/content-management', function () {
-    return view('operator/content_management_fix');
+    return view('operator/content_management');
 });
 
 Route::get('/edit-member', function () {
