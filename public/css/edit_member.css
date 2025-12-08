@@ -111,6 +111,7 @@
     color: white;
     cursor: pointer;
     transition: 0.2s;
+    margin-top: -5px;
 }
 
 .close-btn:hover {

@@ -132,6 +132,18 @@ Route::get('/content-management', function () {
     return view('operator/content_management');
 });
 
+Route::get('/content-management-admin', function () {
+    return view('admin/management-content');
+});
+
 Route::get('/topbar-admin', function () {
     return view('topbar');
+});
+
+Route::get('/approval-status', function () {
+    return view('operator/approval_status');
+});
+
+Route::get('/user-management', function () {
+    return view('admin/user_management');
 });
