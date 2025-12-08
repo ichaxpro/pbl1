@@ -140,3 +140,11 @@ Route::get('/content-management-admin', function () {
 Route::get('/edit-member', function () {
     return view('admin/edit_member');
 });
+
+Route::get('/approval-status', function () {
+    return view('operator/approval_status');
+});
+
+Route::get('/user-management', function () {
+    return view('admin/user_management');
+});
