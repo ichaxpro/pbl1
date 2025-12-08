@@ -144,3 +144,7 @@ Route::get('/edit-member', function () {
 Route::get('/approval-status', function () {
     return view('operator/approval_status');
 });
+
+Route::get('/user-management', function () {
+    return view('admin/user_management');
+});
