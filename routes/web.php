@@ -136,3 +136,7 @@ Route::get('/content-management', function () {
 Route::get('/edit-member', function () {
     return view('admin/edit_member');
 });
+
+Route::get('/user-management', function () {
+    return view('admin/user_management');
+});
