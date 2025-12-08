@@ -47,9 +47,7 @@ Route::get('/vision-mission', function () {
     return view('vision_mission');
 });
 
-Route::get('/operator', function () {
-    return view('operator/operator_gallery');
-});
+
 
 Route::get('/lab_description', function () {
     return view('lab_info');
@@ -82,7 +80,7 @@ Route::get('/sidebar-admin', function () {
 });
 
 Route::get('/sidebar-operator', function () {
-    return view('operator/sidebaroperator');
+    return view('operator/sidebar');
 });
 
 Route::get('/sidebar-collapse', function () {
@@ -104,10 +102,35 @@ Route::get('/add-facilities', function () {
     return view('operator/addFacilities');
 });
 
+Route::get('/topbar-admin', function () {
+    return view('admin/topbar');
+});
+
+// LOGIN PAGE
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.page');
+
+// LOGIN ACTION
+Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+
+// LOGOUT
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::middleware(['auth'])->group(function() {
+
+    Route::get('/admin/dashboard', 
+        [AdminDashboardController::class, 'index']
+    )->name('admin.dashboard');
+
+    Route::get('/operator/dashboard', 
+        [OperatorDashboardController::class, 'index']
+    )->name('operator.dashboard');
+
+});
+
 Route::get('/content-management', function () {
     return view('operator/content_management');
 });
 
-Route::get('/edit-member', function () {
-    return view('admin/edit_member');
+Route::get('/topbar-admin', function () {
+    return view('topbar');
 });
