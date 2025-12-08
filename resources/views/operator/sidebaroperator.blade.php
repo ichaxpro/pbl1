@@ -32,8 +32,16 @@
                 <li>
                     <a href="{{ url('/user-management') }}" 
                        class="menu-item {{ Request::is('user-management') ? 'active' : '' }}">
-                        <img src="{{ asset('images/User_Management_Logo.png') }}" class="icon3">
-                        <span>User Management</span>
+                        <img src="{{ asset('images/approval_icon.png') }}" class="icon4">
+                        <span>Approval Status</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url('/user-management') }}" 
+                       class="menu-item {{ Request::is('user-management') ? 'active' : '' }}">
+                        <img src="{{ asset('images/gallery_icon.png') }}" class="icon4">
+                        <span>Gallery</span>
                     </a>
                 </li>
             </ul>

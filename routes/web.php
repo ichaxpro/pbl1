@@ -104,9 +104,6 @@ Route::get('/add-facilities', function () {
     return view('operator/addFacilities');
 });
 
-Route::get('/user-management', function () {
-    return view('admin/user_management');
-});
 Route::get('/topbar-admin', function () {
     return view('admin/topbar');
 });
@@ -118,7 +115,7 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.pag
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
 // LOGOUT
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function() {
 
