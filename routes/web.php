@@ -8,6 +8,7 @@ use App\Http\Controllers\OperatorDashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LaboratoryStructureController;
 use App\Http\Controllers\ApprovalStatusController;
+use App\Http\Controllers\UserManagementController;
 // Dashboard
 
 // Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -146,9 +147,9 @@ Route::get('/topbar-admin', function () {
     return view('topbar');
 });
 
-Route::get('/user-management', function () {
-    return view('admin/user_management');
-});
+// Route::get('/user-management', function () {
+//     return view('admin/user_management');
+// });
 
 Route::get('/add-news', function () {
     return view('operator/addNews');
@@ -156,3 +157,11 @@ Route::get('/add-news', function () {
 
 Route::get('/approval-status', [ApprovalStatusController::class, 'index'])
     ->name('operator.approval_status');
+
+// USER MANAGEMENT
+Route::middleware(['auth'])->group(function() {
+    Route::get('/user-management', [UserManagementController::class, 'index'])->name('user.management');
+    Route::post('/user-management/store', [UserManagementController::class, 'store'])->name('user.store');
+    Route::post('/user-management/update/{id}', [UserManagementController::class, 'update'])->name('user.update');
+    Route::delete('/user-management/delete/{id}', [UserManagementController::class, 'delete'])->name('user.delete');
+});
