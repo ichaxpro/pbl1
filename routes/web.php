@@ -147,3 +147,7 @@ Route::get('/approval-status', function () {
 Route::get('/user-management', function () {
     return view('admin/user_management');
 });
+
+Route::get('/add-news', function () {
+    return view('operator/addNews');
+});

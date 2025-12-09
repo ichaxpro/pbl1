@@ -124,14 +124,14 @@
                         <!-- === RIGHT: 2x2 Add Buttons === -->
                         <div class="grid grid-cols-2 gap-4">
 
-                            <!-- Add Member -->
+                            <!-- Add Activity -->
                             <div class="bg-white card rounded-xl shadow-sm p-6 cursor-pointer transition-all duration-200">
                                 <div class="flex flex-col items-center text-gray-800">
                                     <div
                                         class="w-10 h-6 bg-blue-100 rounded-full flex items-center justify-center mb-3">
                                         <i class="fas fa-user-plus text-blue-600 text-xl"></i>
                                     </div>
-                                    <h3 class="text-lg font-semibold">Add Member</h3>
+                                    <h3 class="text-lg font-semibold">Add Activity</h3>
                                 </div>
                             </div>
 
