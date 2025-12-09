@@ -184,19 +184,7 @@
                                 <td>Lorem Ipsum</td>
                                 <td>Lorem Ipsum</td>
                                 <td>11 November 2025</td>
-                                <td>
-                                    <div class="status-dropdown" data-status="in-progress">
-                                        <div class="status-toggle status-in-progress">
-                                            <span>Accepted</span>
-                                            <span class="arrow">▼</span>
-                                        </div>
-                                        <div class="status-dropdown-menu">
-                                            <div class="status-option status-accepted" data-value="accepted">Accepted</div>
-                                            <div class="status-option status-rejected" data-value="rejected">Rejected</div>
-                                            <div class="status-option status-requested" data-value="requested">Requested</div>
-                                        </div>
-                                    </div>
-                                </td>
+                                <td><span class="badge rejected">Rejected</span></td>
                                 <td class="actions">
                                     <img src="{{ asset('images/delete-icon.png') }}" class="icon-btn">
                                 </td>
@@ -206,19 +194,7 @@
                                 <td>Lorem Ipsum</td>
                                 <td>Lorem Ipsum</td>
                                 <td>01 November 2025</td>
-                                <td>
-                                    <div class="status-dropdown" data-status="in-progress">
-                                        <div class="status-toggle status-in-progress">
-                                            <span>Accepted</span>
-                                            <span class="arrow">▼</span>
-                                        </div>
-                                        <div class="status-dropdown-menu">
-                                            <div class="status-option status-accepted" data-value="accepted">Accepted</div>
-                                            <div class="status-option status-rejected" data-value="rejected">Rejected</div>
-                                            <div class="status-option status-requested" data-value="requested">Requested</div>
-                                        </div>
-                                    </div>
-                                </td>
+                                <td><span class="badge requested">Requested</span></td>
                                 <td class="actions">
                                     <img src="{{ asset('images/delete-icon.png') }}" class="icon-btn">
                                 </td>
@@ -228,19 +204,7 @@
                                 <td>Lorem Ipsum</td>
                                 <td>Lorem Ipsum</td>
                                 <td>06 November 2025</td>
-                                <td>
-                                    <div class="status-dropdown" data-status="in-progress">
-                                        <div class="status-toggle status-in-progress">
-                                            <span>Accepted</span>
-                                            <span class="arrow">▼</span>
-                                        </div>
-                                        <div class="status-dropdown-menu">
-                                            <div class="status-option status-accepted" data-value="accepted">Accepted</div>
-                                            <div class="status-option status-rejected" data-value="rejected">Rejected</div>
-                                            <div class="status-option status-requested" data-value="requested">Requested</div>
-                                        </div>
-                                    </div>
-                                </td>
+                                <td><span class="badge requested">Requested</span></td>
                                 <td class="actions">
                                     <img src="{{ asset('images/delete-icon.png') }}" class="icon-btn">
                                 </td>
@@ -250,19 +214,7 @@
                                 <td>Lorem Ipsum</td>
                                 <td>Lorem Ipsum</td>
                                 <td>06 November 2025</td>
-                                <td>
-                                    <div class="status-dropdown" data-status="in-progress">
-                                        <div class="status-toggle status-in-progress">
-                                            <span>Accepted</span>
-                                            <span class="arrow">▼</span>
-                                        </div>
-                                        <div class="status-dropdown-menu">
-                                            <div class="status-option status-accepted" data-value="accepted">Accepted</div>
-                                            <div class="status-option status-rejected" data-value="rejected">Rejected</div>
-                                            <div class="status-option status-requested" data-value="requested">Requested</div>
-                                        </div>
-                                    </div>
-                                </td>
+                                <td><span class="badge requested">Requested</span></td>
                                 <td class="actions">
                                     <img src="{{ asset('images/delete-icon.png') }}" class="icon-btn">
                                 </td>
