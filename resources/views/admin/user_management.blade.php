@@ -27,17 +27,23 @@
 
 
         <main class="flex-1 overflow-y-auto px-8 py-6">
-            <div class="max-w-full pl-12">
+            <div class="max-w-full pl-3">
 
                 <div class="page-container">
 
                     <h2 class="page-title">User Management</h2>
 
                     <div class="top-bar">
-                        <div class="search-box">
+                        <form action="{{ route('user.management') }}" method="GET">
+                            <div class="search-box">
+                                <input type="text" name="search" value="{{ $search }}" placeholder="Search..."
+                                    class="search-text">
+                            </div>
+                        </form>
+                        <!-- <div class="search-box">
                             <img src="{{ asset('images/search_icon.png') }}" class="search-icon">
                             <input type="text" placeholder="Search..." class="search-text">
-                        </div>
+                        </div> -->
 
                         <button class="add-btn" onclick="openModalAdd()">
                             <span class="plus-icon">＋</span> Add
@@ -63,6 +69,33 @@
                             </thead>
 
                             <tbody>
+                                @foreach ($members as $member)
+                                    <tr>
+                                        <td>{{ $member->name }}</td>
+                                        <td>{{ $member->email }}</td>
+                                        <td>{{ ucfirst($member->role) }}</td>
+                                        <td>
+                                            <span class="status {{ $member->status == 'active' ? 'active' : 'inactive' }}">
+                                                {{ ucfirst($member->status) }}
+                                            </span>
+                                        </td>
+
+                                        <td class="actions">
+                                            <img src="{{ asset('images/edit-icon.png') }}" class="icon-btn"
+                                                onclick="openEditModal('{{ $member->id }}', '{{ $member->name }}', '{{ $member->email }}', '{{ $member->role }}', '{{ $member->status }}')">
+
+                                            <form action="{{ route('user.delete', $member->id) }}" method="POST"
+                                                class="inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <img src="{{ asset('images/delete-icon.png') }}" class="icon-btn"
+                                                    onclick="event.preventDefault(); this.closest('form').submit();">
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                            <!-- <tbody>
                                 <tr>
                                     <td>Lorem Ipsum</td>
                                     <td>Lorem Ipsum</td>
@@ -109,10 +142,10 @@
                                             class="icon-btn">
                                         <img src="{{ asset('images/delete-icon.png') }}" class="icon-btn">
                                     </td>
-                                </tr>
+                                </tr> -->
 
-                                <!-- empty rows -->
-                                <tr>
+                            <!-- empty rows -->
+                            <!-- <tr>
                                     <td colspan="5">&nbsp;</td>
                                 </tr>
                                 <tr>
@@ -127,18 +160,22 @@
                                 <tr>
                                     <td colspan="5">&nbsp;</td>
                                 </tr>
-                            </tbody>
+                            </tbody> -->
                         </table>
                     </div>
 
-                    <div class="pagination">
+                    <!-- Pagination -->
+                    <div class="pagination mt-4">
+                        {{ $members->links('pagination::tailwind') }}
+                    </div>
+                    <!-- <div class="pagination">
                         <button class="page-arrow">◀</button>
                         <span class="page-number active">1</span>
                         <span class="page-number">2</span>
                         <span class="page-number">3</span>
                         <span class="page-dots">…</span>
                         <button class="page-arrow">▶</button>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -194,7 +231,31 @@
                     <h2>Edit Member</h2>
                 </div>
 
-                <form class="edit-form">
+                <form class="edit-form" method="POST" action="#" id="editForm">
+                    @csrf
+                    <input type="hidden" name="id" id="edit_id">
+
+                    <label>Name</label>
+                    <input type="text" name="name" id="edit_name" class="form-input">
+
+                    <label>Email</label>
+                    <input type="email" name="email" id="edit_email" class="form-input">
+
+                    <label>Role</label>
+                    <select name="role" id="edit_role" class="form-select">
+                        <option value="admin">Admin</option>
+                        <option value="operator">Operator</option>
+                    </select>
+
+                    <label>Status</label>
+                    <select name="status" id="edit_status" class="form-select">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+
+                    <button type="submit" class="btn-save">Save</button>
+                </form>
+                <!-- <form class="edit-form">
                     <label class="form-label">Name</label>
                     <input type="text" class="form-input">
 
@@ -220,7 +281,7 @@
                     </div>
 
                     <button type="button" class="btn-save" onclick="closeModalEdit()">Save</button>
-                </form>
+                </form> -->
             </div>
         </div>
 
@@ -240,6 +301,23 @@
             document.getElementById("editModal").style.display = "none";
         }
 
+        function openEditModal(id, name, email, role, status) {
+            document.getElementById("modalOverlay2").style.display = "block";
+            document.getElementById("editModal2").style.display = "block";
+
+            document.getElementById("edit_id").value = id;
+            document.getElementById("edit_name").value = name;
+            document.getElementById("edit_email").value = email;
+            document.getElementById("edit_role").value = role;
+            document.getElementById("edit_status").value = status;
+        }
+
+        function closeModalEdit() {
+            document.getElementById("modalOverlay2").style.display = "none";
+            document.getElementById("editModal2").style.display = "none";
+        }
+
+
         function openModalEdit() {
             document.getElementById("modalOverlay2").style.display = "block";
             document.getElementById("editModal2").style.display = "block";
@@ -249,6 +327,15 @@
             document.getElementById("modalOverlay2").style.display = "none";
             document.getElementById("editModal2").style.display = "none";
         }
+
+        document.getElementById("editForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            let id = document.getElementById("edit_id").value;
+            this.action = "/user-management/update/" + id;
+            this.submit();
+        });
+
+
     </script>
 </body>
 
