@@ -1,77 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <div class="page-container">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approval Status</title>
 
-        <!-- APPROVAL STATUS CARD -->
-        <div class="status-card">
-            <div class="status-header">
-                <img src="{{ asset('images/approval-icon.png') }}" class="status-icon">
-                <span>Approval Status</span>
+    <link rel="stylesheet" href="{{ asset('css/approval_status.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .card,
+        .bg-white.card {
+            background-color: #CDE3E7 !important;
+            box-shadow: 0 6px 14px rgba(2, 6, 23, 0.06);
+            border: 1px solid rgba(2, 6, 23, 0.06);
+        }
+
+        .card .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .approval-columns>div {
+            padding: 1rem 0;
+        }
+
+        .approval-columns>div:not(:last-child) {
+            border-right: 1px solid rgba(2, 6, 23, 0.06);
+        }
+
+        .h3 {
+            font-family: poppins;
+        }
+    </style>
+
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+
+    <!-- Responsive Layout -->
+    <div class="flex w-full min-h-screen">
+
+        <!-- Sidebar (hidden on small screens) -->
+        <aside class="w-64 h-screen border-r flex flex-col sticky top-0">
+            @include('operator.sidebaroperator')
+        </aside>
+
+        <div class="flex-1 flex flex flex-col min-h screen">
+            <!-- Topbar -->
+            <div class="w-full">
+                @include('operator.topbar')
             </div>
 
-            <div class="status-grid">
-                @foreach ($stats as $item)
-                    <div class="status-box">
-                        <p class="label">{{ $item['label'] }}</p>
-                        <p class="value">{{ $item['value'] }}</p>
-                        <p class="compare">{{ $item['compare'] }}</p>
+
+        </div>
+
+        <main class="flex-1 overflow-y-auto px-8 py-6 ml-10">
+            <!-- Approval Card -->
+            <div class="status-card shadow-md">
+                <h2 class="font-semibold mb-2 flex items-center gap-2 ">
+                    <img src="{{ asset('images/approval_status.png') }}" class="logo" style="width: 40px"> Approval
+                    Status
+                </h2>
+
+                <div class="grid grid-cols-3 text-center mt-4">
+                    <div>
+                        <p class="label">Requested</p>
+                        <h1 class="value">{{ $stats['requested'] }}</h1>
+                        <span class="diff">updated today</span>
                     </div>
-                @endforeach
+                    <div>
+                        <p class="label">Approved</p>
+                        <h1 class="value">{{ $stats['approved'] }}</h1>
+                        <span class="diff">updated today</span>
+                    </div>
+                    <div>
+                        <p class="label">Declined</p>
+                        <h1 class="value">{{ $stats['declined'] }}</h1>
+                        <span class="diff">updated today</span>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <!-- SEARCH BAR -->
-        <div class="search-wrapper">
-            <img src="{{ asset('images/search_icon.png') }}" class="search-icon">
-            <input type="text" class="search-input" placeholder="Search...">
-        </div>
+            <!-- Search Bar -->
+            <form method="GET" action="{{ route('operator.approval_status') }}">
+                <div class="search-box mt-4 flex items-center gap-3">
+                    <i class="fa-solid fa-magnifying-glass text-gray-500"></i>
+                    <input type="text" name="search" value="{{ $search }}" placeholder="Search..."
+                        class="w-full outline-none">
+                </div>
+            </form>
+            <!-- <div class="search-box mt-4">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search...">
+            </div> -->
 
-        <!-- TABLE -->
-        <div class="table-wrapper">
-            <table class="custom-table">
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Type</th>
-                        <th>Upload Date</th>
-                        <th>Notes from Admin</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
+            <!-- Table -->
 
-                <tbody>
-                    @foreach ($data as $row)
+            <div class="table-wrapper shadow-sm mt-6">
+                <table class="custom-table">
+                    <thead>
                         <tr>
-                            <td>{{ $row->title }}</td>
-                            <td>{{ $row->type }}</td>
-                            <td>{{ $row->upload_date }}</td>
-                            <td>{{ $row->notes }}</td>
-                            <td>
-                                <span class="badge {{ strtolower($row->status) }}">
-                                    {{ $row->status }}
-                                </span>
-                            </td>
+                            <th>Title</th>
+                            <th>Type</th>
+                            <th>Upload Date</th>
+                            <th>Notes from Admin</th>
+                            <th>Status</th>
                         </tr>
-                    @endforeach
+                    </thead>
 
-                    <!-- Empty rows for layout -->
-                    @for ($i = 0; $i < 5; $i++)
+                    <tbody>
+                        @forelse ($paginated as $item)
+                            <tr>
+                                <td>{{ $item['title'] }}</td>
+                                <td>{{ $item['type'] }}</td>
+                                <td>{{ $item['upload_date']->format('d M Y') }}</td>
+                                <td>{{ $item['note_admin'] ?? '-' }}</td>
+                                <td>
+                                    @if ($item['status'] === 'approved')
+                                        <span class="badge accepted">Approved</span>
+                                    @elseif ($item['status'] === 'rejected')
+                                        <span class="badge declined">Declined</span>
+                                    @else
+                                        <span class="badge requested">Requested</span>
+                                    @endif
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5" class="text-center py-6 text-gray-500">No content uploaded yet.</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- <div class="table-wrapper shadow-sm">
+                <table class="custom-table">
+                    <thead>
                         <tr>
-                            <td colspan="5">&nbsp;</td>
+                            <th>Title</th>
+                            <th>Type</th>
+                            <th>Upload Date</th>
+                            <th>Notes from Admin</th>
+                            <th>Status</th>
                         </tr>
-                    @endfor
-                </tbody>
-            </table>
-        </div>
+                    </thead>
 
-        <!-- PAGINATION -->
-        <div class="pagination">
-            {{ $data->links('pagination::simple-tailwind') }}
-        </div>
+                    <tbody>
+                        <tr>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum</td>
+                            <td>11 November 2025</td>
+                            <td>Lorem Ipsum</td>
+                            <td><span class="badge accepted">Accepted</span></td>
+                        </tr>
 
+                        <tr>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum</td>
+                            <td>01 November 2025</td>
+                            <td>Lorem Ipsum</td>
+                            <td><span class="badge declined">Declined</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum</td>
+                            <td>06 November 2025</td>
+                            <td>Lorem Ipsum</td>
+                            <td><span class="badge requested">Requested</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum</td>
+                            <td>06 November 2025</td>
+                            <td>Lorem Ipsum</td>
+                            <td><span class="badge requested">Requested</span></td>
+                        </tr> -->
+
+            <!-- Empty rows -->
+            <!-- @for($i = 0; $i < 7; $i++)
+                            <tr>
+                                <td colspan="5"></td>
+                            </tr>
+                        @endfor
+                    </tbody>
+                </table>
+            </div> -->
+
+            <!-- Pagination -->
+             <div class="mt-4">
+                
+                {{ $paginated->links('pagination::tailwind') }}
+
+            </div>
+            <!-- <div class="pagination flex justify-end items-center gap-4 mt-3">
+                <i class="fa-solid fa-chevron-left text-gray-500"></i>
+                <span class="page-number active">1</span>
+                <span class="page-number">2</span>
+                <span class="page-number">3</span>
+                <span>…</span>
+                <i class="fa-solid fa-chevron-right text-gray-700"></i>
+            </div> -->
+        </main>
     </div>
 
-@endsection
+
+    </div>
+</body>
 
 </html>
