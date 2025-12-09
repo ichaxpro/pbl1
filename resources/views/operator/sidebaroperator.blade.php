@@ -30,8 +30,8 @@
                 </li>
             
                 <li>
-                    <a href="{{ url('/user-management') }}" 
-                       class="menu-item {{ Request::is('user-management') ? 'active' : '' }}">
+                    <a href="{{ url('/approval-status') }}" 
+                       class="menu-item {{ Request::is('approval-status') ? 'active' : '' }}">
                         <img src="{{ asset('images/approval_icon.png') }}" class="icon4">
                         <span>Approval Status</span>
                     </a>

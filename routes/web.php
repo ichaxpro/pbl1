@@ -153,3 +153,6 @@ Route::get('/user-management', function () {
 Route::get('/add-news', function () {
     return view('operator/addNews');
 });
+
+Route::get('/approval-status', [ApprovalStatusController::class, 'index'])
+    ->name('operator.approval_status');
