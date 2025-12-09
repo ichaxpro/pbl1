@@ -27,7 +27,7 @@
                     <input type="text" id="url_image" name="url_image" placeholder="Enter URL Image" style="font-family: Montserrat, sans-serif;">
 
                     <label for="title">Title</label>
-                    <textarea id="title" name="title" placeholder="Write the title here" style="font-family: Montserrat, sans-serif;"></textarea>
+                    <input type="text" id="title" name="title" placeholder="Write the title here" style="font-family: Montserrat, sans-serif;"></input>
 
                     <div class="btn-group">
                         <button type="button" class="btn cancel">Cancel</button>
