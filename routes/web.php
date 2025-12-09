@@ -7,7 +7,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\OperatorDashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LaboratoryStructureController;
-
+use App\Http\Controllers\ApprovalStatusController;
 // Dashboard
 
 // Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -143,3 +143,10 @@ Route::get('/topbar-admin', function () {
 Route::get('/user-management', function () {
     return view('admin/user_management');
 });
+
+// Route::get('/approval-status', function () {
+//     return view('operator/approval_status');
+// });
+
+Route::get('/approval-status', [ApprovalStatusController::class, 'index'])
+    ->name('operator.approval_status');

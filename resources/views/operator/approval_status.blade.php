@@ -54,41 +54,90 @@
                 @include('operator.topbar')
             </div>
 
+
         </div>
+
         <main class="flex-1 overflow-y-auto px-8 py-6 ml-10">
             <!-- Approval Card -->
             <div class="status-card shadow-md">
                 <h2 class="font-semibold mb-2 flex items-center gap-2 ">
-                    <img src="{{ asset('images/approval_status.png') }}"  class="logo" style="width: 40px"> Approval Status
+                    <img src="{{ asset('images/approval_status.png') }}" class="logo" style="width: 40px"> Approval
+                    Status
                 </h2>
 
                 <div class="grid grid-cols-3 text-center mt-4">
                     <div>
                         <p class="label">Requested</p>
-                        <h1 class="value">3</h1>
-                        <span class="diff">+1 vs yesterday</span>
+                        <h1 class="value">{{ $stats['requested'] }}</h1>
+                        <span class="diff">updated today</span>
                     </div>
                     <div>
                         <p class="label">Approved</p>
-                        <h1 class="value">1</h1>
-                        <span class="diff">+1 vs yesterday</span>
+                        <h1 class="value">{{ $stats['approved'] }}</h1>
+                        <span class="diff">updated today</span>
                     </div>
                     <div>
                         <p class="label">Declined</p>
-                        <h1 class="value">0</h1>
-                        <span class="diff">0 vs yesterday</span>
+                        <h1 class="value">{{ $stats['declined'] }}</h1>
+                        <span class="diff">updated today</span>
                     </div>
                 </div>
             </div>
 
             <!-- Search Bar -->
-            <div class="search-box mt-4">
+            <form method="GET" action="{{ route('operator.approval_status') }}">
+                <div class="search-box mt-4 flex items-center gap-3">
+                    <i class="fa-solid fa-magnifying-glass text-gray-500"></i>
+                    <input type="text" name="search" value="{{ $search }}" placeholder="Search..."
+                        class="w-full outline-none">
+                </div>
+            </form>
+            <!-- <div class="search-box mt-4">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" placeholder="Search...">
-            </div>
+            </div> -->
 
             <!-- Table -->
-            <div class="table-wrapper shadow-sm">
+
+            <div class="table-wrapper shadow-sm mt-6">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Type</th>
+                            <th>Upload Date</th>
+                            <th>Notes from Admin</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @forelse ($paginated as $item)
+                            <tr>
+                                <td>{{ $item['title'] }}</td>
+                                <td>{{ $item['type'] }}</td>
+                                <td>{{ $item['upload_date']->format('d M Y') }}</td>
+                                <td>{{ $item['note_admin'] ?? '-' }}</td>
+                                <td>
+                                    @if ($item['status'] === 'approved')
+                                        <span class="badge accepted">Approved</span>
+                                    @elseif ($item['status'] === 'rejected')
+                                        <span class="badge declined">Declined</span>
+                                    @else
+                                        <span class="badge requested">Requested</span>
+                                    @endif
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5" class="text-center py-6 text-gray-500">No content uploaded yet.</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- <div class="table-wrapper shadow-sm">
                 <table class="custom-table">
                     <thead>
                         <tr>
@@ -131,29 +180,35 @@
                             <td>06 November 2025</td>
                             <td>Lorem Ipsum</td>
                             <td><span class="badge requested">Requested</span></td>
-                        </tr>
+                        </tr> -->
 
-                        <!-- Empty rows -->
-                        @for($i = 0; $i < 7; $i++)
+            <!-- Empty rows -->
+            <!-- @for($i = 0; $i < 7; $i++)
                             <tr>
                                 <td colspan="5"></td>
                             </tr>
                         @endfor
                     </tbody>
                 </table>
-            </div>
+            </div> -->
 
             <!-- Pagination -->
-            <div class="pagination flex justify-end items-center gap-4 mt-3">
+             <div class="mt-4">
+                
+                {{ $paginated->links('pagination::tailwind') }}
+
+            </div>
+            <!-- <div class="pagination flex justify-end items-center gap-4 mt-3">
                 <i class="fa-solid fa-chevron-left text-gray-500"></i>
                 <span class="page-number active">1</span>
                 <span class="page-number">2</span>
                 <span class="page-number">3</span>
                 <span>…</span>
                 <i class="fa-solid fa-chevron-right text-gray-700"></i>
-            </div>
+            </div> -->
+        </main>
     </div>
-    </main>
+
 
     </div>
 </body>
