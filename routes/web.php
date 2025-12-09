@@ -147,6 +147,21 @@ Route::get('/topbar-admin', function () {
     return view('topbar');
 });
 
+Route::get('/approval_status', function () {
+    return view('operator/approval_status');
+});
+
+Route::get('/user-management', function () {
+    return view('admin/user_management');
+});
+
+Route::get('/operator_gallery', function () {
+    return view('operator/operator_gallery');
+});
+
+Route::get('/news_detail', function () {
+    return view('news/news_detail_page');   
+});
 // Route::get('/user-management', function () {
 //     return view('admin/user_management');
 // });
