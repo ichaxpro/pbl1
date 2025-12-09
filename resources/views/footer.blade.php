@@ -48,7 +48,7 @@
 
         <!-- Section 4: Admin Login -->
         <div class="footer-section">
-        <a href="/admin/login" class="contact-info-link">
+        <a href="/login" class="contact-info-link">
           <h4>Admin Login</h4>
         </a>
         </div>
