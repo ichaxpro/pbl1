@@ -55,23 +55,24 @@
     </style>
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-gray-50 min-h-screen">
 
- <div class="flex w-full min-h-screen">
+<div class="flex w-full min-h-screen">
 
-        <!-- Sidebar (hidden on small screens) -->
+    <!-- Sidebar -->
+    
         <aside class="w-64 h-screen border-r flex flex-col sticky top-0">
             @include('operator.sidebaroperator')
         </aside>
 
-        <div class="flex-1 flex flex flex-col min-h screen">
-            <!-- Topbar -->
-            <div class="w-full">
-                @include('operator.topbar')
-            </div>
+    <!-- Main area -->
+    <div class="flex-1 flex flex flex-col min-h screen">
 
+        <!-- Topbar -->
+        <div class="w-full">
+            @include('operator.topbar')
         </div>
-
+    </div>
         <!-- Content -->
         <main class="flex-grow p-8 overflow-auto pl-20">
 
@@ -113,83 +114,55 @@
                     </div>
 
                     <!-- Filters -->
+                    <!-- Filters -->
                     <div class="filters">
                         <span class="filter-label">Filters:</span>
-
-                        <!-- Type Filter Dropdown -->
-                        <div class="filter-dropdown" data-filter="type">
-                            <button class="filter-toggle">
-                                <span>Type</span>
+                        <div class="filter-dropdown">
+                            <button class="filter-btn filter-type-btn">
+                                Type
                                 <span class="filter-arrow">▼</span>
                             </button>
-                            <div class="filter-menu">
-                                <div class="filter-option">
-                                    <input type="checkbox" id="type-all" data-value="all" checked>
-                                    <label for="type-all">All Types</label>
-                                </div>
-                                <div class="filter-option">
-                                    <input type="checkbox" id="type-article" data-value="article">
-                                    <label for="type-article">Article</label>
-                                </div>
-                                <div class="filter-option">
-                                    <input type="checkbox" id="type-tutorial" data-value="tutorial">
-                                    <label for="type-tutorial">Tutorial</label>
-                                </div>
-                                <div class="filter-option">
-                                    <input type="checkbox" id="type-guide" data-value="guide">
-                                    <label for="type-guide">Guide</label>
-                                </div>
-                                <div class="filter-option">
-                                    <input type="checkbox" id="type-whitepaper" data-value="whitepaper">
-                                    <label for="type-whitepaper">Whitepaper</label>
-                                </div>
-                                <div class="filter-actions">
-                                    <button class="filter-clear">Clear</button>
-                                    <button class="filter-apply">Apply</button>
-                                </div>
+                            <div class="filter-dropdown-menu type-menu">
+                                <label class="filter-option">
+                                    <input type="checkbox" value="activities" checked>
+                                    <span>Activities</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" value="publications" checked>
+                                    <span>Publications</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" value="news" checked>
+                                    <span>News</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" value="facilities" checked>
+                                    <span>Facilities</span>
+                                </label>
                             </div>
                         </div>
-
-                        <!-- Status Filter Dropdown -->
-                        <div class="filter-dropdown" data-filter="status">
-                            <button class="filter-toggle">
-                                <span>Status</span>
+                        
+                        <div class="filter-dropdown">
+                            <button class="filter-btn filter-status-btn">
+                                Status
                                 <span class="filter-arrow">▼</span>
                             </button>
-                            <div class="filter-menu">
-                                <div class="filter-option">
-                                    <input type="checkbox" id="status-all" data-value="all" checked>
-                                    <label for="status-all">All Status</label>
-                                </div>
-                                <div class="filter-option">
-                                    <input type="checkbox" id="status-accepted" data-value="accepted">
-                                    <label for="status-accepted">Accepted</label>
-                                </div>
-                                <div class="filter-option">
-                                    <input type="checkbox" id="status-rejected" data-value="rejected">
-                                    <label for="status-rejected">Rejected</label>
-                                </div>
-                                <div class="filter-option">
-                                    <input type="checkbox" id="status-requested" data-value="requested">
-                                    <label for="status-requested">Requested</label>
-                                </div>
-                                <div class="filter-option">
-                                    <input type="checkbox" id="status-in-progress" data-value="in-progress">
-                                    <label for="status-in-progress">In Progress</label>
-                                </div>
-                                <div class="filter-actions">
-                                    <button class="filter-clear">Clear</button>
-                                    <button class="filter-apply">Apply</button>
-                                </div>
+                            <div class="filter-dropdown-menu status-menu">
+                                <label class="filter-option">
+                                    <input type="checkbox" value="accepted" checked>
+                                    <span class="status-badge accepted">Accepted</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" value="rejected" checked>
+                                    <span class="status-badge rejected">Rejected</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" value="requested" checked>
+                                    <span class="status-badge requested">Requested</span>
+                                </label>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Filter Chips Display -->
-                <div class="filter-chips" id="filterChips">
-                    <!-- Filter chips akan muncul di sini -->
-                </div>
 
                 </div>
 
@@ -211,7 +184,7 @@
                                 <td>Lorem Ipsum</td>
                                 <td>Lorem Ipsum</td>
                                 <td>11 November 2025</td>
-                                <td><span class="badge accepted">Accepted</span></td>
+                                <td><span class="badge rejected">Rejected</span></td>
                                 <td class="actions">
                                     <img src="{{ asset('images/delete-icon.png') }}" class="icon-btn">
                                 </td>
@@ -221,7 +194,7 @@
                                 <td>Lorem Ipsum</td>
                                 <td>Lorem Ipsum</td>
                                 <td>01 November 2025</td>
-                                <td><span class="badge rejected">Rejected</span></td>
+                                <td><span class="badge requested">Requested</span></td>
                                 <td class="actions">
                                     <img src="{{ asset('images/delete-icon.png') }}" class="icon-btn">
                                 </td>
@@ -286,285 +259,271 @@
             }
         });
 
-    document.addEventListener('DOMContentLoaded', function() {
-        // Filter dropdown functionality
-        const filterDropdowns = document.querySelectorAll('.filter-dropdown');
-        const filterChipsContainer = document.getElementById('filterChips');
-        let activeFilters = {
-            type: [],
-            status: [],
-            date: 'all'
-        };
-    
-        // Toggle filter dropdown
-        filterDropdowns.forEach(dropdown => {
-            const toggle = dropdown.querySelector('.filter-toggle');
-            const menu = dropdown.querySelector('.filter-menu');
-            const filterType = dropdown.getAttribute('data-filter');
-            const clearBtn = menu.querySelector('.filter-clear');
-            const applyBtn = menu.querySelector('.filter-apply');
-        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Status dropdown functionality
+            const statusDropdowns = document.querySelectorAll('.status-dropdown');
+
             // Toggle dropdown
-            toggle.addEventListener('click', function(e) {
-                e.stopPropagation();
-                
-                // Close all other dropdowns
-                filterDropdowns.forEach(other => {
-                    if (other !== dropdown) {
-                        other.classList.remove('active');
-                    }
-                });
-                
-                // Toggle current dropdown
-                dropdown.classList.toggle('active');
-            });
-        
-            // Handle checkbox changes
-            const checkboxes = menu.querySelectorAll('input[type="checkbox"]');
-            const radios = menu.querySelectorAll('input[type="radio"]');
-            
-            checkboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
-                    const value = this.getAttribute('data-value');
-                    const isAll = value === 'all';
-                    
-                    if (isAll && this.checked) {
-                        // Uncheck other checkboxes
-                        checkboxes.forEach(cb => {
-                            if (cb !== this) cb.checked = false;
-                        });
-                    } else if (!isAll && this.checked) {
-                        // Uncheck "All" if specific option selected
-                        const allCheckbox = menu.querySelector('input[data-value="all"]');
-                        if (allCheckbox) allCheckbox.checked = false;
-                    }
-                    
-                    updateOptionSelection(this);
-                });
-            });
-            
-            radios.forEach(radio => {
-                radio.addEventListener('change', function() {
-                    updateOptionSelection(this);
-                });
-            });
-        
-            // Clear button
-            clearBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                
-                if (filterType === 'date') {
-                    // For date radio buttons
-                    const allRadio = menu.querySelector('input[data-value="all"]');
-                    if (allRadio) allRadio.checked = true;
-                } else {
-                    // For type/status checkboxes
-                    checkboxes.forEach(checkbox => {
-                        checkbox.checked = checkbox.getAttribute('data-value') === 'all';
-                    });
-                }
-                
-                updateOptionSelection(this);
-            });
-        
-            // Apply button
-            applyBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                
-                if (filterType === 'date') {
-                    const selectedRadio = menu.querySelector('input[name="date"]:checked');
-                    activeFilters.date = selectedRadio ? selectedRadio.getAttribute('data-value') : 'all';
-                } else {
-                    const selectedCheckboxes = menu.querySelectorAll('input[type="checkbox"]:checked');
-                    activeFilters[filterType] = Array.from(selectedCheckboxes)
-                        .map(cb => cb.getAttribute('data-value'))
-                        .filter(value => value !== 'all');
-                }
-                
-                updateFilterChips();
-                applyFilters();
-                dropdown.classList.remove('active');
-            });
-        
-            // Update visual selection
-            function updateOptionSelection(element) {
-                const option = element.closest('.filter-option');
-                const allOptions = menu.querySelectorAll('.filter-option');
-                
-                allOptions.forEach(opt => opt.classList.remove('selected'));
-                
-                if (filterType === 'date') {
-                    const selectedRadio = menu.querySelector('input[name="date"]:checked');
-                    if (selectedRadio) {
-                        selectedRadio.closest('.filter-option').classList.add('selected');
-                    }
-                } else {
-                    const selectedCheckboxes = menu.querySelectorAll('input[type="checkbox"]:checked');
-                    selectedCheckboxes.forEach(cb => {
-                        cb.closest('.filter-option').classList.add('selected');
-                    });
-                }
-            }
-        
-            // Initialize selection
-            if (filterType === 'date') {
-                const defaultRadio = menu.querySelector('input[data-value="all"]');
-                if (defaultRadio) {
-                    defaultRadio.checked = true;
-                    defaultRadio.closest('.filter-option').classList.add('selected');
-                }
-            } else {
-                const defaultCheckbox = menu.querySelector('input[data-value="all"]');
-                if (defaultCheckbox) {
-                    defaultCheckbox.checked = true;
-                    defaultCheckbox.closest('.filter-option').classList.add('selected');
-                }
-            }
-        });
-    
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function() {
-            filterDropdowns.forEach(dropdown => {
-                dropdown.classList.remove('active');
-            });
-        });
-    
-        // Prevent dropdown close when clicking inside
-        document.querySelectorAll('.filter-menu').forEach(menu => {
-            menu.addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
-        });
-    
-        // Update filter chips display
-        function updateFilterChips() {
-            filterChipsContainer.innerHTML = '';
-            
-            // Type chips
-            if (activeFilters.type.length > 0) {
-                activeFilters.type.forEach(type => {
-                    if (type !== 'all') {
-                        const chip = createFilterChip('Type', type);
-                        filterChipsContainer.appendChild(chip);
-                    }
-                });
-            }
-            
-            // Status chips
-            if (activeFilters.status.length > 0) {
-                activeFilters.status.forEach(status => {
-                    if (status !== 'all') {
-                        const chip = createFilterChip('Status', status);
-                        filterChipsContainer.appendChild(chip);
-                    }
-                });
-            }
-            
-            // Date chip
-            if (activeFilters.date !== 'all') {
-                const chip = createFilterChip('Date', activeFilters.date);
-                filterChipsContainer.appendChild(chip);
-            }
-            
-            // Show/hide chips container
-            if (filterChipsContainer.children.length > 0) {
-                filterChipsContainer.style.display = 'flex';
-            } else {
-                filterChipsContainer.style.display = 'none';
-            }
-        }
-    
-        // Create filter chip element
-        function createFilterChip(label, value) {
-            const chip = document.createElement('div');
-            chip.className = 'filter-chip';
-            chip.innerHTML = `
-                <span>${label}: ${formatValue(value)}</span>
-                <button class="filter-chip-remove" data-filter="${label.toLowerCase()}" data-value="${value}">×</button>
-            `;
-            
-            // Add remove functionality
-            const removeBtn = chip.querySelector('.filter-chip-remove');
-            removeBtn.addEventListener('click', function() {
-                const filterType = this.getAttribute('data-filter');
-                const valueToRemove = this.getAttribute('data-value');
-                
-                if (filterType === 'date') {
-                    activeFilters.date = 'all';
-                    const dateDropdown = document.querySelector('.filter-dropdown[data-filter="date"]');
-                    const allRadio = dateDropdown.querySelector('input[data-value="all"]');
-                    if (allRadio) allRadio.checked = true;
-                } else {
-                    activeFilters[filterType] = activeFilters[filterType].filter(v => v !== valueToRemove);
-                    const filterDropdown = document.querySelector(`.filter-dropdown[data-filter="${filterType}"]`);
-                    const checkbox = filterDropdown.querySelector(`input[data-value="${valueToRemove}"]`);
-                    if (checkbox) checkbox.checked = false;
-                    
-                    // If no specific filters selected, check "All"
-                    if (activeFilters[filterType].length === 0) {
-                        const allCheckbox = filterDropdown.querySelector('input[data-value="all"]');
-                        if (allCheckbox) allCheckbox.checked = true;
-                    }
-                }
-                
-                updateFilterChips();
-                applyFilters();
-            });
-            
-            return chip;
-        }
-    
-        // Format value for display
-        function formatValue(value) {
-            return value.split('-').map(word => 
-                word.charAt(0).toUpperCase() + word.slice(1)
-            ).join(' ');
-        }
-    
-        // Apply filters to table
-        function applyFilters() {
-            const rows = document.querySelectorAll('.content-table tbody tr');
-            
-            rows.forEach(row => {
-                let shouldShow = true;
-                
-                // Type filter
-                if (activeFilters.type.length > 0) {
-                    const typeCell = row.children[1].textContent.toLowerCase();
-                    if (!activeFilters.type.includes(typeCell.toLowerCase())) {
-                        shouldShow = false;
-                    }
-                }
-                
-                // Status filter
-                if (activeFilters.status.length > 0) {
-                    const statusElement = row.querySelector('.status-toggle span:first-child');
-                    if (statusElement) {
-                        const status = statusElement.textContent.toLowerCase();
-                        if (!activeFilters.status.includes(status)) {
-                            shouldShow = false;
+            statusDropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.status-toggle');
+                const menu = dropdown.querySelector('.status-dropdown-menu');
+
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+
+                    // Close all other dropdowns
+                    statusDropdowns.forEach(other => {
+                        if (other !== dropdown) {
+                            other.classList.remove('active');
                         }
-                    }
+                    });
+
+                    // Toggle current dropdown
+                    dropdown.classList.toggle('active');
+                });
+
+                // Handle option selection
+                const options = menu.querySelectorAll('.status-option');
+                options.forEach(option => {
+                    option.addEventListener('click', function(e) {
+                        e.stopPropagation();
+
+                        const value = this.getAttribute('data-value');
+                        const text = this.textContent;
+                        const currentStatus = dropdown.getAttribute('data-status');
+
+                        // Update dropdown
+                        dropdown.setAttribute('data-status', value);
+
+                        // Update toggle button
+                        toggle.innerHTML = `
+                            <span>${text}</span>
+                            <span class="arrow">▼</span>
+                        `;
+
+                        // Update toggle class
+                        toggle.className = 'status-toggle';
+                        toggle.classList.add(`status-${value}`);
+
+                        // Show notification (optional)
+                        if (currentStatus !== value) {
+                            console.log(`Status changed from ${currentStatus} to ${value}`);
+                            // You can add AJAX call here to update server
+                        }
+
+                        // Close dropdown
+                        dropdown.classList.remove('active');
+                    });
+                });
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function() {
+                statusDropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            });
+
+            // Prevent dropdown close when clicking inside
+            document.querySelectorAll('.status-dropdown-menu').forEach(menu => {
+                menu.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+        
+            // Pagination click handler
+            document.querySelectorAll('.page-number').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    document.querySelectorAll('.page-number').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                });
+            });
+        
+            // Filter buttons
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Toggle active state
+                    this.classList.toggle('active');
+                    // Add your filter logic here
+                });
+            });
+        
+            // Search functionality
+            const searchInput = document.querySelector('.search-text');
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                // Add your search logic here
+            });
+        });
+
+    // Filter Dropdown Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // ... kode yang sudah ada ...
+    
+    // Filter dropdowns
+    const filterDropdowns = document.querySelectorAll('.filter-dropdown');
+    
+    filterDropdowns.forEach(dropdown => {
+        const toggle = dropdown.querySelector('.filter-btn');
+        const menu = dropdown.querySelector('.filter-dropdown-menu');
+        
+        toggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            
+            // Close all other dropdowns
+            filterDropdowns.forEach(other => {
+                if (other !== dropdown) {
+                    other.classList.remove('active');
                 }
-                
-                // Date filter (basic implementation)
-                if (activeFilters.date !== 'all') {
-                    // Add date filtering logic here
-                    console.log('Date filter:', activeFilters.date);
-                }
-                
-                // Show/hide row
-                row.style.display = shouldShow ? '' : 'none';
             });
             
-            console.log('Active filters:', activeFilters);
-        }
-    
-        // Initialize filter chips
-        updateFilterChips();
-    
-        // ... existing JavaScript code for status dropdown, pagination, etc. ...
+            // Toggle current dropdown
+            dropdown.classList.toggle('active');
+        });
+        
+        // Prevent closing when clicking inside menu
+        menu.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
     });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function() {
+        filterDropdowns.forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+    });
+    
+    // Filter checkboxes change handler
+    const filterCheckboxes = document.querySelectorAll('.filter-option input[type="checkbox"]');
+    
+    filterCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            applyFilters();
+            updateFilterButtons();
+        });
+    });
+    
+    // Clear all filters button
+    const clearFiltersBtn = document.querySelector('.clear-filters-btn');
+    if (clearFiltersBtn) {
+        clearFiltersBtn.addEventListener('click', function() {
+            filterCheckboxes.forEach(checkbox => {
+                checkbox.checked = true;
+            });
+            applyFilters();
+            updateFilterButtons();
+        });
+    }
+    
+    // Function to apply filters
+    function applyFilters() {
+        // Get selected types
+        const selectedTypes = [];
+        document.querySelectorAll('.type-menu input[type="checkbox"]:checked').forEach(cb => {
+            selectedTypes.push(cb.value);
+        });
+        
+        // Get selected statuses
+        const selectedStatuses = [];
+        document.querySelectorAll('.status-menu input[type="checkbox"]:checked').forEach(cb => {
+            selectedStatuses.push(cb.value);
+        });
+        
+        // Filter table rows
+        const tableRows = document.querySelectorAll('tbody tr');
+        
+        tableRows.forEach(row => {
+            const typeCell = row.cells[1].textContent.toLowerCase();
+            const statusElement = row.querySelector('.status-toggle span:first-child');
+            const statusText = statusElement ? statusElement.textContent.toLowerCase() : '';
+            
+            // Check if row matches filters
+            const matchesType = selectedTypes.some(type => 
+                typeCell.includes(type) || typeCell.includes('lorem ipsum') // Demo fallback
+            );
+            
+            const matchesStatus = selectedStatuses.some(status => 
+                statusText.includes(status)
+            );
+            
+            // Show/hide row
+            row.style.display = (matchesType && matchesStatus) ? '' : 'none';
+        });
+        
+        // Update pagination or show no results message
+        updateNoResultsMessage();
+    }
+    
+    // Function to update filter button appearance
+    function updateFilterButtons() {
+        // Update Type button
+        const typeCheckboxes = document.querySelectorAll('.type-menu input[type="checkbox"]');
+        const typeChecked = Array.from(typeCheckboxes).filter(cb => cb.checked);
+        
+        const typeBtn = document.querySelector('.filter-type-btn');
+        if (typeChecked.length < typeCheckboxes.length) {
+            typeBtn.classList.add('has-selection');
+            typeBtn.innerHTML = `Type <span class="filter-arrow">▼</span> <span class="filter-count">${typeChecked.length}</span>`;
+        } else {
+            typeBtn.classList.remove('has-selection');
+            typeBtn.innerHTML = `Type <span class="filter-arrow">▼</span>`;
+        }
+        
+        // Update Status button
+        const statusCheckboxes = document.querySelectorAll('.status-menu input[type="checkbox"]');
+        const statusChecked = Array.from(statusCheckboxes).filter(cb => cb.checked);
+        
+        const statusBtn = document.querySelector('.filter-status-btn');
+        if (statusChecked.length < statusCheckboxes.length) {
+            statusBtn.classList.add('has-selection');
+            statusBtn.innerHTML = `Status <span class="filter-arrow">▼</span> <span class="filter-count">${statusChecked.length}</span>`;
+        } else {
+            statusBtn.classList.remove('has-selection');
+            statusBtn.innerHTML = `Status <span class="filter-arrow">▼</span>`;
+        }
+    }
+    
+    // Function to show/hide no results message
+    function updateNoResultsMessage() {
+        const visibleRows = document.querySelectorAll('tbody tr[style=""]').length;
+        const allRows = document.querySelectorAll('tbody tr').length;
+        
+        let noResultsMsg = document.querySelector('.no-results-message');
+        
+        if (visibleRows === 0 && allRows > 0) {
+            if (!noResultsMsg) {
+                noResultsMsg = document.createElement('div');
+                noResultsMsg.className = 'no-results-message';
+                noResultsMsg.innerHTML = `
+                    <p>No content found matching the selected filters.</p>
+                    <button class="clear-filters-btn">Clear All Filters</button>
+                `;
+                document.querySelector('.table-wrapper').appendChild(noResultsMsg);
+                
+                // Add event listener to clear button in message
+                noResultsMsg.querySelector('.clear-filters-btn').addEventListener('click', function() {
+                    filterCheckboxes.forEach(checkbox => {
+                        checkbox.checked = true;
+                    });
+                    applyFilters();
+                    updateFilterButtons();
+                });
+            }
+        } else if (noResultsMsg) {
+            noResultsMsg.remove();
+        }
+    }
+    
+    // Initialize filter buttons
+    updateFilterButtons();
+    
+    // ... kode JavaScript lainnya yang sudah ada ...
+});
 
 </script>
 </body>
