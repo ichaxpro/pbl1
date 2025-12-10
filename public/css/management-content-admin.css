@@ -628,6 +628,26 @@ svg {
     }
 }
 
+.badge {
+    padding: 5px 7px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 500;
+    color: white;
+}
+
+.accepted {
+    background: #6fc9a9;
+}
+
+.rejected {
+    background: #d97a7a;
+}
+
+.requested {
+    background: #7db8df;
+}
+
 /* STATUS DROPDOWN STYLES */
 .status-dropdown {
     position: relative;
