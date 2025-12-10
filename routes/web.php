@@ -11,6 +11,7 @@ use App\Http\Controllers\ApprovalStatusController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\ContentManagementController;
 use App\Http\Controllers\AddActivityController;
+use App\Http\Controllers\OperatorContentController;
 // Dashboard
 
 // Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -145,9 +146,9 @@ Route::middleware(['auth'])->group(function() {
 
 });
 
-Route::get('/content-management', function () {
-    return view('operator/content_management');
-});
+// Route::get('/content-management', function () {
+//     return view('operator/content_management');
+// });
 
 // Route::get('/content-management-admin', function () {
 //     return view('admin/management-content');
@@ -198,3 +199,5 @@ Route::get('/admin/content', [ContentManagementController::class, 'index'])
 Route::post('/admin/content/{table}/{id}/approve', [ContentManagementController::class, 'approve']);
 Route::post('/admin/content/{table}/{id}/reject', [ContentManagementController::class, 'reject']);
 
+Route::get('/content-management', [OperatorContentController::class, 'index'])
+    ->name('operator.content_management');
