@@ -22,15 +22,16 @@
             <div class="form-container">
                 <h2 class="form-title">Add Activities</h2>
 
-                <form action="/add-activity" method="POST" class="form-box">
-                    <label for="title">URL Image</label>
-                    <textarea id="title" name="title" placeholder="Write the title here"></textarea>
+                <form action="{{ route('activity.store') }}" method="POST" class="form-box">
+                    @csrf
+                    <label for="image_url">URL Image</label>
+                    <textarea id="image_url" name="image_url" placeholder="Paste the image URL here"></textarea>
 
                     <label for="title">Title</label>
-                    <textarea id="title" name="title" placeholder="Place the URL Image here"></textarea>
+                    <textarea id="title" name="title" placeholder="Write the title here"></textarea>
 
                     <div class="btn-group">
-                        <button type="button" class="btn cancel">Cancel</button>
+                        <button type="button" class="btn cancel" onclick="window.location.href='{{ route('operator.approval_status') }}';">Cancel</button>
                         <button type="submit" class="btn save">Save</button>
                     </div>
                 </form>

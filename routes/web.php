@@ -9,6 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LaboratoryStructureController;
 use App\Http\Controllers\ApprovalStatusController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\AddActivityController;
 // Dashboard
 
 // Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -43,6 +44,10 @@ Route::get('/navbar', function () {
 Route::get('/publications/article', function () {
     return view('publications/page_publication_article');
 });
+
+
+    Route::get('/activity/create', [AddActivityController::class, 'create'])->name('activity.create');
+    Route::post('/activity', [AddActivityController::class, 'store'])->name('activity.store');
 
 Route::get('/vision-mission', function () {
     return view('vision_mission');
