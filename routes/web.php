@@ -10,6 +10,7 @@ use App\Http\Controllers\LaboratoryStructureController;
 use App\Http\Controllers\ApprovalStatusController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\AddActivityController;
+use App\Http\Controllers\ImageController;
 // Dashboard
 
 // Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -53,9 +54,9 @@ Route::get('/vision-mission', function () {
     return view('vision_mission');
 });
 
-Route::get('/gallery', function () {
-    return view('operator/operator_gallery');
-});
+// Route::get('/gallery', function () {
+//     return view('operator/operator_gallery');
+// });
 
 
 Route::get('/lab_description', function () {
@@ -164,9 +165,27 @@ Route::get('/user-management', function () {
     return view('admin/user_management');
 });
 
-Route::get('/operator_gallery', function () {
-    return view('operator/operator_gallery');
-});
+// Route::get('/operator_gallery', function () {
+//     return view('operator/operator_gallery');
+// });
+
+// // Route untuk halaman daftar gallery (List)
+// Route::get('/operator/gallery', [App\Http\Controllers\GalleryController::class, 'index']); 
+
+// Route untuk halaman form tambah gambar (Add)
+// Pastikan ini menunjuk ke file BARU Anda: operator_gallery_add.blade.php
+Route::get('/operator/gallery/create', function () {
+    return view('operator.operator_gallery_add'); 
+}); 
+
+// Route untuk menyimpan data (POST)
+Route::post('/operator/gallery/store', [App\Http\Controllers\GalleryController::class, 'store']);
+
+Route::get('/operator_gallery', [ImageController::class, 'index'])->name('gallery.index');
+Route::get('/operator_gallery/create', [ImageController::class, 'create'])->name('gallery.create');
+Route::post('/operator_gallery/store', [ImageController::class, 'store'])->name('gallery.store');
+Route::delete('/operator_gallery/{id}', [ImageController::class, 'destroy'])->name('gallery.delete');
+
 
 Route::get('/news_detail', function () {
     return view('news/news_detail_page');   

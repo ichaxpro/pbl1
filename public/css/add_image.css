@@ -1,0 +1,89 @@
+/* --- FORM ADD PUBLICATION STYLES (Mirip Screenshot 1) --- */
+
+.add-publication-container {
+    max-width: 600px; /* Lebar konten formulir */
+    margin: 40px auto; /* Tengahkan formulir */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    border: 1px solid #e0e0e0;
+}
+
+.add-publication-container h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box; /* Agar padding tidak menambah lebar */
+}
+
+/* Styling untuk date input agar konsisten */
+input[type="date"].form-input {
+    appearance: none; /* Hapus gaya default di beberapa browser */
+    padding-right: 10px; /* Jaga ruang untuk ikon kalender default */
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end; /* Posisikan tombol ke kanan */
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-cancel, .btn-submit {
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-cancel {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    color: #555;
+}
+.btn-cancel:hover {
+    background-color: #e0e0e0;
+}
+
+.btn-submit {
+    background-color: #4a90e2; /* Biru seperti di pagination */
+    border: 1px solid #4a90e2;
+    color: white;
+}
+.btn-submit:hover {
+    background-color: #3a7bd5;
+}
+
+/* Override untuk main body di halaman form, agar formnya di tengah */
+.content-form {
+    padding: 30px;
+    display: flex;
+    justify-content: center; /* Untuk menengahkan container form */
+    flex-grow: 1;
+    overflow-y: auto;
+}
