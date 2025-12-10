@@ -4,21 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Concerns\HasUuids; // PASTIKAN INI ADA
 
 class Activity extends Model
 {
+    use HasUuids; // INI HARUS DI MODEL, BUKAN DI CONTROLLER
+
     protected $fillable = [
-        'id',
         'title',
-        'description',
         'image_url',
         'status',
         'created_by',
         'approved_by',
         'rejected_by',
         'note_admin',
-        'created_at',
-        'updated_at'
+        // HAPUS 'id', 'created_at', 'updated_at' dari fillable
     ];
 
     protected $casts = [
@@ -26,31 +26,9 @@ class Activity extends Model
         'updated_at' => 'datetime'
     ];
 
-    //   protected static function boot()
-    // {
-    //     parent::boot();
-
-    //     static::created(function ($activity) {
-    //         $authorName = $activity->createdBy ? $activity->createdBy->name : 'Someone';
-    //         $message = "{$authorName} added new ac$activity: {$activity->title}";
-    //         $activity->addNotification($message, 'info');
-    //     });
-
-    //     static::updated(function ($activity) {
-    //         if ($activity->isDirty('status')) {
-    //             $oldStatus = $activity->getOriginal('status');
-    //             $newStatus = $activity->status;
-                
-    //             if ($newStatus === 'accepted') {
-    //                 $message = "activity$activity '{$activity->title}' has been approved";
-    //                 $activity->addNotification($message, 'success');
-    //             } elseif ($newStatus === 'rejected') {
-    //                 $message = "activity$activity '{$activity->title}' has been rejected";
-    //                 $activity->addNotification($message, 'warning');
-    //             }
-    //         }
-    //     });
-    // }
+    // TAMBAHKAN INI jika ingin UUID otomatis
+    public $incrementing = false;
+    protected $keyType = 'string';
 
     public function createdBy(): BelongsTo
     {

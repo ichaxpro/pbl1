@@ -63,18 +63,19 @@ body {
 
 /* Form container */
 .form-container {
-    text-align: center;
     margin-top: 20px;
 }
 
 .form-title {
+    text-align: center;
     font-size: 30px;
     margin-bottom: 10px;
     color: #36454F;
     text-decoration: underline;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
+/* Form box */
 .form-box {
     width: 70%;
     background: #e4eff3;
@@ -82,16 +83,49 @@ body {
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0px 4px 14px rgba(0,0,0,0.12);
+    text-align: left;
 }
 
-.form-box input,
+/* Labels */
+label[for="title"],
+label[for="content"] {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+label[for="content"] {
+    margin-top: 25px;
+}
+
+/* Textareas */
 .form-box textarea {
-    width: 100%;
+    width: 95%;
     padding: 12px;
     border-radius: 14px;
-    border: none;
+    border: 2px solid #cbd5e1;
     margin-bottom: 20px;
     font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    resize: vertical;
+    background: white;
+    transition: all 0.3s ease;
+    min-height: 50px;
+}
+
+.form-box textarea:focus {
+    outline: none;
+    border-color: #0f5f68;
+    box-shadow: 0 0 0 3px rgba(15, 95, 104, 0.1);
+}
+
+/* Hidden input untuk content */
+input#content {
+    display: none;
 }
 
 /* Buttons */
@@ -99,6 +133,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 20px;
+    margin-top: 30px;
 }
 
 .btn {
@@ -107,15 +142,34 @@ body {
     border: none;
     color: white;
     cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
 }
 
-.cancel { background: #d9534f; }
-.save   { background: #42b883; }
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
 
-/* -------------------------
-   RESPONSIVE FIX MAXIMAL
---------------------------*/
+.btn.cancel {
+    background: #d9534f;
+}
 
+.btn.cancel:hover {
+    background: #c9302c;
+}
+
+.btn.save {
+    background: #42b883;
+}
+
+.btn.save:hover {
+    background: #359b6f;
+}
+
+/* Responsive Design */
 /* Tablet */
 @media (max-width: 900px) {
     .form-box {
@@ -143,6 +197,15 @@ body {
         padding: 20px;
     }
 
+    label[for="title"],
+    label[for="content"] {
+        font-size: 18px;
+    }
+
+    #editor-container {
+        height: 250px;
+    }
+
     .btn-group {
         flex-direction: column;
         gap: 10px;
@@ -150,6 +213,7 @@ body {
 
     .btn {
         width: 100%;
+        padding: 12px;
     }
 }
 
@@ -166,5 +230,18 @@ body {
 
     .subtitle2 {
         font-size: 9px;
+    }
+
+    .form-title {
+        font-size: 22px;
+    }
+
+    label[for="title"],
+    label[for="content"] {
+        font-size: 16px;
+    }
+
+    #editor-container {
+        height: 200px;
     }
 }

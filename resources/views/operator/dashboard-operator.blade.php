@@ -125,6 +125,7 @@
                         <div class="grid grid-cols-2 gap-4">
 
                             <!-- Add Activity -->
+                             <a href="{{ url('/add-activities') }}" class="{{ Request::is('add-activities') ? 'active' : '' }}">
                             <div class="bg-white card rounded-xl shadow-sm p-6 cursor-pointer transition-all duration-200">
                                 <div class="flex flex-col items-center text-gray-800">
                                     <div
@@ -134,8 +135,10 @@
                                     <h3 class="text-lg font-semibold">Add Activity</h3>
                                 </div>
                             </div>
+                            </a>
 
                             <!-- Add News -->
+                             <a href="{{ url('/add-news') }}" class="{{ Request::is('add-news') ? 'active' : '' }}">
                             <div class="bg-white card rounded-xl shadow-sm p-6 cursor-pointer transition-all duration-200">
                                 <div class="flex flex-col items-center text-gray-800">
                                     <div
@@ -145,8 +148,10 @@
                                     <h3 class="text-lg font-semibold">Add News</h3>
                                 </div>
                             </div>
+                            </a>
 
                             <!-- Add Publication -->
+                             <a href="{{ url('/add-publications') }}" class="{{ Request::is('add-publications') ? 'active' : '' }}">
                             <div class="bg-white card rounded-xl shadow-sm p-6 cursor-pointer transition-all duration-200">
                                 <div class="flex flex-col items-center text-gray-800">
                                     <div
@@ -156,17 +161,20 @@
                                     <h3 class="text-lg font-semibold">Add Publication</h3>
                                 </div>
                             </div>
+                            </a>
 
-                            <!-- Add Activity -->
+                            <!-- Add Facility -->
+                             <a href="{{ url('/add-facilities') }}" class="{{ Request::is('add-facilities') ? 'active' : '' }}">
                             <div class="bg-white card rounded-xl shadow-sm p-6 cursor-pointer transition-all duration-200">
                                 <div class="flex flex-col items-center text-gray-800">
                                     <div
                                         class="w-10 h-6 bg-purple-100 rounded-full flex items-center justify-center mb-3">
                                         <i class="fas fa-calendar-plus text-purple-600 text-xl"></i>
                                     </div>
-                                    <h3 class="text-lg font-semibold">Add Activity</h3>
+                                    <h3 class="text-lg font-semibold">Add Facilities</h3>
                                 </div>
                             </div>
+                            </a>
 
                         </div>
 
@@ -237,6 +245,7 @@
                                     <div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
                                     <div>
                                         <p class="text-sm text-gray-700">Admin menyetujui 1 permintaan</p>
+
                                         <p class="text-xs text-gray-500 mt-1">2 hours ago</p>
                                     </div>
                                 </div>

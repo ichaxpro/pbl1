@@ -78,7 +78,6 @@
             <div class="w-full">
                 @include('operator.topbar')
             </div>
-
         </div>
         <main class="flex-1 overflow-y-auto px-8 py-6 ml-10">
             <div class="main-content">
@@ -215,6 +214,7 @@
 
                 </div>
 
+        
         <!-- Main content -->
     </div>
 </body>
