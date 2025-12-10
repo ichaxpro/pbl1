@@ -19,7 +19,7 @@
                     <h3>Data Analysis</h3>
                 </div>
                 <div class="hover-desc">
-                    Proses mengolah dan menafsirkan data untuk menemukan pola, tren, serta insight yang mendukung pengambilan keputusan.
+                    The process of processing and interpreting data to find patterns, trends, and insights that support decision making.
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
                     <h3>Big Data & Hadoop</h3>
                 </div>
                 <div class="hover-desc">
-                    Fokus pada pengelolaan dan pemrosesan data berukuran sangat besar menggunakan teknologi terdistribusi seperti Hadoop agar efisien dan skalabel.
+                    Focus on managing and processing very large data using distributed technologies such as Hadoop to be efficient and scalable.
                 </div>
             </div>
 
@@ -41,7 +41,7 @@
                     <h3>Machine Learning</h3>
                 </div>
                 <div class="hover-desc">
-                    Pengembangan algoritma yang memungkinkan sistem belajar dari data dan membuat prediksi atau keputusan secara otomatis.
+                    Development of algorithms that enable systems to learn from data and make predictions or decisions automatically.
                 </div>
             </div>
 
@@ -52,7 +52,7 @@
                     <h3>Data Visualization</h3>
                 </div>
                 <div class="hover-desc">
-                    Menyajikan hasil analisis data dalam bentuk grafik, diagram, atau dashboard agar lebih mudah dipahami dan komunikatif.
+                    Presenting data analysis results in the form of graphs, diagrams, or dashboards to make them easier to understand and more communicative.
                 </div>
             </div>
 
@@ -63,7 +63,7 @@
                     <h3>Data Mining</h3>
                 </div>
                 <div class="hover-desc">
-                    Teknik menggali informasi tersembunyi dari kumpulan data besar untuk menemukan pola, hubungan, atau pengetahuan baru.
+                    The technique of extracting hidden information from large data sets to discover new patterns, relationships, or knowledge.
                 </div>
             </div>
 
@@ -74,7 +74,7 @@
                     <h3>Database & SQL</h3>
                 </div>
                 <div class="hover-desc">
-                    Pengelolaan sistem basis data menggunakan bahasa SQL untuk menyimpan, mengakses, dan mengoptimalkan data secara terstruktur.
+                    Database system management uses the SQL language to store, access, and optimize data in a structured manner.
                 </div>
             </div>
         </div>
