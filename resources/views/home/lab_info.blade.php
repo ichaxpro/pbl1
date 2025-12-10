@@ -25,11 +25,11 @@
             <h1>Laboratory of Data Technology</h1>
             
             <p>
-                Laboratorium Teknologi Data (Lab DT) adalah pusat pembelajaran dan riset yang berfokus pada pengolahan serta pemanfaatan data modern. Bidang utamanya mencakup Cloud Computing, Artificial Intelligence & Machine Learning, Data Science, Big Data, Data Visualization, dan Database & SQL.
+                The Data Technology Laboratory (DT Lab) is a learning and research center focused on modern data processing and utilization. Its core areas of expertise include Cloud Computing, Artificial Intelligence & Machine Learning, Data Science, Big Data, Data Visualization, and Database & SQL.
             </p>
             
             <p>
-                Laboratorium ini menjadi wadah integrasi teori dan praktik, sekaligus mendorong inovasi digital yang relevan dengan kebutuhan industri. Selain itu, Lab DT mendukung kolaborasi akademik untuk memperkuat riset terapan. Dengan demikian, Lab DT berperan penting dalam mencetak sumber daya manusia yang kompeten di era teknologi informasi.
+                This laboratory serves as a platform for integrating theory and practice, while also encouraging digital innovation relevant to industry needs. Furthermore, the DT Lab supports academic collaboration to strengthen applied research. Thus, the DT Lab plays a crucial role in developing competent human resources in the information technology era.
             </p>
 
             <a href="#" class="read-more-link">
