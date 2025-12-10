@@ -142,17 +142,7 @@
                                 <td>11/11/2025</td>
                                 <td><span class="tag operator">Gunawan</span></td>
                                 <td>
-                                    <div class="status-dropdown" data-status="accepted">
-                                        <div class="status-toggle status-accepted">
-                                            <span>Accepted</span>
-                                            <span class="arrow">▼</span>
-                                        </div>
-                                        <div class="status-dropdown-menu">
-                                            <div class="status-option status-accepted" data-value="accepted">Accepted</div>
-                                            <div class="status-option status-rejected" data-value="rejected">Rejected</div>
-                                            <div class="status-option status-requested" data-value="requested">Requested</div>
-                                        </div>
-                                    </div>
+                                    <span class="badge requested">Requested</span>
                                 </td>
                                 <td>Published on homepage</td>
                                 <td class="action-cell">
@@ -174,17 +164,7 @@
                                 <td>01/11/2025</td>
                                 <td><span class="tag operator">Adi</span></td>
                                 <td>
-                                    <div class="status-dropdown" data-status="rejected">
-                                        <div class="status-toggle status-rejected">
-                                            <span>Rejected</span>
-                                            <span class="arrow">▼</span>
-                                        </div>
-                                        <div class="status-dropdown-menu">
-                                            <div class="status-option status-accepted" data-value="accepted">Accepted</div>
-                                            <div class="status-option status-rejected" data-value="rejected">Rejected</div>
-                                            <div class="status-option status-requested" data-value="requested">Requested</div>
-                                        </div>
-                                    </div>
+                                    <span class="badge rejected">Rejected</span>
                                 </td>
                                 <td>Needs more practical examples</td>
                                 <td class="action-cell">
@@ -206,17 +186,7 @@
                                 <td>06/11/2025</td>
                                 <td><span class="tag operator">Bagas</span></td>
                                 <td>
-                                    <div class="status-dropdown" data-status="requested">
-                                        <div class="status-toggle status-requested">
-                                            <span>Requested</span>
-                                            <span class="arrow">▼</span>
-                                        </div>
-                                        <div class="status-dropdown-menu">
-                                            <div class="status-option status-accepted" data-value="accepted">Accepted</div>
-                                            <div class="status-option status-rejected" data-value="rejected">Rejected</div>
-                                            <div class="status-option status-requested" data-value="requested">Requested</div>
-                                        </div>
-                                    </div>
+                                    <span class="badge accepted">Accepted</span>
                                 </td>
                                 <td>Pending review</td>
                                 <td class="action-cell">
@@ -249,17 +219,7 @@
                                 <td>05/11/2025</td>
                                 <td><span class="tag operator">Gunawan</span></td>
                                 <td>
-                                    <div class="status-dropdown" data-status="accepted">
-                                        <div class="status-toggle status-accepted">
-                                            <span>Accepted</span>
-                                            <span class="arrow">▼</span>
-                                        </div>
-                                        <div class="status-dropdown-menu">
-                                            <div class="status-option status-accepted" data-value="accepted">Accepted</div>
-                                            <div class="status-option status-rejected" data-value="rejected">Rejected</div>
-                                            <div class="status-option status-requested" data-value="requested">Requested</div>
-                                        </div>
-                                    </div>
+                                    <span class="badge rejected">Rejected</span>
                                 </td>
                                 <td>Scheduled for next week</td>
                                 <td class="action-cell">
@@ -281,17 +241,7 @@
                                 <td>03/11/2025</td>
                                 <td><span class="tag operator">Adi</span></td>
                                 <td>
-                                    <div class="status-dropdown" data-status="in-progress">
-                                        <div class="status-toggle status-in-progress">
-                                            <span>In progress</span>
-                                            <span class="arrow">▼</span>
-                                        </div>
-                                        <div class="status-dropdown-menu">
-                                            <div class="status-option status-accepted" data-value="accepted">Accepted</div>
-                                            <div class="status-option status-rejected" data-value="rejected">Rejected</div>
-                                            <div class="status-option status-requested" data-value="requested">Requested</div>
-                                        </div>
-                                    </div>
+                                    <span class="badge rejected">Rejected</span>
                                 </td>
                                 <td>Technical review in progress</td>
                                 <td class="action-cell">
