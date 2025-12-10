@@ -9,6 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LaboratoryStructureController;
 use App\Http\Controllers\ApprovalStatusController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\ContentManagementController;
 // Dashboard
 
 // Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -143,9 +144,9 @@ Route::get('/content-management', function () {
     return view('operator/content_management');
 });
 
-Route::get('/content-management-admin', function () {
-    return view('admin/management-content');
-});
+// Route::get('/content-management-admin', function () {
+//     return view('admin/management-content');
+// });
 
 Route::get('/topbar-admin', function () {
     return view('topbar');
@@ -184,3 +185,11 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/user-management/update/{id}', [UserManagementController::class, 'update'])->name('user.update');
     Route::delete('/user-management/delete/{id}', [UserManagementController::class, 'delete'])->name('user.delete');
 });
+
+Route::get('/admin/content', [ContentManagementController::class, 'index'])
+    ->name('content.management');
+
+// Actions
+Route::post('/admin/content/{table}/{id}/approve', [ContentManagementController::class, 'approve']);
+Route::post('/admin/content/{table}/{id}/reject', [ContentManagementController::class, 'reject']);
+
