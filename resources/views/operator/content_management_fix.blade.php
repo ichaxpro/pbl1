@@ -4,73 +4,133 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Content Management</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="{{ asset('css/management-content-admin.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/content_management.css') }}">
+
+    <style>
+        thead {
+            background: #D9D9D9 !important;
+        }
+
+        thead th {
+            color: #1E4A52 !important;
+            font-weight: 600;
+        }
+
+        .table-wrapper {
+            border-radius: 12px !important;
+            overflow: hidden !important;
+        }
+
+        .badge {
+            border-radius: 20px !important;
+            padding: 6px 16px !important;
+            min-width: 90px;
+            text-align: center;
+        }
+
+        .top-bar {
+            justify-content: space-between;
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 15px;
+            }
+
+            .filters {
+                margin-left: 0;
+                justify-content: flex-start;
+            }
+        }
+    </style>
 </head>
 
 <body class="bg-gray-50">
 
- <div class="flex w-full min-h-screen">
+<div class="flex w-full min-h-screen">
 
         <!-- Sidebar (hidden on small screens) -->
         <aside class="w-64 h-screen border-r flex flex-col sticky top-0">
-            @include('admin.sidebar')
+            @include('operator.sidebaroperator')
         </aside>
 
-        <div class="flex-1 flex flex-col min-h screen">
+        <div class="flex-1 flex flex flex-col min-h screen">
             <!-- Topbar -->
             <div class="w-full">
-                @include('admin.topbar')
+                @include('operator.topbar')
             </div>
-
 
         </div>
 
-        <main class="flex-grow p-5 overflow-auto pl-20">
-            <h1 class="page-title">Content Management</h1>
+        <!-- Content -->
+        <main class="flex-grow p-8 overflow-auto pl-20">
 
-            <!-- TOP BAR -->
+            <div class="page">
+
+                <h1 class="page-title">Content Management</h1>
+
                 <div class="top-bar">
+
                     <!-- Search -->
                     <div class="search-box">
-                        <img src="{{ asset('images/search_icon.png') }}" alt="Search" class="search-icon">
-                        <input type="text" placeholder="Search by title, operator..." class="search-text">
+                        <img src="{{ asset('images/search_icon.png') }}" class="search-icon">
+                        <input type="text" placeholder="Search..." class="search-text">
                     </div>
 
-                    <!-- Filters -->
+                    <!-- Add Button -->
+                    <button class="btn-add text-[#1E4A52]" id="openOverlay">
+                        <span class="plus-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                  stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                        </span>
+                        Add
+                    </button>
+
+                    <!-- Filter Section -->
                     <div class="filters">
                         <span class="filter-label">Filters:</span>
 
-                        <!-- Type Filter Dropdown -->
+                        <!-- Type Filter -->
                         <div class="filter-dropdown" data-filter="type">
                             <button class="filter-toggle">
                                 <span>Type</span>
                                 <span class="filter-arrow">▼</span>
                             </button>
+
                             <div class="filter-menu">
                                 <div class="filter-option">
-                                    <input type="checkbox" id="type-all" data-value="all" checked>
-                                    <label for="type-all">All Types</label>
+                                    <input type="checkbox" data-value="all" checked>
+                                    <label>All Types</label>
                                 </div>
+
                                 <div class="filter-option">
-                                    <input type="checkbox" id="type-article" data-value="article">
-                                    <label for="type-article">Article</label>
+                                    <input type="checkbox" data-value="article">
+                                    <label>Article</label>
                                 </div>
+
                                 <div class="filter-option">
-                                    <input type="checkbox" id="type-tutorial" data-value="tutorial">
-                                    <label for="type-tutorial">Tutorial</label>
+                                    <input type="checkbox" data-value="tutorial">
+                                    <label>Tutorial</label>
                                 </div>
+
                                 <div class="filter-option">
-                                    <input type="checkbox" id="type-guide" data-value="guide">
-                                    <label for="type-guide">Guide</label>
+                                    <input type="checkbox" data-value="guide">
+                                    <label>Guide</label>
                                 </div>
+
                                 <div class="filter-option">
-                                    <input type="checkbox" id="type-whitepaper" data-value="whitepaper">
-                                    <label for="type-whitepaper">Whitepaper</label>
+                                    <input type="checkbox" data-value="whitepaper">
+                                    <label>Whitepaper</label>
                                 </div>
+
                                 <div class="filter-actions">
                                     <button class="filter-clear">Clear</button>
                                     <button class="filter-apply">Apply</button>
@@ -78,46 +138,48 @@
                             </div>
                         </div>
 
-                        <!-- Status Filter Dropdown -->
+                        <!-- Status Filter -->
                         <div class="filter-dropdown" data-filter="status">
                             <button class="filter-toggle">
                                 <span>Status</span>
                                 <span class="filter-arrow">▼</span>
                             </button>
+
                             <div class="filter-menu">
                                 <div class="filter-option">
-                                    <input type="checkbox" id="status-all" data-value="all" checked>
-                                    <label for="status-all">All Status</label>
+                                    <input type="checkbox" data-value="all" checked>
+                                    <label>All Status</label>
                                 </div>
+
                                 <div class="filter-option">
-                                    <input type="checkbox" id="status-accepted" data-value="accepted">
-                                    <label for="status-accepted">Accepted</label>
+                                    <input type="checkbox" data-value="accepted">
+                                    <label>Accepted</label>
                                 </div>
+
                                 <div class="filter-option">
-                                    <input type="checkbox" id="status-rejected" data-value="rejected">
-                                    <label for="status-rejected">Rejected</label>
+                                    <input type="checkbox" data-value="rejected">
+                                    <label>Rejected</label>
                                 </div>
+
                                 <div class="filter-option">
-                                    <input type="checkbox" id="status-requested" data-value="requested">
-                                    <label for="status-requested">Requested</label>
+                                    <input type="checkbox" data-value="requested">
+                                    <label>Requested</label>
                                 </div>
-                                <div class="filter-option">
-                                    <input type="checkbox" id="status-in-progress" data-value="in-progress">
-                                    <label for="status-in-progress">In Progress</label>
-                                </div>
+
                                 <div class="filter-actions">
                                     <button class="filter-clear">Clear</button>
                                     <button class="filter-apply">Apply</button>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
-                <!-- Filter Chips Display -->
-                <div class="filter-chips" id="filterChips">
-                    <!-- Filter chips akan muncul di sini -->
-                </div>
+                <!-- Chips -->
+                <div class="filter-chips" id="filterChips"></div>
+
+            </div>
 
             <!-- TABLE -->
                 <div class="table-wrapper">
@@ -319,7 +381,8 @@
                         </tbody>
                     </table>
                 </div>
-            <!-- PAGINATION -->
+
+            <!-- Pagination -->
             <div class="pagination">
                 <span class="prev">❮</span>
                 <span class="page-number active">1</span>
@@ -329,10 +392,22 @@
             </div>
 
         </main>
+</div>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay">
+    <div class="overlay-box">
+        <h2 class="overlay-header">Add Content</h2>
+
+        <a href="{{ asset('addActivities') }}" class="overlay-btn">Add Activities</a>
+        <a href="{{ asset('addPublications') }}" class="overlay-btn">Add Publication</a>
+        <a href="{{ asset('addNews') }}" class="overlay-btn">Add News</a>
+        <a href="{{ asset('addFacilities') }}" class="overlay-btn">Add Facilities</a>
+
+        <button class="close-overlay">Close</button>
     </div>
 </div>
 
-<!-- Optional JavaScript for Interactions -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Pagination click handler
