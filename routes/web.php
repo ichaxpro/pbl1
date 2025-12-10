@@ -39,7 +39,7 @@ Route::get('/navbar', function () {
     return view('/navbar');
 });
 
-Route::get('/publications', function () {
+Route::get('/publications/article', function () {
     return view('publications/page_publication_article');
 });
 
@@ -99,6 +99,10 @@ Route::get('/publications', function () {
 
 Route::get('/add-activities', function () {
     return view('operator/addActivities');
+});
+
+Route::get('/add-publications', function () {
+    return view('operator/addPublication');
 });
 
 Route::get('/add-facilities', function () {

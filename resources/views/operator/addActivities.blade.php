@@ -23,11 +23,11 @@
                 <h2 class="form-title">Add Activities</h2>
 
                 <form action="/add-activity" method="POST" class="form-box">
-                    <label for="url_image">URL Image</label>
-                    <input type="text" id="url_image" name="url_image" placeholder="Enter URL Image" style="font-family: Montserrat, sans-serif;">
+                    <label for="title">URL Image</label>
+                    <textarea id="title" name="title" placeholder="Write the title here"></textarea>
 
                     <label for="title">Title</label>
-                    <input type="text" id="title" name="title" placeholder="Write the title here" style="font-family: Montserrat, sans-serif;"></input>
+                    <textarea id="title" name="title" placeholder="Place the URL Image here"></textarea>
 
                     <div class="btn-group">
                         <button type="button" class="btn cancel">Cancel</button>
