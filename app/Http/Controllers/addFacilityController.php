@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 // use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
-class AddFacilityController extends Controller
+class addFacilityController extends Controller
 
 {
   //  use HasUuids;
@@ -17,7 +17,7 @@ class AddFacilityController extends Controller
      */
     public function create()
     {
-        return view('operator.addFacility');
+        return view('operator.addFacilities');
     }
 
     /**
