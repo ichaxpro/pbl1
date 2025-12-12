@@ -17,7 +17,7 @@ class AddActivityController extends Controller
      */
     public function create()
     {
-        return view('operator.addActivity');
+        return view('operator.addActivities');
     }
 
     /**

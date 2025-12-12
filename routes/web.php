@@ -12,6 +12,7 @@ use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\ContentManagementController;
 use App\Http\Controllers\AddActivityController;
 use App\Http\Controllers\addFacilityController;
+use App\Http\Controllers\OperatorContentController;
 // Dashboard
 
 // Route::get('/dashboard', [DashboardController::class, 'index']);

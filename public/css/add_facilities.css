@@ -88,6 +88,7 @@ body {
 
 /* Labels */
 label[for="title"],
+label[for="image_url"],
 label[for="content"] {
     display: block;
     font-family: 'Poppins', sans-serif;
