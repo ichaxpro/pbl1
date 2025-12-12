@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add News</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/addPublication.css') }}"/>
+    <title>Add Publication</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/addPublication.css') }}" />
+    
     <!-- Poppins Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Quill CSS -->
     <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
 </head>
+
 <body>
 
     <div class="outer-bg">
@@ -21,58 +25,54 @@
                 <p class="subtitle2">POLITEKNIK NEGERI MALANG</p>
             </div>
         </div>
-         
 
         <div class="inner-bg">
             <div class="form-container">
-                
-                <h2 class="form-title">Add Publication</h2>
-                <form action="/add-news" method="POST" class="form-box" id="newsForm">
-                    @csrf <!-- Untuk Laravel -->
 
+                <h2 class="form-title">Add Publication</h2>
+
+                <form action="{{ route('operator.publication.store') }}" 
+                      method="POST" 
+                      enctype="multipart/form-data"
+                      class="form-box" 
+                      id="pubForm">
+                    @csrf
+
+                    <!-- Title -->
                     <label for="title">Title</label>
                     <textarea id="title" name="title" placeholder="Write the title here"></textarea>
 
-                    <label for="title">Author</label>
-                    <textarea id="title" name="title" placeholder="Write the title here"></textarea>
+                    <!-- Author -->
+                    <label for="author">Author</label>
+                    <textarea id="author" name="author" placeholder="Author(s) name"></textarea>
 
-                    <!-- <label for="title">Institution</label>
-                    <textarea id="title" name="title" placeholder="Write the title here"></textarea> -->
-
-                    <label for="title">Date</label>
+                    <!-- Date -->
+                    <label for="date">Date</label>
                     <input type="date" id="date" name="date" class="form-input date-input">
 
-                    
-
-                    <label for="content">Abstract</label>
-                    <!-- Container untuk Quill editor -->
+                    <!-- Abstract (Quill) -->
+                    <label for="contents">Abstract</label>
                     <div id="editor-container"></div>
-                    <!-- Hidden input untuk menyimpan HTML -->
-                    <input type="hidden" id="content" name="content">
 
+                    <!-- Hidden input that will receive Quill HTML -->
+                    <input type="hidden" id="contents" name="contents">
 
-
-                    
-
-                    
-                    <!-- Container untuk Quill editor -->
-                    <div id="editor-container"></div>
-                    <!-- Hidden input untuk menyimpan HTML -->
-                    <input type="hidden" id="content" name="content">
-
+                    <!-- Upload Box -->
                     <div class="upload-box" id="uploadBox">
-        <div class="upload-icon">📁</div>
-        <div class="upload-text">Drag here to Upload</div>
-        <div class="upload-or">Or</div>
-        <button class="browse-btn" id="browseBtn">Browse File</button>
-    </div>
-    
-    <input type="file" id="fileInput" class="file-input">
-                    
+                        <div class="upload-icon">📁</div>
+                        <div class="upload-text">Drag here to Upload</div>
+                        <div class="upload-or">Or</div>
+                        <button class="browse-btn" id="browseBtn" type="button">Browse File</button>
+                    </div>
+
+                    <input type="file" id="fileInput" name="file" class="file-input" hidden>
+
+                    <!-- Buttons -->
                     <div class="btn-group">
                         <button type="button" class="btn cancel">Cancel</button>
                         <button type="submit" class="btn save">Save</button>
                     </div>
+
                 </form>
             </div>
         </div>
@@ -80,8 +80,10 @@
 
     <!-- Quill JS -->
     <script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
+
     <!-- Custom JS -->
-    <script src="{{ asset('js/addPublication.js') }}"></script>
-    
+    <script src="{{ asset('js/addPublications.js') }}"></script>
+
 </body>
+
 </html>
