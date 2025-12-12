@@ -220,6 +220,15 @@ Route::get('/admin/content', [ContentManagementController::class, 'index'])
 Route::post('/admin/content/{table}/{id}/approve', [ContentManagementController::class, 'approve']);
 Route::post('/admin/content/{table}/{id}/reject', [ContentManagementController::class, 'reject']);
 
-Route::get('/content-management', [OperatorContentController::class, 'index'])
-    ->name('operator.content_management');
+// Route::get('/content-management', [OperatorContentController::class, 'index'])
+//     ->name('operator.content_management');
 
+// Operator Content Management
+Route::get('/content-management', 
+    [OperatorContentController::class, 'index']
+)->name('operator.content_management');
+
+// Delete content
+Route::delete('/content-management/{table}/{id}', 
+    [OperatorContentController::class, 'delete']
+)->name('operator.content.delete');

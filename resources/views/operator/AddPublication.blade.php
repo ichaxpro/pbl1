@@ -36,8 +36,8 @@
                     <label for="title">Author</label>
                     <textarea id="title" name="title" placeholder="Write the title here"></textarea>
 
-                    <label for="title">Institution</label>
-                    <textarea id="title" name="title" placeholder="Write the title here"></textarea>
+                    <!-- <label for="title">Institution</label>
+                    <textarea id="title" name="title" placeholder="Write the title here"></textarea> -->
 
                     <label for="title">Date</label>
                     <input type="date" id="date" name="date" class="form-input date-input">
