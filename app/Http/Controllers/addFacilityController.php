@@ -9,11 +9,10 @@ use Illuminate\Http\Request;
 // use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 class addFacilityController extends Controller
-
 {
-  //  use HasUuids;
+    //  use HasUuids;
     /**
-    
+
      */
     public function create()
     {
@@ -21,22 +20,28 @@ class addFacilityController extends Controller
     }
 
     /**
-     
+
      */
     public function store(Request $request)
     {
         // Validasi input
         $request->validate([
             'title' => 'required|string|max:255',
-            'image_url' => 'required|url',
+            'image_url' => 'required|string|max:500',
         ]);
+        // Memastikan internal paths always begin with /storage/
+        $imagePath = $request->image_url;
+
+        if (!str_starts_with($imagePath, '/storage/')) {
+            $imagePath = '/storage/' . ltrim($imagePath, '/');
+        }
 
         // Simpan data ke database
         $facility = Facility::create([
             'title' => $request->title,
             'image_url' => $request->image_url,
             'status' => 'requested', // Default status
-            
+
             'created_by' => Auth::id(),
             'note_admin' => null,
         ]);
