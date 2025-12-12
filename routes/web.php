@@ -12,6 +12,8 @@ use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\ContentManagementController;
 use App\Http\Controllers\AddActivityController;
 use App\Http\Controllers\addFacilityController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\OperatorContentController;
 // Dashboard
 
 // Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -222,3 +224,4 @@ Route::post('/admin/content/{table}/{id}/reject', [ContentManagementController::
 
 Route::get('/content-management', [OperatorContentController::class, 'index'])
     ->name('operator.content_management');
+
