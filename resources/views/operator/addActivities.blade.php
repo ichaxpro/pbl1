@@ -24,17 +24,21 @@
 
                 <form action="{{ route('activity.store') }}" method="POST" class="form-box">
                     @csrf
-                    <label for="image_url">URL Image</label>
+                    <label for="title">URL Image</label>
                     <textarea id="image_url" name="image_url" placeholder="Paste the image URL here"></textarea>
 
                     <label for="title">Title</label>
                     <textarea id="title" name="title" placeholder="Write the title here"></textarea>
 
                     <div class="btn-group">
-                        <button type="button" class="btn cancel" onclick="window.location.href='{{ route('operator.approval_status') }}';">Cancel</button>
-                        <button type="submit" class="btn save">Save</button>
+                        <a href="{{ route('operator.approval_status') }}" class="btn cancel">
+                            Cancel
+                        </a>
+                        <!-- HAPUS ONCLICK DARI SAVE BUTTON! -->
+                        <button type="submit" class="btn save">
+                            Save
+                        </button>
                     </div>
-                </form>
             </div>
         </div>
     </div>

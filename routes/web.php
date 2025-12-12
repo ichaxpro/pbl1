@@ -10,6 +10,8 @@ use App\Http\Controllers\LaboratoryStructureController;
 use App\Http\Controllers\ApprovalStatusController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\AddActivityController;
+use App\Http\Controllers\addFacilityController;
+
 // Dashboard
 
 // Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -48,6 +50,9 @@ Route::get('/publications/article', function () {
 
     Route::get('/activity/create', [AddActivityController::class, 'create'])->name('activity.create');
     Route::post('/activity', [AddActivityController::class, 'store'])->name('activity.store');
+
+     Route::get('/facility/create', [addFacilityController::class, 'create'])->name('facility.create');
+    Route::post('/facility', [addFacilityController::class, 'store'])->name('facility.store');
 
 Route::get('/vision-mission', function () {
     return view('vision_mission');
