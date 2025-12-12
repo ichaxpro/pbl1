@@ -42,7 +42,7 @@
                 <li>
                     <a href="{{ url('/operator_gallery') }}" 
                        class="menu-item {{ Request::is('operator_gallery') ? 'active' : '' }}">
-                    <a href="{{ url('/gallery') }}" 
+                    <a href="{{ url('/operator_gallery') }}" 
                        class="menu-item {{ Request::is('gallery') ? 'active' : '' }}">
                         <img src="{{ asset('images/gallery_icon.png') }}" class="icon4">
                         <span>Gallery</span>
