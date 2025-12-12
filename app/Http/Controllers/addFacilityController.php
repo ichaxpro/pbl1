@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Facility;
+use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 // use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -16,7 +17,9 @@ class addFacilityController extends Controller
      */
     public function create()
     {
-        return view('operator.addFacilities');
+        $galleryImages = Image::orderBy('created_at', 'DESC')->get(['url']);
+        $galleryUrls = $galleryImages->pluck('url')->toArray();
+        return view('operator.addFacilities', compact('galleryUrls'));
     }
 
     /**
@@ -30,16 +33,20 @@ class addFacilityController extends Controller
             'image_url' => 'required|string|max:500',
         ]);
         // Memastikan internal paths always begin with /storage/
-        $imagePath = $request->image_url;
+        $imageUrl = trim($request->image_url);
 
-        if (!str_starts_with($imagePath, '/storage/')) {
-            $imagePath = '/storage/' . ltrim($imagePath, '/');
-        }
+        $isValidGalleryImage = Image::where('url', $imageUrl)->exists(); 
+
+        if (!$isValidGalleryImage) {
+        return back()
+            ->withInput()
+            ->withErrors(['image_url' => 'Image URL must be from the gallery. Please select from the available images.']);
+    }
 
         // Simpan data ke database
         $facility = Facility::create([
             'title' => $request->title,
-            'image_url' => $request->image_url,
+            'image_url' => $imageUrl,
             'status' => 'requested', // Default status
 
             'created_by' => Auth::id(),

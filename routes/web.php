@@ -116,9 +116,7 @@ Route::get('/add-publications', function () {
     return view('operator/addPublication');
 });
 
-Route::get('/add-facilities', function () {
-    return view('operator/addFacilities');
-});
+Route::get('/add-facilities', [addFacilityController::class, 'create']);
 
 Route::get('/user-management', function () {
     return view('admin/user_management');

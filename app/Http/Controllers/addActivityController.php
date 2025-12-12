@@ -23,32 +23,39 @@ class AddActivityController extends Controller
     }
 
     public function store(Request $request)
-    {
-        // Validasi input
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'image_url' => 'required|url',
-        ]);
-
-        // Validasi bahwa URL image harus dari gallery
-        $isValidGalleryImage = Image::where('url', $request->image_url)->exists();
+{
+    // Validasi input
+    $request->validate([
+        'title' => 'required|string|max:255',
         
-        if (!$isValidGalleryImage) {
-            return back()
-                ->withInput()
-                ->withErrors(['image_url' => 'Image URL must be from the gallery. Please select from the available images.']);
-        }
+        // ******* PERUBAHAN DI SINI *******
+        // HAPUS '|url' karena konflik dengan path lokal /storage
+        'image_url' => 'required|string', 
+        // **********************************
+    ]);
+    
+    // Pastikan URL bersih dari whitespace
+    $imageUrl = trim($request->image_url);
 
-        // Simpan data ke database
-        $activity = Activity::create([
-            'title' => $request->title,
-            'image_url' => $request->image_url,
-            'status' => 'requested',
-            'created_by' => Auth::id(),
-            'note_admin' => null,
-        ]);
-
-        return redirect()->route('operator.approval_status')
-            ->with('success', 'Activity submitted successfully! Waiting for admin approval.');
+    // Validasi custom yang lebih penting: Cek apakah URL ada di database Image
+    $isValidGalleryImage = Image::where('url', $imageUrl)->exists(); 
+    
+    if (!$isValidGalleryImage) {
+        return back()
+            ->withInput()
+            ->withErrors(['image_url' => 'Image URL must be from the gallery. Please select from the available images.']);
     }
+
+    // Simpan data ke database
+    $activity = Activity::create([
+        'title' => $request->title,
+        'image_url' => $imageUrl, 
+        'status' => 'requested',
+        'created_by' => Auth::id(),
+        'note_admin' => null,
+    ]);
+
+    return redirect()->route('operator.approval_status')
+        ->with('success', 'Activity submitted successfully! Waiting for admin approval.');
+}
 }

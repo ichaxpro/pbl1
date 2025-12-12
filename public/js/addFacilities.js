@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const imagesDropdown = document.getElementById('imagesDropdown');
     const previewContainer = document.getElementById('previewContainer');
     const previewImage = document.getElementById('previewImage');
-    const imageOptions = document.querySelectorAll('.image-option');
+    
+    // Pastikan ini dijalankan SETELAH elemennya ada di DOM
+    const imageOptions = document.querySelectorAll('.image-option'); 
     
     // Debug logging
     console.log('Elements found:', {
@@ -15,7 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
         imagesDropdown: !!imagesDropdown,
         previewContainer: !!previewContainer,
         previewImage: !!previewImage,
-        imageOptions: imageOptions.length
+        // Cek hasil querySelectorAll, ini HARUS > 0 jika gambar ada di gallery
+        imageOptions: imageOptions.length 
     });
     
     // Toggle dropdown
@@ -33,29 +36,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    // Select image from dropdown
-imageOptions.forEach(option => {
-    option.addEventListener('click', function() {
-        // Ambil URL dan pastikan di-trim
-        const url = this.dataset.url.trim(); // <<< TAMBAHKAN .trim() DI SINI
-        console.log('Image selected:', url);
-        
-        if (imageUrlInput) {
-            imageUrlInput.value = url; // Nilai yang dimasukkan sudah bersih
-        }
-        
-        // ... (Sisa kode) ...
-    });
-});
-    // Select image from dropdown
+    
+    // Select image from dropdown (Hanya satu listener ini yang digunakan)
     imageOptions.forEach(option => {
         option.addEventListener('click', function() {
-            const url = this.dataset.url.trim();
+            // Ambil URL dan pastikan di-trim
+            const url = this.dataset.url.trim(); 
             console.log('Image selected:', url);
             
             if (imageUrlInput) {
                 imageUrlInput.value = url;
             }
+            
             if (imagesDropdown) {
                 imagesDropdown.classList.remove('active');
             }
@@ -83,7 +75,6 @@ imageOptions.forEach(option => {
                 imageUrlInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         });
-            
     });
     
     // Hide dropdown when clicking outside

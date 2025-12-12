@@ -26,6 +26,12 @@
 
                 <form action="{{ route('activity.store') }}" method="POST" class="form-box">
                     @csrf
+
+                    @error('image_url')
+    <div class="error-message">
+        <i class="fas fa-exclamation-circle"></i> {{ $message }}
+    </div>
+@enderror
                     <label for="image_url">
                         URL Image
                         <span class="info-text">(Select from available images)</span>
