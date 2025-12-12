@@ -4,11 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Concerns\HasUuids; // PASTIKAN INI ADA
+
 
 class Facility extends Model
 {
+    use HasUuids; // INI HARUS DI MODEL, BUKAN DI CONTROLLER
+
     protected $fillable = [
-        'id',
         'title',
         'image_url',
         'status',
@@ -16,8 +19,7 @@ class Facility extends Model
         'approved_by',
         'rejected_by',
         'note_admin',
-        'created_at',
-        'updated_at'
+        // HAPUS 'id', 'created_at', 'updated_at' dari fillable
     ];
 
     protected $casts = [
