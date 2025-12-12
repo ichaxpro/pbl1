@@ -110,9 +110,7 @@ Route::get('/publications', function () {
     return view('publications/page_publication');
 });
 
-Route::get('/add-activities', function () {
-    return view('operator/addActivities');
-});
+Route::get('/add-activities', [AddActivityController::class, 'create']);
 
 Route::get('/add-publications', function () {
     return view('operator/addPublication');

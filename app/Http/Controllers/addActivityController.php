@@ -4,43 +4,50 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Activity;
+use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-// use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 class AddActivityController extends Controller
-
 {
-  //  use HasUuids;
-    /**
-     * Menampilkan form add activity
-     */
     public function create()
     {
-        return view('operator.addActivities');
+        // Ambil semua URL gambar dari gallery
+        $galleryImages = Image::orderBy('created_at', 'DESC')->get(['url']);
+        $galleryUrls = $galleryImages->pluck('url')->toArray();
+        
+        // Debug: Cek data
+        // dd($galleryUrls); // Uncomment untuk cek data
+        
+        return view('operator.addActivities', compact('galleryUrls'));
     }
 
-    /**
-     * Menyimpan data activity baru
-     */
     public function store(Request $request)
     {
         // Validasi input
         $request->validate([
             'title' => 'required|string|max:255',
-            'image_url' => 'nullable|url',
+            'image_url' => 'required|url',
         ]);
+
+        // Validasi bahwa URL image harus dari gallery
+        $isValidGalleryImage = Image::where('url', $request->image_url)->exists();
+        
+        if (!$isValidGalleryImage) {
+            return back()
+                ->withInput()
+                ->withErrors(['image_url' => 'Image URL must be from the gallery. Please select from the available images.']);
+        }
 
         // Simpan data ke database
         $activity = Activity::create([
             'title' => $request->title,
             'image_url' => $request->image_url,
-            'status' => 'requested', // Default status
+            'status' => 'requested',
             'created_by' => Auth::id(),
             'note_admin' => null,
         ]);
 
-        // Redirect ke approval status dengan pesan sukses
         return redirect()->route('operator.approval_status')
             ->with('success', 'Activity submitted successfully! Waiting for admin approval.');
     }
