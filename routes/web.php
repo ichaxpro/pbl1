@@ -14,6 +14,7 @@ use App\Http\Controllers\AddActivityController;
 use App\Http\Controllers\addFacilityController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\OperatorContentController;
+use App\Http\Controllers\AddPublicationController;
 // Dashboard
 
 // Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -112,9 +113,9 @@ Route::get('/publications', function () {
 
 Route::get('/add-activities', [AddActivityController::class, 'create']);
 
-Route::get('/add-publications', function () {
-    return view('operator/addPublication');
-});
+// Route::get('/add-publications', function () {
+//     return view('operator/addPublication');
+// });
 
 Route::get('/add-facilities', [addFacilityController::class, 'create']);
 
@@ -230,3 +231,17 @@ Route::get('/content-management',
 Route::delete('/content-management/{table}/{id}', 
     [OperatorContentController::class, 'delete']
 )->name('operator.content.delete');
+
+Route::middleware('auth')->group(function () {
+
+    // Show Add Publication page
+    Route::get('/operator/publication/add', 
+        [AddPublicationController::class, 'create']
+    )->name('operator.publication.create');
+
+    // Handle Publication Submit
+    Route::post('/operator/publication/store', 
+        [AddPublicationController::class, 'store']
+    )->name('operator.publication.store');
+
+});
