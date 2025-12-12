@@ -73,11 +73,17 @@
 }
 
 /* Find Us (Social Icons) */
+/* Ensure icons stay horizontal */
+.social-icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
 .social-icons a {
-    color: #ffffff;
-    font-size: 0; /* Sembunyikan teks sepenuhnya */
-    margin-right: 15px;
-    transition: color 0.3s;
+    display: inline-flex; /* ensure consistent spacing and alignment */
+    font-size: 0;
 }
 
 .social-icons img.custom-icon {

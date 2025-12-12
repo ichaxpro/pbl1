@@ -16,7 +16,7 @@
             <a href="#" class="news-card">
                 <img src="images/news/news1.jpeg" alt="">
                 <span class="news-date">14, October 2028</span>
-                <h3 class="news-title">Judul Berita 1</h3>
+                <h3 class="news-title">News Title 1</h3>
                 <div class="card-footer">
                     <span>READ</span>
                     <span class="footer-arrow">→</span>
@@ -26,7 +26,7 @@
             <a href="#" class="news-card">
                 <img src="images/news/news1.jpeg" alt="">
                 <span class="news-date">14, October 2028</span>
-                <h3 class="news-title">Judul Berita 1</h3>
+                <h3 class="news-title">News Title 1</h3>
                 <div class="card-footer">
                     <span>READ</span>
                     <span class="footer-arrow">→</span>
@@ -36,7 +36,7 @@
             <a href="#" class="news-card">
                 <img src="images/news/news1.jpeg" alt="">
                 <span class="news-date">14, October 2028</span>
-                <h3 class="news-title">Judul Berita 1</h3>
+                <h3 class="news-title">News Title 1</h3>
                 <div class="card-footer">
                     <span>READ</span>
                     <span class="footer-arrow">→</span>
@@ -46,7 +46,7 @@
             <a href="#" class="news-card">
                 <img src="images/news/news1.jpeg" alt="">
                 <span class="news-date">14, October 2028</span>
-                <h3 class="news-title">Judul Berita 1</h3>
+                <h3 class="news-title">News Title 1</h3>
                 <div class="card-footer">
                     <span>READ</span>
                     <span class="footer-arrow">→</span>
@@ -56,7 +56,7 @@
             <a href="#" class="news-card">
                 <img src="images/news/news1.jpeg" alt="">
                 <span class="news-date">14, October 2028</span>
-                <h3 class="news-title">Judul Berita 1</h3>
+                <h3 class="news-title">News Title 1</h3>
                 <div class="card-footer">
                     <span>READ</span>
                     <span class="footer-arrow">→</span>

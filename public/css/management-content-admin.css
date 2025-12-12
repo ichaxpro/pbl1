@@ -105,10 +105,12 @@ body {
     background: white;
     border-radius: 12px;
     border: 1px solid #dce3e6;
+    overflow: hidden;
     margin-top: 10px;
     overflow-x: auto;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     margin: 0 10px;
+    position: relative;
 }
 
 /* TABLE STYLES */
@@ -116,6 +118,7 @@ body {
     width: 100%;
     border-collapse: collapse;
     min-width: 800px; /* Minimum width untuk tablet */
+    table-layout: fixed;
 }
 
 /* HEADER */
@@ -496,6 +499,27 @@ svg {
     background: rgba(0, 0, 0, 0.1);
 }
 
+
+.no-data-message {
+    display: none; /* Sembunyikan secara default */
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+    font-size: 16px;
+}
+
+.table-wrapper.no-data {
+    overflow: hidden; /* Pastikan tidak ada scroll */
+}
+
+.table-wrapper.no-data .content-table {
+    display: none; /* Sembunyikan tabel jika tidak ada data */
+}
+
+.table-wrapper.no-data .no-data-message {
+    display: block; /* Tampilkan pesan "no data" */
+}
+
 /* ========== RESPONSIVE BREAKPOINTS ========== */
 
 /* TABLET (768px - 1024px) */
@@ -526,6 +550,11 @@ svg {
     
     .table-wrapper {
         margin: 0;
+    }
+
+    .content-table {
+        min-width: unset; /* Hapus min-width */
+        table-layout: auto; /* Kembalikan ke auto layout */
     }
 }
 
@@ -575,10 +604,15 @@ svg {
     
     .table-wrapper {
         border-radius: 8px;
-        margin: 0 -5px;
-        width: calc(100% + 10px);
+        margin: 0;
+        width: 100%;
+        overflow-x: auto;
     }
-    
+
+    .content-table {
+        min-width: 700px; /* Tetap pertahankan untuk mobile */
+    }
+
     .content-table thead th,
     .content-table tbody td {
         padding: 10px 8px;
@@ -779,6 +813,11 @@ svg {
         padding: 10px;
     }
     
+    .table-wrapper {
+        overflow-x: auto; /* Aktifkan scroll horizontal */
+        -webkit-overflow-scrolling: touch; /* Smooth scroll untuk iOS */
+    }
+
     .content-table {
         min-width: 700px; /* Tetap scroll horizontal untuk mobile sangat kecil */
     }
@@ -871,6 +910,10 @@ svg {
         font-size: 13px;
     }
     
+    .content-table {
+        min-width: 600px; /* Kurangi sedikit untuk mobile sangat kecil */
+    }
+
     .content-table thead th,
     .content-table tbody td {
         padding: 6px 4px;

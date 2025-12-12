@@ -22,7 +22,7 @@
                 </li>
             
                 <li>
-                    <a href="{{ url('/content-management') }}" 
+                    <a href="{{ route('operator.content_management') }}" 
                        class="menu-item {{ Request::is('content-management') ? 'active' : '' }}">
                         <img src="{{ asset('images/Management_Content_Logo.png') }}" class="icon2">
                         <span>Management Content</span>
