@@ -11,6 +11,7 @@ use App\Http\Controllers\ApprovalStatusController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\ContentManagementController;
 use App\Http\Controllers\AddActivityController;
+use App\Http\Controllers\addFacilityController;
 // Dashboard
 
 // Route::get('/dashboard', [DashboardController::class, 'index']);
