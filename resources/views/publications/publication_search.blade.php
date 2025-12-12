@@ -1,5 +1,7 @@
+<head>
 <link rel="stylesheet" href="{{ asset('css/publication_search.css') }}">
-
+</head>
+<body>
 <section class="publication-search-section">
     <h2>Publication</h2>
 
@@ -15,7 +17,54 @@
     </div>
 
     <div class="publication-controls">
-        <div class="dropdown">Sort by <span>▾</span></div>
-        <div class="dropdown">Filter <span>▾</span></div>
+
+        <!-- SORT DROPDOWN -->
+        <div class="dropdown">
+            Sort by <span>▾</span>
+
+            <div class="dropdown-menu">
+                <div class="dropdown-item" data-sort="newest">Newest</div>
+                <div class="dropdown-item" data-sort="oldest">Oldest</div>
+            </div>
+        </div>
+
+        <!-- FILTER DROPDOWN -->
+        <div class="dropdown">
+            Filter <span>▾</span>
+
+            <div class="dropdown-menu">
+                <div class="dropdown-item" data-year="2025">2025</div>
+                <div class="dropdown-item" data-year="2024">2024</div>
+                <div class="dropdown-item" data-year="2023">2023</div>
+                <div class="dropdown-item" data-year="2022">2022</div>
+                <div class="dropdown-item" data-year="2021">2021</div>
+                <div class="dropdown-item" data-year="2020">2020</div>
+            </div>
+        </div>
+        <script>
+            document.querySelectorAll(".dropdown").forEach(drop => {
+                drop.addEventListener("click", function (e) {
+                    e.stopPropagation();
+
+                    const menu = this.querySelector(".dropdown-menu");
+
+                    // Close other dropdowns first
+                    document.querySelectorAll(".dropdown-menu").forEach(m => {
+                        if (m !== menu) m.style.display = "none";
+                    });
+
+                    // Toggle this dropdown
+                    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+                });
+            });
+
+            // Close dropdown if clicking outside
+            document.addEventListener("click", () => {
+                document.querySelectorAll(".dropdown-menu").forEach(menu => {
+                    menu.style.display = "none";
+                });
+            });
+        </script>
     </div>
+</body>
 </section>
