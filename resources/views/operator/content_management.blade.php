@@ -66,7 +66,7 @@
         </aside>
 
         <!-- Main area -->
-        <div class="flex-1 flex flex flex-col min-h screen">
+        <div class="flex-1 flex flex flex-col min-h screen" style="min-height: 100vh">
 
             <!-- Topbar -->
             <div class="w-full">
@@ -84,14 +84,11 @@
 
                     <!-- Search -->
                     <div class="search-box">
-                        <img src="{{ asset('images/search_icon.png') }}" class="search-icon">
                         <form method="GET" action="{{ route('operator.content_management') }}">
-                            <div class="search-box">
                                 <img src="{{ asset('images/search_icon.png') }}" class="search-icon">
 
                                 <input type="text" name="search" value="{{ request('search') }}" placeholder="Search..."
                                     class="search-text">
-                            </div>
                         </form>
                         <!-- <input type="text" placeholder="Search..." class="search-text"> -->
                     </div>

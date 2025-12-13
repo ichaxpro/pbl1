@@ -134,6 +134,93 @@
                             <th>Action</th>
                         </tr>
                     </thead>
+            
+                    <tbody>
+                        @foreach ($contents as $content)
+                            <tr>
+                                <td>{{ $content->title }}</td>
+                                <td>{{ ucfirst($content->type) }}</td>
+                                <td>{{ \Carbon\Carbon::parse($content->date)->format('d M Y') }}</td>
+                                <td>
+                                    <span class="tag operator">{{ $content->operator_name }}</span>
+                                </td>
+            
+                                <td>
+                                    @php
+                                        $statusClass = 'requested';
+                                        if($content->status == 'approved') $statusClass = 'accepted';
+                                        if($content->status == 'rejected') $statusClass = 'rejected';
+                                    @endphp
+                                    <span class="tag {{ $statusClass }}">
+                                        {{ ucfirst($content->status) }}
+                                    </span>
+                                </td>
+            
+                                <td>{{ $content->note_admin ?? '-' }}</td>
+            
+                                <td class="action-cell">
+                                    <div>
+                                        <div class="action-buttons">
+                                            <!-- Preview Button -->
+                                            <a href="/admin/content/{{ $content->table }}/{{ $content->id }}"
+                                               class="view-btn" title="Preview Content">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="1.5">
+                                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                                    <circle cx="12" cy="12" r="3"/>
+                                                </svg>
+                                            </a>
+                                            
+                                            <!-- Approve Button -->
+                                            <form action="{{ url('/admin/content/' . $content->table . '/' . $content->id . '/approve') }}"
+                                                  method="POST" class="inline-form">
+                                                @csrf
+                                                <button type="submit" class="success" title="Approve">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="1.5">
+                                                        <polyline points="20 6 9 17 4 12"/>
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                            
+                                            <!-- Reject Form -->
+                                            <div class="reject-form-wrapper">
+                                                <button class="danger reject-toggle" title="Reject" data-id="{{ $content->id }}">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="1.5">
+                                                        <line x1="18" y1="6" x2="6" y2="18"/>
+                                                        <line x1="6" y1="6" x2="18" y2="18"/>
+                                                    </svg>
+                                                </button>
+                                                <form id="reject-form-{{ $content->id }}"
+                                                      action="{{ url('/admin/content/' . $content->table . '/' . $content->id . '/reject') }}"
+                                                      method="POST" 
+                                                      style="display: none; position: absolute; background: white; padding: 10px; border: 1px solid #ddd; border-radius: 8px; z-index: 10;">
+                                                    @csrf
+                                                    <input type="text" name="note_admin" placeholder="Reason for rejection" 
+                                                           class="border px-2 py-1 text-sm rounded" style="min-width: 200px;">
+                                                    <button type="submit" class="ml-2 text-red-600 text-sm font-medium">Submit</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <!-- TABLE -->
+            <!-- <div class="table-wrapper">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>Operator</th>
+                            <th>Status</th>
+                            <th>Note Admin</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
 
                     <tbody>
                         @foreach ($contents as $content)
@@ -153,24 +240,24 @@
 
                                 <td>{{ $content->note_admin ?? '-' }}</td>
 
-                                <td class="actions flex gap-2">
+                                <td class="actions flex gap-2"> -->
 
                                     <!-- Preview -->
-                                    <a href="/admin/content/{{ $content->table }}/{{ $content->id }}"
+                                    <!-- <a href="/admin/content/{{ $content->table }}/{{ $content->id }}"
                                         class="text-blue-600 underline">
                                         Preview
-                                    </a>
+                                    </a> -->
 
                                     <!-- Approve -->
-                                    <form
+                                    <!-- <form
                                         action="{{ url('/admin/content/' . $content->table . '/' . $content->id . '/approve') }}"
                                         method="POST">
                                         @csrf
                                         <button class="text-green-600">Approve</button>
-                                    </form>
+                                    </form> -->
 
                                     <!-- Reject -->
-                                    <form
+                                    <!-- <form
                                         action="{{ url('/admin/content/' . $content->table . '/' . $content->id . '/reject') }}"
                                         method="POST" class="flex items-center gap-1">
                                         @csrf
@@ -182,7 +269,7 @@
                                 </td>
                             </tr>
                         @endforeach
-                    </tbody>
+                    </tbody> -->
                     <!-- <thead>
                             <tr>
                                 <th style="width: 20%;">Title</th>
@@ -328,8 +415,8 @@
                                 </td>
                             </tr> -->
                     <!-- </tbody> -->
-                </table>
-            </div>
+                <!-- </table>
+            </div> -->
             <!-- PAGINATION -->
             <div class="mt-4">
                 {{ $contents->links('pagination::tailwind') }}

@@ -4,11 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 class Publication extends Model
 {
+
+    use HasUuids;
+    protected $table = 'publications';
     protected $fillable = [
-        'id',
         'title',
         'date',
         'abstract',
@@ -18,7 +21,7 @@ class Publication extends Model
         'rejected_by',
         'approved_by',
         'note_admin',
-        'created_at'
+        'author'
     ];
 
     //   protected static function boot()

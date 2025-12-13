@@ -32,7 +32,7 @@
                 This laboratory serves as a platform for integrating theory and practice, while also encouraging digital innovation relevant to industry needs. Furthermore, the DT Lab supports academic collaboration to strengthen applied research. Thus, the DT Lab plays a crucial role in developing competent human resources in the information technology era.
             </p>
 
-            <a href="#" class="read-more-link">
+            <a href="{{ url('/profile') }}" class="read-more-link">
                 READ MORE
                 <span class="new-arrow">→</span>
             </a>

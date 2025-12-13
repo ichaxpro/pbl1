@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="gallery-wrapper no-left" style="background-color: white">
-    <button class="gallery-btn left" onclick="scrollGallery(-1)">&#8249;</button>
+    <button class="gallery-arrow left" id="btnLeft" onclick="scrollGallery(-1)">&#10094;</button>
 
     <div class="gallery-container" id="gallerySlider">
         <img src="images/heroSection/1.jpg" alt="Lab 1">
@@ -20,50 +20,89 @@
         <img src="images/news/news4.jpeg" alt="Lab 4">
     </div>
 
-    <button class="gallery-btn right" onclick="scrollGallery(1)">&#8250;</button>
+    <button class="gallery-arrow right" id="btnRight" onclick="scrollGallery(1)">&#10095;</button>
     </div>
 
 
     <script>
+
         function scrollGallery(direction) {
-            const slider = document.getElementById("gallerySlider");
-            const imgWidth = 350 + 25; // width + gap
+        const slider = document.getElementById("newsSlider");
+        const boxWidth = 320; // card width + gap
 
-            slider.scrollLeft += direction * imgWidth;
-            updateGalleryFade();
-        }
+        slider.scrollLeft += direction * boxWidth;
+        updateFade();
+    }
 
-        const galleryWrapper = document.querySelector('.gallery-wrapper');
-        const gallerySlider = document.getElementById("gallerySlider");
-
-        function updateGalleryFade() {
-            const slider = document.getElementById("gallerySlider");
-            const maxScroll = slider.scrollWidth - slider.clientWidth;
-            const currentScroll = slider.scrollLeft;
-
-            const tolerance = 5;
+    const galleryWrapper = document.querySelector('.gallery-wrapper');
+    const gallerySlider = document.getElementById("gallerySlider");
+    const imgWidth = 350 + 25; // width + gap
     
-            galleryWrapper.classList.remove('no-left', 'no-right');
-
-            if (currentScroll <= tolerance) {
-                galleryWrapper.classList.add('no-left');
-            }
-            // Jika di akhir (scrollLeft >= maxScroll - tolerance), sembunyikan tombol kanan
-            if (currentScroll >= maxScroll - tolerance) {
-                galleryWrapper.classList.add('no-right');
-            }
-
-            if (currentScroll >= maxScroll - tolerance) {
-                galleryWrapper.classList.add('no-right');
-            } else {
-                galleryWrapper.classList.add('can-scroll-right');
-            }
+    function scrollGallery(direction) {
+        gallerySlider.scrollLeft += direction * imgWidth;
+        updateGalleryFade();
+    }
+    
+    function updateGalleryFade() {
+        const maxScroll = gallerySlider.scrollWidth - gallerySlider.clientWidth;
+        const tolerance = 5;
+    
+        galleryWrapper.classList.remove('no-left', 'no-right');
+    
+        if (gallerySlider.scrollLeft <= tolerance) {
+            galleryWrapper.classList.add('no-left');
         }
-
-        window.addEventListener('load', function() {
-        updateGalleryFade();  // Dipanggil setelah semua gambar dan elemen load
-        });
+    
+        if (gallerySlider.scrollLeft >= maxScroll - tolerance) {
+            galleryWrapper.classList.add('no-right');
+        }
+    }
+    
+    // Event listener
     gallerySlider.addEventListener('scroll', updateGalleryFade);
+    
+    // Panggil saat page load
+    window.addEventListener('load', updateGalleryFade);
+
+    //     function scrollGallery(direction) {
+    //         const slider = document.getElementById("gallerySlider");
+    //         const imgWidth = 350 + 25; // width + gap
+
+    //         slider.scrollLeft += direction * imgWidth;
+    //         updateGalleryFade();
+    //     }
+
+    //     const galleryWrapper = document.querySelector('.gallery-wrapper');
+    //     const gallerySlider = document.getElementById("gallerySlider");
+
+    //     function updateGalleryFade() {
+    //         const slider = document.getElementById("gallerySlider");
+    //         const maxScroll = slider.scrollWidth - slider.clientWidth;
+    //         const currentScroll = slider.scrollLeft;
+
+    //         const tolerance = 5;
+    
+    //         galleryWrapper.classList.remove('no-left', 'no-right');
+
+    //         if (currentScroll <= tolerance) {
+    //             galleryWrapper.classList.add('no-left');
+    //         }
+    //         // Jika di akhir (scrollLeft >= maxScroll - tolerance), sembunyikan tombol kanan
+    //         if (currentScroll >= maxScroll - tolerance) {
+    //             galleryWrapper.classList.add('no-right');
+    //         }
+
+    //         if (currentScroll >= maxScroll - tolerance) {
+    //             galleryWrapper.classList.add('no-right');
+    //         } else {
+    //             galleryWrapper.classList.add('can-scroll-right');
+    //         }
+    //     }
+
+    //     window.addEventListener('load', function() {
+    //     updateGalleryFade();  // Dipanggil setelah semua gambar dan elemen load
+    //     });
+    // gallerySlider.addEventListener('scroll', updateGalleryFade);
     </script>
 </body>
 </html>

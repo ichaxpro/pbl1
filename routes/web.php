@@ -11,9 +11,11 @@ use App\Http\Controllers\ApprovalStatusController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\ContentManagementController;
 use App\Http\Controllers\AddActivityController;
-use App\Http\Controllers\OperatorContentController;
+use App\Http\Controllers\addFacilityController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\OperatorContentController;
 
+use App\Http\Controllers\AddPublicationController;
 // Dashboard
 
 // Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -52,6 +54,9 @@ Route::get('/publications/article', function () {
 
     Route::get('/activity/create', [AddActivityController::class, 'create'])->name('activity.create');
     Route::post('/activity', [AddActivityController::class, 'store'])->name('activity.store');
+
+     Route::get('/facility/create', [addFacilityController::class, 'create'])->name('facility.create');
+    Route::post('/facility', [addFacilityController::class, 'store'])->name('facility.store');
 
 Route::get('/vision-mission', function () {
     return view('vision_mission');
@@ -107,17 +112,13 @@ Route::get('/publications', function () {
     return view('publications/page_publication');
 });
 
-Route::get('/add-activities', function () {
-    return view('operator/addActivities');
-});
+Route::get('/add-activities', [AddActivityController::class, 'create']);
 
-Route::get('/add-publications', function () {
-    return view('operator/addPublication');
-});
+// Route::get('/add-publications', function () {
+//     return view('operator/addPublication');
+// });
 
-Route::get('/add-facilities', function () {
-    return view('operator/addFacilities');
-});
+Route::get('/add-facilities', [addFacilityController::class, 'create']);
 
 Route::get('/user-management', function () {
     return view('admin/user_management');
@@ -219,5 +220,29 @@ Route::get('/admin/content', [ContentManagementController::class, 'index'])
 Route::post('/admin/content/{table}/{id}/approve', [ContentManagementController::class, 'approve']);
 Route::post('/admin/content/{table}/{id}/reject', [ContentManagementController::class, 'reject']);
 
-Route::get('/content-management', [OperatorContentController::class, 'index'])
-    ->name('operator.content_management');
+// Route::get('/content-management', [OperatorContentController::class, 'index'])
+//     ->name('operator.content_management');
+
+// Operator Content Management
+Route::get('/content-management', 
+    [OperatorContentController::class, 'index']
+)->name('operator.content_management');
+
+// Delete content
+Route::delete('/content-management/{table}/{id}', 
+    [OperatorContentController::class, 'delete']
+)->name('operator.content.delete');
+
+Route::middleware('auth')->group(function () {
+
+    // Show Add Publication page
+    Route::get('/operator/publication/add', 
+        [AddPublicationController::class, 'create']
+    )->name('operator.publication.create');
+
+    // Handle Publication Submit
+    Route::post('/operator/publication/store', 
+        [AddPublicationController::class, 'store']
+    )->name('operator.publication.store');
+
+});

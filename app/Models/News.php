@@ -30,31 +30,7 @@ class News extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime'
     ];
-    // protected static function boot()
-    // {
-    //     parent::boot();
 
-    //     static::created(function ($news) {
-    //         $authorName = $news->author ? $news->author->name : 'Someone';
-    //         $message = "{$authorName} created new news: {$news->title}";
-    //         $news->addNotification($message, 'info');
-    //     });
-
-    //     static::updated(function ($news) {
-    //         if ($news->isDirty('status')) {
-    //             $oldStatus = $news->getOriginal('status');
-    //             $newStatus = $news->status;
-                
-    //             if ($newStatus === 'accepted') {
-    //                 $message = "News '{$news->title}' has been approved";
-    //                 $news->addNotification($message, 'success');
-    //             } elseif ($newStatus === 'rejected') {
-    //                 $message = "News '{$news->title}' has been rejected";
-    //                 $news->addNotification($message, 'warning');
-    //             }
-    //         }
-    //     });
-    // }
 
     // Relationship dengan author (member yang membuat news)
     public function author(): BelongsTo
