@@ -16,6 +16,12 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\OperatorContentController;
 
 use App\Http\Controllers\AddPublicationController;
+use App\Models\Activity;
+
+use App\Http\Controllers\ActivityController;
+
+Route::get('/profile/activity', [ActivityController::class, 'index'])
+    ->name('profile.activity');
 // Dashboard
 
 // Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -90,7 +96,11 @@ Route::get('/footer', function () {
 });
 
 Route::get('/profile', function () {
-    return view('profile/profile_page');
+    $activities = Activity::where('status', 'accepted') // ✅ INI YANG BENAR
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+    return view('profile.profile_page', compact('activities'));
 });
 
 Route::get('/sidebar-admin', function () {
