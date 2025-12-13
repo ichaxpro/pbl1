@@ -14,7 +14,14 @@ use App\Http\Controllers\AddActivityController;
 use App\Http\Controllers\addFacilityController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\OperatorContentController;
+
 use App\Http\Controllers\AddPublicationController;
+use App\Models\Activity;
+
+use App\Http\Controllers\ActivityController;
+
+Route::get('/profile/activity', [ActivityController::class, 'index'])
+    ->name('profile.activity');
 use App\Http\Controllers\FacilityListController;
 use App\Http\Controllers\PublicationArticleController;
 use App\Http\Controllers\FacilityPublicController;
@@ -54,7 +61,6 @@ Route::get('/publications/article/{id}', [PublicationArticleController::class, '
 Route::get('/publications/article/preview/{id}', [PublicationArticleController::class, 'show1'])->name('publications.show1');
 Route::get('/facilities/{id}', [FacilityPublicController::class, 'show'])->name('facilities.show');
 
-    Route::get('/publications', [PublicationListController::class, 'index'])->name('publications.index');
 
     Route::get('/activity/create', [AddActivityController::class, 'create'])->name('activity.create');
     Route::post('/activity', [AddActivityController::class, 'store'])->name('activity.store');
@@ -93,6 +99,13 @@ Route::get('/footer', function () {
     return view('footer');
 });
 
+Route::get('/profile', function () {
+    $activities = Activity::where('status', 'accepted') // ✅ INI YANG BENAR
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+    return view('profile.profile_page', compact('activities'));
+});
 Route::get('/profile', [FacilityListController::class, 'index']);
 
 Route::get('/sidebar-admin', function () {
@@ -110,9 +123,9 @@ Route::get('/news', function () {
     return view('news/news_page');
 });
 
-// Route::get('/publications', function () {
-//     return view('publications/page_publication');
-// });
+Route::get('/publications', function () {
+    return view('publications/page_publication');
+});
 
 Route::get('/add-activities', [AddActivityController::class, 'create']);
 
