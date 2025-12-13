@@ -124,21 +124,25 @@ tbody td {
 
 .badge {
     padding: 6px 14px;
-    border-radius: 6px;
+    border-radius: 20px;
     font-size: 13px;
     font-weight: 500;
     color: white;
+    display: inline-block;
+    text-align: center;
+    min-width: 90px;
 }
 
-.accepted {
+.badge.approved,
+.badge.accepted {
     background: #6fc9a9;
 }
 
-.rejected {
+.badge.rejected {
     background: #d97a7a;
 }
 
-.requested {
+.badge.requested {
     background: #7db8df;
 }
 

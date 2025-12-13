@@ -119,7 +119,7 @@
                                 <td>{{ $item['upload_date']->format('d M Y') }}</td>
                                 <td>{{ $item['note_admin'] ?? '-' }}</td>
                                 <td>
-                                    @if ($item['status'] === 'approved')
+                                    @if ($item['status'] === 'approved' || $item['status'] === 'accepted')
                                         <span class="badge accepted">Approved</span>
                                     @elseif ($item['status'] === 'rejected')
                                         <span class="badge declined">Declined</span>
