@@ -6,29 +6,40 @@
 
     <div class="facilities-wrapper no-left" id="facilitiesWrapper">
 
-        <button class="fac-arrow left" onclick="scrollFacilities(-1)">&#8249;</button>
+        {{-- Tombol panah hanya akan muncul jika ada fasilitas --}}
+        @if ($facilities && count($facilities) > 0)
+            <button class="fac-arrow left" onclick="scrollFacilities(-1)">&#8249;</button>
+        @endif
 
         <div class="facilities-container" id="facilitiesSlider">
-            @foreach ([
-                ['img' => 'images/Jti_polinema.png', 'title' => 'Facility #1'],
-                ['img' => 'images/Jti_polinema.png', 'title' => 'Facility #2'],
-                ['img' => 'images/Jti_polinema.png', 'title' => 'Facility #3'],
-                ['img' => 'images/Jti_polinema.png', 'title' => 'Facility #4'],
-                ['img' => 'images/Jti_polinema.png', 'title' => 'Facility #5'],
-            ] as $f)
+            {{-- MENGGANTI DUMMY ARRAY DENGAN DATA DARI CONTROLLER ($facilities) --}}
+            @forelse ($facilities as $facility)
                 <div class="facility-card">
                     <div class="facility-thumb">
-                        <img src="{{ asset($f['img']) }}" alt="">
+                        {{-- SESUAIKAN nama kolom gambar jika berbeda (misalnya ->image_path) --}}
+                        <img src="{{ asset($facility->image_url ?? 'images/default_facility.png') }}" 
+                             alt="{{ $facility->title }}">
                     </div>
-                    <p class="facility-title">{{ $f['title'] }}</p>
+                    {{-- Tampilkan Title dari database --}}
+                    <p class="facility-title">{{ $facility->title }}</p>
+                    
+                    {{-- Opsional: Tambahkan link atau detail jika fasilitas memiliki halaman sendiri --}}
+                    {{-- <a href="{{ route('facilities.show', $facility->id) }}" class="facility-link">View Details</a> --}}
                 </div>
-            @endforeach
+            @empty
+                {{-- Tampilkan pesan jika tidak ada fasilitas yang tersedia --}}
+                <div class="facility-card">
+                    <p>No approved facilities available.</p>
+                </div>
+            @endforelse
+            
         </div>
-
-        <button class="fac-arrow right" onclick="scrollFacilities(1)">&#8250;</button>
-
-        <div class="fac-fade-left"></div>
-        <div class="fac-fade-right"></div>
+        
+        @if ($facilities && count($facilities) > 0)
+            <button class="fac-arrow right" onclick="scrollFacilities(1)">&#8250;</button>
+            <div class="fac-fade-left"></div>
+            <div class="fac-fade-right"></div>
+        @endif
     </div>
 </div>
 
