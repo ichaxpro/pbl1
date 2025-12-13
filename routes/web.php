@@ -15,6 +15,7 @@ use App\Http\Controllers\addFacilityController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\OperatorContentController;
 use App\Http\Controllers\AddPublicationController;
+use App\Http\Controllers\PublicationListController;
 // Dashboard
 
 // Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -50,6 +51,7 @@ Route::get('/publications/article', function () {
     return view('publications/page_publication_article');
 });
 
+    Route::get('/publications', [PublicationListController::class, 'index'])->name('publications.index');
 
     Route::get('/activity/create', [AddActivityController::class, 'create'])->name('activity.create');
     Route::post('/activity', [AddActivityController::class, 'store'])->name('activity.store');
@@ -107,9 +109,9 @@ Route::get('/news', function () {
     return view('news/news_page');
 });
 
-Route::get('/publications', function () {
-    return view('publications/page_publication');
-});
+// Route::get('/publications', function () {
+//     return view('publications/page_publication');
+// });
 
 Route::get('/add-activities', [AddActivityController::class, 'create']);
 

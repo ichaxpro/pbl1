@@ -100,6 +100,8 @@ class AdminDashboardController extends Controller
             ->count();
         $monthlyActivities = Activity::whereMonth('created_at', $currentMonth)->whereYear('created_at', $currentYear)->where('status', 'accepted')
             ->count();
+        $monthlyFacilities = Facility::whereMonth('created_at', $currentMonth)->whereYear('created_at', $currentYear)->where('status', 'accepted')
+            ->count();
 
         return view('admin.dashboard', compact(
             'totalNews',
@@ -123,6 +125,7 @@ class AdminDashboardController extends Controller
             'monthlyNews',
             'monthlyPublications',
             'monthlyMembers',
+            'monthlyFacilities',
             'monthlyActivities'
         ));
     }

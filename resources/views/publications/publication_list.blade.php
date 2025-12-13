@@ -5,21 +5,30 @@
 
         <div class="publication-container">
 
-            {{-- 4 Item Publikasi Dummy --}}
-            @for ($i = 0; $i < 4; $i++)
-                <div class="publication-item">
-                    <p class="publication-category">Journal of Information Technology</p>
-                    <h2 class="publication-title">Artificial Intelligence on Processing Big Data</h2>
-                    <p class="publication-date">11/11/2025</p>
-                    <p class="publication-authors">Author 1, Author 2, Author 3</p>
-                    <a href="https://doi.1929.101" class="publication-link">https://doi.1929.101</a>
-                </div>
-                
-                {{-- Hanya tambahkan HR jika bukan item terakhir --}}
-                @if ($i < 3)
+            {{-- Display accepted publications from database --}}
+            @forelse ($publications as $publication)
+                @if ($publication->status === 'accepted')
+                    <div class="publication-item">
+                        <p class="publication-category">Journal of Information Technology</p>
+                        {{-- Display title from database --}}
+                        <h2 class="publication-title">{{ $publication->title }}</h2>
+                        
+                        {{-- Format date using Carbon --}}
+                        <p class="publication-date">
+                            {{ \Carbon\Carbon::parse($publication->created_at)->format('d/m/Y') }}
+                        </p>
+                        
+                        {{-- Display authors --}}
+                        <p class="publication-authors">{{ $publication->author ?? 'Author Unknown' }}</p> 
+                        
+                        {{-- Display link/DOI from database --}}
+                        <a href="{{ $publication->file_url }}" class="publication-link">{{ $publication->file_url }}</a>
+                    </div>
                     <hr>
                 @endif
-            @endfor
+            @empty
+                <p>No accepted publications yet.</p>
+            @endforelse
 
         </div>
 
