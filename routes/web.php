@@ -15,6 +15,9 @@ use App\Http\Controllers\addFacilityController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\OperatorContentController;
 use App\Http\Controllers\AddPublicationController;
+use App\Http\Controllers\FacilityListController;
+use App\Http\Controllers\PublicationArticleController;
+use App\Http\Controllers\FacilityPublicController;
 use App\Http\Controllers\PublicationListController;
 // Dashboard
 
@@ -47,9 +50,9 @@ Route::get('/navbar', function () {
     return view('/navbar');
 });
 
-Route::get('/publications/article', function () {
-    return view('publications/page_publication_article');
-});
+Route::get('/publications/article/{id}', [PublicationArticleController::class, 'show'])->name('publications.show');
+Route::get('/publications/article/preview/{id}', [PublicationArticleController::class, 'show1'])->name('publications.show1');
+Route::get('/facilities/{id}', [FacilityPublicController::class, 'show'])->name('facilities.show');
 
     Route::get('/publications', [PublicationListController::class, 'index'])->name('publications.index');
 
@@ -90,9 +93,7 @@ Route::get('/footer', function () {
     return view('footer');
 });
 
-Route::get('/profile', function () {
-    return view('profile/profile_page');
-});
+Route::get('/profile', [FacilityListController::class, 'index']);
 
 Route::get('/sidebar-admin', function () {
     return view('admin/sidebar');
@@ -220,6 +221,8 @@ Route::get('/admin/content', [ContentManagementController::class, 'index'])
 // Actions
 Route::post('/admin/content/{table}/{id}/approve', [ContentManagementController::class, 'approve']);
 Route::post('/admin/content/{table}/{id}/reject', [ContentManagementController::class, 'reject']);
+Route::get('/admin/content/{table}/{id}/preview', [ContentManagementController::class, 'preview'])
+    ->name('admin.content.preview');
 
 // Route::get('/content-management', [OperatorContentController::class, 'index'])
 //     ->name('operator.content_management');

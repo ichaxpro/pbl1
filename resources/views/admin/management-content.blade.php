@@ -162,7 +162,7 @@
                                     <div>
                                         <div class="action-buttons">
                                             <!-- Preview Button -->
-                                            <a href="/admin/content/{{ $content->table }}/{{ $content->id }}"
+                                            <a href="{{ route('admin.content.preview', [$content->table, $content->id]) }}"
                                                class="view-btn" title="Preview Content">
                                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="1.5">
                                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
