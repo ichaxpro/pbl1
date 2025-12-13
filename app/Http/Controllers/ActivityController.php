@@ -15,3 +15,4 @@ class ActivityController extends Controller
         return view('profil_activity', compact('activities'));
     }
 }
+

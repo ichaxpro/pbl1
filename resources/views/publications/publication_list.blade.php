@@ -28,9 +28,7 @@
                     </a>
                     <hr>
                 @endif
-            @empty
-                <p>No accepted publications yet.</p>
-            @endforelse
+            @endfor
 
         </div>
 

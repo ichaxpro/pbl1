@@ -294,20 +294,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div>
-                                <div class="flex justify-between items-center mb-1">
-                                    <span class="text-sm text-gray-600">Facility</span>
-                                    <span class="text-sm font-medium text-gray-800">{{ $monthlyFacilities }}</span>
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2">
-                                    @php
-                                        $facilityWidth = $monthlyFacilities > 0 ? min(($monthlyFacilities / max($monthlyFacilities, 1)) * 100, 100) : 0;
-                                    @endphp
-                                    <div class="bg-orange-500 h-2 rounded-full" style="width: {{ $facilityWidth }}%">
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
