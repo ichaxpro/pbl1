@@ -22,18 +22,32 @@ class OperatorDashboardController extends Controller
         $yesterday = Carbon::yesterday();
 
         // Total counts
-        $totalNews = News::where('author_id', $currentUserId)->count();
-        $totalPublications = Publication::where('created_by', $currentUserId)->count();
+        $totalNews = News::where('author_id', $currentUserId)->where('status', 'accepted')
+            ->count();
+        $totalPublications = Publication::where('created_by', $currentUserId)
+            ->where('status', 'accepted')
+            ->count();
         $totalMembers = Member::count();
+        $totalFacilities = Facility::where('created_by', $currentUserId)->where('status', 'accepted')
+            ->count();
+        $totalActivities = Activity::where('created_by', $currentUserId)->where('status', 'accepted')
+            ->count();
+
 
         // Counts for today
         $todayNews = News::whereDate('created_at', $today)->where('author_id', $currentUserId)->count();
-        $todayPublications = Publication::whereDate('created_at', $today)->where('created_by', $currentUserId)->count();
+        $todayPublications = Publication::whereDate('created_at', $today)
+            ->where('created_by', $currentUserId)
+            ->where('status', 'accepted')
+            ->count();
         $todayMembers = Member::whereDate('created_at', $today)->count();
 
         // Counts for yesterday
         $yesterdayNews = News::whereDate('created_at', $yesterday)->where('author_id', $currentUserId)->count();
-        $yesterdayPublications = Publication::whereDate('created_at', $yesterday)->where('created_by', $currentUserId)->count();
+        $yesterdayPublications = Publication::whereDate('created_at', $yesterday)
+            ->where('created_by', $currentUserId)
+            ->where('status', 'accepted')
+            ->count();
         $yesterdayMembers = Member::whereDate('created_at', $yesterday)->count();
 
         // Differences
@@ -96,15 +110,33 @@ class OperatorDashboardController extends Controller
         $currentMonth = now()->month;
         $currentYear = now()->year;
 
-        $monthlyNews = News::whereMonth('created_at', $currentMonth)->whereYear('created_at', $currentYear)->count();
-        $monthlyPublications = Publication::whereMonth('created_at', $currentMonth)->whereYear('created_at', $currentYear)->count();
+        $monthlyNews = News::whereMonth('created_at', $currentMonth)
+            ->whereYear('created_at', $currentYear)
+            ->where('author_id', $currentUserId)
+            ->where('status', 'accepted')
+            ->count();
+        $monthlyPublications = Publication::whereMonth('created_at', $currentMonth)
+            ->whereYear('created_at', $currentYear)
+            ->where('created_by', $currentUserId)
+            ->where('status', 'accepted')
+            ->count();
         $monthlyMembers = Member::whereMonth('created_at', $currentMonth)->whereYear('created_at', $currentYear)->count();
-        $monthlyActivities = Activity::whereMonth('created_at', $currentMonth)->whereYear('created_at', $currentYear)->count();
+        $monthlyActivities = Activity::whereMonth('created_at', $currentMonth)
+            ->whereYear('created_at', $currentYear)
+            ->where('created_by', $currentUserId)
+            ->where('status', 'accepted')
+            ->count();
+        $monthlyFacilities = Facility::whereMonth('created_at', $currentMonth)
+            ->whereYear('created_at', $currentYear)
+            ->where('created_by', $currentUserId)
+            ->where('status', 'accepted')
+            ->count();
 
         return view('operator.dashboard-operator', compact(
             'totalNews',
             'totalPublications',
             'totalMembers',
+            'totalFacilities',
             'newsDiff',
             'publicationsDiff',
             'membersDiff',
@@ -123,7 +155,8 @@ class OperatorDashboardController extends Controller
             'monthlyNews',
             'monthlyPublications',
             'monthlyMembers',
-            'monthlyActivities'
+            'monthlyActivities',
+            'monthlyFacilities'
         ));
     }
 
