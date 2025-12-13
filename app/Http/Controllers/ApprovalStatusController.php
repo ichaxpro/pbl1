@@ -95,7 +95,7 @@ class ApprovalStatusController extends Controller
         // Count totals
         $stats = [
             'requested' => $merged->where('status', 'requested')->count(),
-            'approved' => $merged->where('status', 'approved')->count(),
+            'approved' => $merged->whereIn('status', ['approved', 'accepted'])->count(),
             'declined' => $merged->where('status', 'rejected')->count()
         ];
 

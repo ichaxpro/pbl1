@@ -135,7 +135,7 @@ class ContentManagementController extends Controller
     public function approve(Request $request, $table, $id)
     {
         DB::table($table)->where('id', $id)->update([
-            'status' => 'approved',
+            'status' => DB::raw("'accepted'"),
             'approved_by' => auth()->id(),
         ]);
 
@@ -146,7 +146,7 @@ class ContentManagementController extends Controller
     public function reject(Request $request, $table, $id)
     {
         DB::table($table)->where('id', $id)->update([
-            'status' => 'rejected',
+            'status' => DB::raw("'rejected'"),
             'rejected_by' => auth()->id(),
             'note_admin' => $request->note_admin,
         ]);

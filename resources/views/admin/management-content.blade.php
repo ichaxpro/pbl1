@@ -148,7 +148,7 @@
                                 <td>
                                     @php
                                         $statusClass = 'requested';
-                                        if($content->status == 'approved') $statusClass = 'accepted';
+                                        if(in_array($content->status, ['approved','accepted'])) $statusClass = 'accepted';
                                         if($content->status == 'rejected') $statusClass = 'rejected';
                                     @endphp
                                     <span class="tag {{ $statusClass }}">
