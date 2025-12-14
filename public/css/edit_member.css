@@ -12,6 +12,7 @@
 .edit-header {
     background: #003C45;
     padding: 20px 30px;
+    margin-bottom: -5px;
     border: 1px solid #cdd6df;
     width: 560px;
     position: relative;
@@ -26,14 +27,14 @@
 
 /* Form */
 .edit-form {
-    margin-top: 40px;
+    max-width: 560px;
 }
 
 /* Label */
 .form-label {
     display: block;
     font-size: 16px;
-    margin-bottom: 8px;
+    margin-bottom: 0px;
     color: #000;
 }
 
@@ -44,7 +45,7 @@
     border: none;
     padding: 14px;
     border-radius: 4px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     font-size: 16px;
     width: 525px;
 }
@@ -117,4 +118,22 @@
 .close-btn:hover {
     color: #ffcccc;
     transform: scale(1.1);
+}
+
+.edit-container {
+    position: relative; /* penting */
+}
+
+/* Tombol Save */
+.btn-save {
+    position: absolute;
+    bottom: 25px;
+    right: 20px;
+    margin-top: 20px;
+    margin-right: 36px !important;
+    float: none !important;
+}
+
+.edit-form {
+    padding-bottom: 80px;
 }

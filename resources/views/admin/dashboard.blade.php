@@ -140,7 +140,10 @@
                     </div>
 
                     <!-- Add Member -->
-                    <div class="bg-white card rounded-xl shadow-sm p-6 cursor-pointer transition-all duration-200">
+<div
+    onclick="openAddMember()"
+    class="bg-white card rounded-xl shadow-sm p-6 cursor-pointer transition-all duration-200 hover:scale-105"
+>
                         <div class="flex flex-col items-center justify-center h-full text-gray-800">
                             <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-3">
                                 <i class="fas fa-user-plus text-blue-600 text-xl"></i>
@@ -334,6 +337,21 @@
             });
         });
     </script>
+    <script>
+
+function openAddMember() {
+    document.getElementById('addMemberModal').classList.remove('hidden');
+    document.getElementById('addMemberOverlay').classList.remove('hidden');
+}
+
+function closeAddMember() {
+    document.getElementById('addMemberModal').classList.add('hidden');
+    document.getElementById('addMemberOverlay').classList.add('hidden');
+}
+</script>
+
+
+@include('admin.add_member_modal')
 
 </body>
 

@@ -174,6 +174,35 @@ class ContentManagementController extends Controller
         return back()->with('success', 'Content rejected');
     }
 
+    // --------------------- Delete ---------------------
+    public function destroy(Request $request, $table, $id)
+    {
+        $allowedTables = ['news', 'activities', 'facilities', 'publications'];
+
+        if (!in_array($table, $allowedTables)) {
+            abort(403);
+        }
+
+        $query = DB::table($table);
+
+        // For news, delete by slug
+        if ($table === 'news') {
+            $query->where('slug', $id);
+        } else {
+            $query->where('id', $id);
+        }
+
+        // Only allow delete if accepted or rejected
+        $content = $query->first();
+        if (!$content || !in_array($content->status, ['accepted', 'rejected'])) {
+            abort(403, 'Cannot delete requested content');
+        }
+
+        $query->delete();
+
+        return back()->with('success', 'Content deleted successfully');
+    }
+
     // --------------------- Preview Content (UPDATED) ---------------------
     public function preview(Request $request, $table, $id)
     {
@@ -182,14 +211,15 @@ class ContentManagementController extends Controller
         if (!in_array($table, $allowedTables)) {
             abort(404);
         }
-        
+
         // Menentukan nama route publik yang benar dan parameter
         switch ($table) {
             case 'news':
                 $routeName = 'news.show';
                 // Get the slug from the news table
                 $item = DB::table('news')->where('id', $id)->first();
-                if (!$item) abort(404);
+                if (!$item)
+                    abort(404);
                 $routeParam = ['slug' => $item->slug];
                 break;
             case 'activities':
