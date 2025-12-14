@@ -16,6 +16,8 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\OperatorContentController;
 
 use App\Http\Controllers\AddPublicationController;
+use App\Http\Controllers\AddNewsController;
+use App\Http\Controllers\NewsController;
 use App\Models\Activity;
 
 use App\Http\Controllers\ActivityController;
@@ -119,9 +121,14 @@ Route::get('/sidebar-operator', function () {
 Route::get('/sidebar-collapse', function () {
     return view('admin/sidebar_collapse');
 });
-Route::get('/news', function () {
-    return view('news/news_page');
-});
+
+// NEWS PAGE
+Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
+
+// Route::get('/news', function () {
+//     return view('news/news_page');
+// });
 
 Route::get('/publications', function () {
     return view('publications/page_publication');
@@ -213,9 +220,19 @@ Route::get('/news_detail', function () {
 //     return view('admin/user_management');
 // });
 
-Route::get('/add-news', function () {
-    return view('operator/addNews');
-});
+// Route::get('/add-news', function () {
+//     return view('operator/addNews');
+// });
+Route::middleware(['auth'])
+    ->prefix('operator')
+    ->group(function () {
+
+        Route::get('/news/add', [AddNewsController::class, 'create'])
+            ->name('operator.news.create');
+
+        Route::post('/news/add', [AddNewsController::class, 'store'])
+            ->name('operator.news.store');
+    });
 
 Route::get('/approval-status', [ApprovalStatusController::class, 'index'])
     ->name('operator.approval_status');

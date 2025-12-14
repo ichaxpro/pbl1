@@ -140,7 +140,8 @@
                             </a>
 
                             <!-- Add News -->
-                            <a href="{{ url('/add-news') }}" class="{{ Request::is('add-news') ? 'active' : '' }}">
+                            <a href="{{ route('operator.news.create') }}"
+                                class="{{ request()->routeIs('operator.news.create') ? 'active' : '' }}">
                                 <div
                                     class="bg-white card rounded-xl shadow-sm p-6 cursor-pointer transition-all duration-200">
                                     <div class="flex flex-col items-center text-gray-800">
