@@ -61,7 +61,7 @@ class AddNewsController extends Controller
         ]);
 
         return redirect()
-            ->route('operator.news.create')
+            ->route('operator.approval_status')
             ->with('success', 'News submitted and waiting for admin review.');
     }
 }
