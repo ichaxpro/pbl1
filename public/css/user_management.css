@@ -190,16 +190,18 @@
     margin: 40px auto;
     font-family: "Poppins", sans-serif;
     color: #0f1724;
-    padding: 0 20px;
+    padding: 24px;
     overflow: hidden;
 }
 
 /* Header */
 .edit-header {
     background: #003C45;
-    padding: 20px 30px;
-    border: 1px solid #cdd6df;
-    width: 600px;
+    padding: 16px 24px;
+    border-bottom: 1px solid #cdd6df;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .edit-header h2 {
@@ -211,7 +213,7 @@
 
 /* Form */
 .edit-form {
-    margin-top: 40px;
+    margin-top: 10px;
     width: 650px;
 }
 
@@ -303,6 +305,7 @@
     width: 600px;
     max-width: 95%;
     border-radius: 10px;
+    overflow: hidden;
     display: none;
     z-index: 9999;
 }

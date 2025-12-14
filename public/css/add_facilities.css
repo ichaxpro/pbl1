@@ -6,6 +6,10 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* Background luar */
 .outer-bg {
     width: 100%;
