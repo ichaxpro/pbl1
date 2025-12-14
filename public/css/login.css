@@ -3,6 +3,10 @@
     font-family: Arial, sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
     margin: 0;
     background-color: #ffffff;

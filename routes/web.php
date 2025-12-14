@@ -20,6 +20,7 @@ use App\Http\Controllers\AddNewsController;
 use App\Http\Controllers\NewsController;
 use App\Models\Activity;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\ActivityPublicController;
 
 Route::get('/profile/activity', [ActivityController::class, 'index'])
     ->name('profile.activity');
@@ -62,7 +63,9 @@ Route::get('/navbar', function () {
 
 Route::get('/publications/article/{id}', [PublicationArticleController::class, 'show'])->name('publications.show');
 Route::get('/publications/article/preview/{id}', [PublicationArticleController::class, 'show1'])->name('publications.show1');
+Route::get('/publications/download/{id}', [PublicationArticleController::class, 'download'])->name('publications.download');
 Route::get('/facilities/{id}', [FacilityPublicController::class, 'show'])->name('facilities.show');
+Route::get('/activities/{id}', [ActivityPublicController::class, 'show'])->name('activities.show');
 
 
     Route::get('/activity/create', [AddActivityController::class, 'create'])->name('activity.create');
@@ -122,8 +125,32 @@ Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
 //     return view('news/news_page');
 // });
 
-Route::get('/publications', function () {
-    $publications = \App\Models\Publication::orderBy('created_at', 'desc')->get();
+Route::get('/publications', function (\Illuminate\Http\Request $request) {
+    $query = \App\Models\Publication::where('status', 'accepted');
+
+    // Search functionality
+    if ($request->has('search') && $request->search) {
+        $searchTerm = $request->search;
+        $query->where(function($q) use ($searchTerm) {
+            $q->where('title', 'ILIKE', '%' . $searchTerm . '%')
+              ->orWhere('author', 'ILIKE', '%' . $searchTerm . '%');
+        });
+    }
+
+    // Filter by year
+    if ($request->has('year') && $request->year) {
+        $query->whereYear('created_at', $request->year);
+    }
+
+    // Sort functionality
+    $sortOrder = $request->get('sort', 'newest');
+    if ($sortOrder === 'oldest') {
+        $query->orderBy('created_at', 'asc');
+    } else {
+        $query->orderByDesc('created_at');
+    }
+
+    $publications = $query->get();
     return view('publications.page_publication', compact('publications'));
 });
 

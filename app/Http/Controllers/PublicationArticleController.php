@@ -33,7 +33,27 @@ class PublicationArticleController extends Controller
         }
         
         // Kirim item ke view
-        return view('publications.page_publication_article', ['publication' => $publicationItem]);
+        return view('publications.page_publication_article', ['publication' => $publicationItem, 'isPreview' => $isPreview]);
+    }
+
+    public function download($id)
+    {
+        $publication = DB::table('publications')->where('id', $id)->where('status', 'accepted')->first();
+        
+        if (!$publication) {
+            abort(404);
+        }
+
+        // The file_url is stored as 'storage/publications/filename.pdf'
+        // Convert to actual storage path: 'storage/app/public/publications/filename.pdf'
+        $relativePath = str_replace('storage/', '', $publication->file_url);
+        $fullPath = storage_path('app/public/' . $relativePath);
+
+        if (!file_exists($fullPath)) {
+            abort(404, 'File not found on disk');
+        }
+
+        return response()->download($fullPath);
     }
 }
 

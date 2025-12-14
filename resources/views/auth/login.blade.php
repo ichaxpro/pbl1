@@ -26,8 +26,10 @@
 
             <!-- LOGOS -->
             <div class="login-logos">
+                <a href="{{ route('homepage') }}">
                 <img src="/images/Jti_polinema.png">
                 <img src="/images/logo_dt1.png">
+                </a>
             </div>
 
             <!-- LOGIN BOX -->

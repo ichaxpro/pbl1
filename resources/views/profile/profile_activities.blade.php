@@ -32,10 +32,7 @@
     </div>
 </div>
 
-<button class="arrow right" onclick="scrollActivities(1)">&#8250;</button>
 
-<div class="fade-left"></div>
-<div class="fade-right"></div>
 </div>
 </div>
 
