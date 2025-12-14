@@ -154,7 +154,7 @@
                 </div>
 
                 <!-- === Second Row: Approval & Notifications === -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
 
                     <!-- Approval Status -->
                     <div class="bg-white card rounded-xl shadow-sm p-6 border border-gray-100 lg:col-span-2">
@@ -209,7 +209,7 @@
                     </div>
 
                     <!-- Notification -->
-                    <div class="bg-white card rounded-xl shadow-sm p-6 border border-gray-100">
+                    <!-- <div class="bg-white card rounded-xl shadow-sm p-6 border border-gray-100">
                         <h3 class="text-lg font-semibold text-gray-800 mb-6">Notification</h3>
                         <div class="space-y-4">
                             <div class="flex items-start space-x-3 p-3 bg-blue-50 rounded-lg border border-blue-100">
@@ -234,7 +234,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Monthly Statistic -->
                     <div class="bg-white card rounded-xl shadow-sm p-6 border border-gray-100 lg:col-span-2">
