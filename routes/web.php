@@ -19,7 +19,6 @@ use App\Http\Controllers\AddPublicationController;
 use App\Http\Controllers\AddNewsController;
 use App\Http\Controllers\NewsController;
 use App\Models\Activity;
-
 use App\Http\Controllers\ActivityController;
 
 Route::get('/profile/activity', [ActivityController::class, 'index'])
@@ -131,7 +130,8 @@ Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
 // });
 
 Route::get('/publications', function () {
-    return view('publications/page_publication');
+    $publications = \App\Models\Publication::orderBy('created_at', 'desc')->get();
+    return view('publications.page_publication', compact('publications'));
 });
 
 Route::get('/add-activities', [AddActivityController::class, 'create']);

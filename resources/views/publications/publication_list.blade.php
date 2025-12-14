@@ -6,7 +6,7 @@
         <div class="publication-container">
 
             {{-- Display accepted publications from database --}}
-            @forelse ($publications as $publication)
+            @foreach ($publications as $publication)
                 @if ($publication->status === 'accepted')
                     <a href="{{ route('publications.show', $publication->id) }}" style="text-decoration: none; color: inherit;">
                         <div class="publication-item">
@@ -28,7 +28,7 @@
                     </a>
                     <hr>
                 @endif
-            @endfor
+            @endforeach
 
         </div>
 
