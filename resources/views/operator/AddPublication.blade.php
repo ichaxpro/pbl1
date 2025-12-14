@@ -43,16 +43,19 @@
                     <textarea id="title" name="title" placeholder="Write the title here"></textarea>
 
                     <!-- Author -->
-                    <label for="author">Author</label>
+                    <label for="title">Author</label>
                     <textarea id="author" name="author" placeholder="Author(s) name"></textarea>
 
                     <!-- Date -->
-                    <label for="date">Date</label>
-                    <input type="date" id="date" name="date" class="form-input date-input">
+                    <div class="form-group date-group">
+                        <label for="title">Date</label>
+                        <input type="date" id="date" name="date" class="form-input date-input">
+                    </div>
 
-                    <!-- Abstract (Quill) -->
-                    <label for="contents">Abstract</label>
-                    <div id="editor-container"></div>
+                    <div class="form-group">
+                        <label for="title">Abstract</label>
+                        <div id="editor-container"></div>
+                    </div>
 
                     <!-- Hidden input that will receive Quill HTML -->
                     <input type="hidden" id="contents" name="contents">

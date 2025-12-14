@@ -205,6 +205,11 @@ input#content {
     background: #359b6f;
 }
 
+.form-input.date-input {
+    width: 100%;
+    display: block;
+}
+
 /* Responsive Design */
 /* Tablet */
 @media (max-width: 900px) {
@@ -313,6 +318,15 @@ input#content {
     margin-right: 8px;
     color: #0f5f68;
 }
+
+.form-group {
+    width: 100%;
+}
+
+.form-group.date-group {
+    margin-bottom: 35px; /* atur jarak di sini */
+}
+
 
 .field-hint {
     font-size: 12px;
@@ -576,6 +590,7 @@ input#content {
     text-align: center;
     padding: 20px;
     transition: all 0.3s ease;
+    margin: 30px auto; 
 }
 
 .upload-box:hover {
