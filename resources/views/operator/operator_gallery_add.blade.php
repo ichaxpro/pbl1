@@ -27,7 +27,6 @@
 <main class="flex-1 overflow-y-auto px-8 py-6">
     <div class="main-content">
         <div class="content-body">
-
             <div class="content-form">
                 <div class="add-publication-container">
 

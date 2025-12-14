@@ -72,7 +72,9 @@
 
                     <!-- Buttons -->
                     <div class="btn-group">
-                        <button type="button" class="btn cancel">Cancel</button>
+                        <a href="{{ route('operator.approval_status') }}" class="btn cancel">
+                            Cancel
+                        </a>
                         <button type="submit" class="btn save">Save</button>
                     </div>
 

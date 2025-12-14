@@ -11,14 +11,25 @@ class UserManagementController extends Controller
     public function index(Request $request)
     {
         $search = $request->search;
+        $filterRole = $request->role;
+        $filterStatus = $request->status;
 
-        $members = Member::when($search, function ($query) use ($search) {
-            $query->where('name', 'ILIKE', "%$search%")
-                ->orWhere('email', 'ILIKE', "%$search%")
-                ->orWhere('role', 'ILIKE', "%$search%");
-        })->paginate(10);
+        $members = Member::query()
+            ->when($search, function ($query) use ($search) {
+                $query->where('name', 'ILIKE', "%$search%")
+                    ->orWhere('email', 'ILIKE', "%$search%")
+                    ->orWhere('role', 'ILIKE', "%$search%");
+            })
+            ->when($filterRole, function ($query) use ($filterRole) {
+                $query->where('role', $filterRole);
+            })
+            ->when($filterStatus, function ($query) use ($filterStatus) {
+                $query->where('status', $filterStatus);
+            })
+            ->paginate(10)
+            ->withQueryString(); // biar pagination tetap bawa query
 
-        return view('admin.user_management', compact('members', 'search'));
+        return view('admin.user_management', compact('members', 'search', 'filterRole', 'filterStatus'));
     }
 
     public function store(Request $request)
@@ -60,21 +71,21 @@ class UserManagementController extends Controller
     }
 
     public function update(Request $request, $id)
-    {   
+    {
         $request->validate([
-        'name'   => 'required|string|max:255',
-        'email'  => 'required|email|unique:members,email,' . $id,
-        'role'   => 'required|in:admin,operator',
-        'status' => 'required|in:active,nonactive',
-    ]);
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:members,email,' . $id,
+            'role' => 'required|in:admin,operator',
+            'status' => 'required|in:active,nonactive',
+        ]);
 
-$member = Member::findOrFail($id);
-$member->update([
-    'name' => $request->name,
-    'email' => $request->email,
-    'role' => $request->role,
-    'status' => $request->status,
-]);
+        $member = Member::findOrFail($id);
+        $member->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => $request->role,
+            'status' => $request->status,
+        ]);
 
 
         return back()->with('success', 'Member updated.');
