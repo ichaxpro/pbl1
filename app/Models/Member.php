@@ -2,22 +2,42 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Str;
 
 class Member extends Authenticatable
 {
+    // WAJIB untuk UUID
+    public $incrementing = false;
+    protected $keyType = 'string';
+
     protected $fillable = [
-        'name', 'password', 'email', 'role', 'photo_url', 
-        'sinta_link', 'position_id', 'created_at', 'updated_at'
+        'id',
+        'name',
+        'password',
+        'email',
+        'role',
+        'photo_url',
+        'sinta_link',
+        'position_id',
+        'status'
     ];
 
     protected $hidden = ['password'];
 
-    public $incrementing = false;
-    protected $keyType = 'string';
+    // AUTO GENERATE UUID
+    protected static function boot()
+    {
+        parent::boot();
 
-    // Relationship ke Position - METHOD NAME: position()
+        static::creating(function ($model) {
+            if (!$model->id) {
+                $model->id = (string) Str::uuid();
+            }
+        });
+    }
+
+    // Relationship ke Position
     public function position()
     {
         return $this->belongsTo(Position::class);

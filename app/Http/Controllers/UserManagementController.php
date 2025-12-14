@@ -21,21 +21,40 @@ class UserManagementController extends Controller
         return view('admin.user_management', compact('members', 'search'));
     }
 
-    public function store(Request $request)
-    {
-        Member::create([
-            'id' => Str::uuid(),
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt('default123'),  // or ask for input
-            'role' => $request->role,
-            'status' => 'active',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+public function store(Request $request)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:members,email',
+        'role' => 'required|string|in:admin,operator',
+        'position_id' => 'required|uuid',
+        'photo' => 'nullable|image|max:2048',
+    ]);
 
-        return back()->with('success', 'Member added.');
+    // Upload photo
+    $photoUrl = 'images/LabStructure/default.png';
+    if ($request->hasFile('photo')) {
+        $file = $request->file('photo');
+        $filename = time() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('images/LabStructure'), $filename);
+        $photoUrl = 'images/LabStructure/' . $filename;
     }
+
+    Member::create([
+        'id' => Str::uuid(),
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => bcrypt('default123'),
+        'role' => $request->role,
+        'position_id' => $request->position_id,
+        'photo_url' => $photoUrl,
+        'status' => 'active',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+
+    return back()->with('success', 'Member added.');
+}
 
     public function update(Request $request, $id)
     {

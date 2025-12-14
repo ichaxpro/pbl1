@@ -23,6 +23,7 @@ class ContentManagementController extends Controller
             $contentItems->push(
                 new ContentItem([
                     'id' => $item->id,
+                    'slug' => $item->slug,
                     'title' => $item->title,
                     'type' => 'news',
                     'date' => $item->created_at,
@@ -135,7 +136,16 @@ class ContentManagementController extends Controller
     // --------------------- Approve ---------------------
     public function approve(Request $request, $table, $id)
     {
-        DB::table($table)->where('id', $id)->update([
+        $query = DB::table($table);
+
+        // For news, use slug to avoid uuid cast issues
+        if ($table === 'news') {
+            $query->where('slug', $id);
+        } else {
+            $query->where('id', $id);
+        }
+
+        $query->update([
             'status' => DB::raw("'accepted'"),
             'approved_by' => auth()->id(),
         ]);
@@ -146,7 +156,16 @@ class ContentManagementController extends Controller
     // --------------------- Reject ---------------------
     public function reject(Request $request, $table, $id)
     {
-        DB::table($table)->where('id', $id)->update([
+        $query = DB::table($table);
+
+        // For news, use slug to avoid uuid cast issues
+        if ($table === 'news') {
+            $query->where('slug', $id);
+        } else {
+            $query->where('id', $id);
+        }
+
+        $query->update([
             'status' => DB::raw("'rejected'"),
             'rejected_by' => auth()->id(),
             'note_admin' => $request->note_admin,

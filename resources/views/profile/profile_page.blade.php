@@ -11,7 +11,7 @@
     @include('profile/background')
     @include('profile/profile_vision_mission')
     @include('profile/research_focus')
-   <x-laboratory-structure />
+<x-laboratory-structure :head="$head" :researchers="$researchers" />
     @include('profile.profile_activities', ['activities' => $activities])
     @include('profile/profile_facilities', ['facilities' => $facilities])
     @include('footer')
