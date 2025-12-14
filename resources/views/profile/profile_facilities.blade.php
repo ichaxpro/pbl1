@@ -7,13 +7,13 @@
     <div class="facilities-wrapper no-left" id="facilitiesWrapper">
 
         {{-- Tombol panah hanya akan muncul jika ada fasilitas --}}
-        @if ($facilities && count($facilities) > 0)
+            @if (isset($facilities) && $facilities->count() > 0)        
             <button class="fac-arrow left" onclick="scrollFacilities(-1)">&#8249;</button>
         @endif
 
         <div class="facilities-container" id="facilitiesSlider">
             {{-- MENGGANTI DUMMY ARRAY DENGAN DATA DARI CONTROLLER ($facilities) --}}
-            @forelse ($facilities as $facility)
+            @forelse ($facilities ?? [] as $facility)
                 <div class="facility-card">
                     <div class="facility-thumb">
                         {{-- SESUAIKAN nama kolom gambar jika berbeda (misalnya ->image_path) --}}
@@ -35,7 +35,7 @@
             
         </div>
         
-        @if ($facilities && count($facilities) > 0)
+        @if (isset($facilities) && $facilities->count() > 0)
             <button class="fac-arrow right" onclick="scrollFacilities(1)">&#8250;</button>
             <div class="fac-fade-left"></div>
             <div class="fac-fade-right"></div>

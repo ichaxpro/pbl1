@@ -22,7 +22,7 @@ use App\Models\Activity;
 use App\Http\Controllers\ActivityController;
 
 Route::get('/profile/activity', [ActivityController::class, 'index'])
-    ->name('profile.profile.activities');
+    ->name('profile.activity');
 use App\Http\Controllers\FacilityListController;
 use App\Http\Controllers\PublicationArticleController;
 use App\Http\Controllers\FacilityPublicController;
@@ -32,6 +32,11 @@ use App\Http\Controllers\PublicationListController;
 // Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/lab-structure', [LaboratoryStructureController::class, 'index']);
+
+Route::get('/profile', [ActivityController::class, 'profile']);
+
+Route::get('/profile', [ActivityController::class, 'profile']);
+
 
 // Route::get('/dashboard', [DashboardController::class, 'index'])
 //     ->middleware('auth')
@@ -107,7 +112,6 @@ Route::get('/profile', function () {
 
     return view('profile.profile_page', compact('activities'));
 });
-Route::get('/profile', [FacilityListController::class, 'index']);
 
 Route::get('/sidebar-admin', function () {
     return view('admin/sidebar');
