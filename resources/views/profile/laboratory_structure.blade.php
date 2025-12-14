@@ -1,5 +1,3 @@
-@props(['head', 'researchers'])
-
 <link rel="stylesheet" type="text/css" href="{{ asset('css/laboratory_structure.css') }}"/>
 <section img src="images/LabDT/gedung-sipil.png" alt="background" class="lab-structure">
     <h2 class="section-title">LABORATORY STRUCTURE</h2>
