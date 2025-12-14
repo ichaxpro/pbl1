@@ -35,9 +35,6 @@ Route::get('/lab-structure', [LaboratoryStructureController::class, 'index']);
 
 Route::get('/profile', [ActivityController::class, 'profile']);
 
-Route::get('/profile', [ActivityController::class, 'profile']);
-
-
 // Route::get('/dashboard', [DashboardController::class, 'index'])
 //     ->middleware('auth')
 //     ->name('dashboard');
@@ -103,16 +100,6 @@ Route::get('/lab_description', function () {
 
 Route::get('/footer', function () {
     return view('footer');
-});
-
-Route::get('/profile', function () {
-    $activities = Activity::where('status', 'accepted')
-        ->orderBy('created_at', 'desc')
-        ->get();
-    
-    $facilities = \App\Models\Facility::where('status', 'accepted')->get();
-
-    return view('profile.profile_page', compact('activities', 'facilities'));
 });
 
 Route::get('/sidebar-admin', function () {
