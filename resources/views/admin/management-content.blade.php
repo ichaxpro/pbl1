@@ -134,7 +134,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-            
+
                     <tbody>
                         @foreach ($contents as $content)
                             <tr>
@@ -144,65 +144,100 @@
                                 <td>
                                     <span class="tag operator">{{ $content->operator_name }}</span>
                                 </td>
-            
+
                                 <td>
                                     @php
                                         $statusClass = 'requested';
-                                        if(in_array($content->status, ['approved','accepted'])) $statusClass = 'accepted';
-                                        if($content->status == 'rejected') $statusClass = 'rejected';
+                                        if (in_array($content->status, ['approved', 'accepted']))
+                                            $statusClass = 'accepted';
+                                        if ($content->status == 'rejected')
+                                            $statusClass = 'rejected';
                                     @endphp
                                     <span class="tag {{ $statusClass }}">
                                         {{ ucfirst($content->status) }}
                                     </span>
                                 </td>
-            
+
                                 <td>{{ $content->note_admin ?? '-' }}</td>
-            
+
                                 <td class="action-cell">
                                     <div>
                                         <div class="action-buttons">
                                             <!-- Preview Button -->
                                             <a href="{{ route('admin.content.preview', [$content->table, $content->id]) }}"
-                                               class="view-btn" title="Preview Content">
-                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="1.5">
-                                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                                                    <circle cx="12" cy="12" r="3"/>
+                                                class="view-btn" title="Preview Content">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4b5563"
+                                                    stroke-width="1.5">
+                                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                    <circle cx="12" cy="12" r="3" />
                                                 </svg>
                                             </a>
-                                            
+
                                             @if($content->status === 'requested')
-                                                                                        <!-- Approve Button -->
-                                                                                        @php
-                                                                                                $contentKey = $content->table === 'news' && $content->slug ? $content->slug : $content->id;
-                                                                                        @endphp
-                                                                                        <form action="{{ url('/admin/content/' . $content->table . '/' . $contentKey . '/approve') }}"
-                                                      method="POST" class="inline-form">
+                                                <!-- Approve Button -->
+                                                @php
+                                                    $contentKey = $content->table === 'news' && $content->slug ? $content->slug : $content->id;
+                                                @endphp
+                                                <form
+                                                    action="{{ url('/admin/content/' . $content->table . '/' . $contentKey . '/approve') }}"
+                                                    method="POST" class="inline-form">
                                                     @csrf
                                                     <button type="submit" class="success" title="Approve">
-                                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="1.5">
-                                                            <polyline points="20 6 9 17 4 12"/>
+                                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                            stroke="#4b5563" stroke-width="1.5">
+                                                            <polyline points="20 6 9 17 4 12" />
                                                         </svg>
                                                     </button>
                                                 </form>
-                                                
+
                                                 <!-- Reject Form -->
                                                 <div class="reject-form-wrapper">
-                                                    <button class="danger reject-toggle" title="Reject" data-id="{{ $contentKey }}">
-                                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="1.5">
-                                                            <line x1="18" y1="6" x2="6" y2="18"/>
-                                                            <line x1="6" y1="6" x2="18" y2="18"/>
+                                                    <button class="danger reject-toggle" title="Reject"
+                                                        data-id="{{ $contentKey }}">
+                                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                            stroke="#4b5563" stroke-width="1.5">
+                                                            <line x1="18" y1="6" x2="6" y2="18" />
+                                                            <line x1="6" y1="6" x2="18" y2="18" />
                                                         </svg>
                                                     </button>
                                                     <form id="reject-form-{{ $contentKey }}"
-                                                          action="{{ url('/admin/content/' . $content->table . '/' . $contentKey . '/reject') }}"
-                                                          method="POST" 
-                                                          style="display: none; position: absolute; right: 10px; background: white; padding: 10px; border: 1px solid #ddd; border-radius: 8px; z-index: 10;">
+                                                        action="{{ url('/admin/content/' . $content->table . '/' . $contentKey . '/reject') }}"
+                                                        method="POST"
+                                                        style="display: none; position: absolute; right: 10px; background: white; padding: 10px; border: 1px solid #ddd; border-radius: 8px; z-index: 10;">
                                                         @csrf
-                                                        <input type="text" name="note_admin" placeholder="Reason for rejection" 
-                                                               class="border px-2 py-1 text-sm rounded" style="min-width: 200px;">
-                                                        <button type="submit" class="ml-2 text-red-600 text-sm font-medium">Submit</button>
+                                                        <input type="text" name="note_admin" placeholder="Reason for rejection"
+                                                            class="border px-2 py-1 text-sm rounded" style="min-width: 200px;">
+                                                        <button type="submit"
+                                                            class="ml-2 text-red-600 text-sm font-medium">Submit</button>
                                                     </form>
                                                 </div>
+                                            @endif
+
+                                            @if(in_array($content->status, ['accepted', 'rejected']))
+
+                                                @php
+                                                    $contentKey = $content->table === 'news' && $content->slug
+                                                        ? $content->slug
+                                                        : $content->id;
+                                                @endphp
+
+                                                <form
+                                                    action="{{ route('admin.content.delete', [$content->table, $contentKey]) }}"
+                                                    method="POST" class="inline-form"
+                                                    onsubmit="return confirm('Are you sure you want to permanently delete this content?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="danger" title="Delete">
+                                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                            stroke="#ef4444" stroke-width="1.5">
+                                                            <polyline points="3 6 5 6 21 6" />
+                                                            <path d="M19 6l-1 14H6L5 6" />
+                                                            <path d="M10 11v6" />
+                                                            <path d="M14 11v6" />
+                                                        </svg>
+                                                    </button>
+                                                </form>
+
                                             @endif
                                         </div>
                                     </div>
@@ -247,22 +282,22 @@
 
                                 <td class="actions flex gap-2"> -->
 
-                                    <!-- Preview -->
-                                    <!-- <a href="/admin/content/{{ $content->table }}/{{ $content->id }}"
+            <!-- Preview -->
+            <!-- <a href="/admin/content/{{ $content->table }}/{{ $content->id }}"
                                         class="text-blue-600 underline">
                                         Preview
                                     </a> -->
 
-                                    <!-- Approve -->
-                                    <!-- <form
+            <!-- Approve -->
+            <!-- <form
                                         action="{{ url('/admin/content/' . $content->table . '/' . $content->id . '/approve') }}"
                                         method="POST">
                                         @csrf
                                         <button class="text-green-600">Approve</button>
                                     </form> -->
 
-                                    <!-- Reject -->
-                                    <!-- <form
+            <!-- Reject -->
+            <!-- <form
                                         action="{{ url('/admin/content/' . $content->table . '/' . $content->id . '/reject') }}"
                                         method="POST" class="flex items-center gap-1">
                                         @csrf
@@ -275,7 +310,7 @@
                             </tr>
                         @endforeach
                     </tbody> -->
-                    <!-- <thead>
+            <!-- <thead>
                             <tr>
                                 <th style="width: 20%;">Title</th>
                                 <th style="width: 15%;">Type</th>
@@ -287,9 +322,9 @@
                             </tr>
                         </thead> -->
 
-                    <!-- <tbody> -->
-                    <!-- Row 1 -->
-                    <!-- <tr>
+            <!-- <tbody> -->
+            <!-- Row 1 -->
+            <!-- <tr>
                                 <td>Getting Started with Web Development</td>
                                 <td>Article</td>
                                 <td>11/11/2025</td>
@@ -310,8 +345,8 @@
                                 </td>
                             </tr> -->
 
-                    <!-- Row 2 -->
-                    <!-- <tr>
+            <!-- Row 2 -->
+            <!-- <tr>
                                 <td>Advanced CSS Techniques</td>
                                 <td>Tutorial</td>
                                 <td>01/11/2025</td>
@@ -332,8 +367,8 @@
                                 </td>
                             </tr> -->
 
-                    <!-- Row 3 -->
-                    <!-- <tr>
+            <!-- Row 3 -->
+            <!-- <tr>
                                 <td>JavaScript Best Practices</td>
                                 <td>Guide</td>
                                 <td>06/11/2025</td>
@@ -365,8 +400,8 @@
                                 </td>
                             </tr> -->
 
-                    <!-- Row 4 -->
-                    <!-- <tr>
+            <!-- Row 4 -->
+            <!-- <tr>
                                 <td>Responsive Design Principles</td>
                                 <td>Article</td>
                                 <td>05/11/2025</td>
@@ -387,8 +422,8 @@
                                 </td>
                             </tr> -->
 
-                    <!-- Row 5 -->
-                    <!-- <tr>
+            <!-- Row 5 -->
+            <!-- <tr>
                                 <td>Backend Security Basics</td>
                                 <td>Whitepaper</td>
                                 <td>03/11/2025</td>
@@ -419,8 +454,8 @@
                                     </div>
                                 </td>
                             </tr> -->
-                    <!-- </tbody> -->
-                <!-- </table>
+            <!-- </tbody> -->
+            <!-- </table>
             </div> -->
             <!-- PAGINATION -->
             <div class="mt-4">

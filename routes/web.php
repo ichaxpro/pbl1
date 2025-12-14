@@ -277,6 +277,8 @@ Route::post('/admin/content/{table}/{id}/approve', [ContentManagementController:
 Route::post('/admin/content/{table}/{id}/reject', [ContentManagementController::class, 'reject']);
 Route::get('/admin/content/{table}/{id}/preview', [ContentManagementController::class, 'preview'])
     ->name('admin.content.preview');
+Route::delete('/admin/content/{table}/{id}/delete', [ContentManagementController::class, 'destroy']
+)->name('admin.content.delete');
 
 // Route::get('/content-management', [OperatorContentController::class, 'index'])
 //     ->name('operator.content_management');
