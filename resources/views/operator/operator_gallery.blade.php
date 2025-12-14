@@ -113,16 +113,21 @@
                                                     <td>{{ \Carbon\Carbon::parse($img->created_at)->format('d M Y') }}</td>
                                                     <td class="action-cell flex gap-2">
                                                         <!-- COPY BUTTON -->
-                                                        <button onclick="copyToClipboard('{{ $img->url }}')"
-                                                            class="btn-action btn-copy" title="Copy URL">📋</button>
+                                                         <button type="submit" style="background:none;border:none;" onclick="copyToClipboard('{{ $img->url }}')">
+                                                            <img src="{{ asset('images/Copy.png') }}" class="icon-btn" alt="copy">
+                                                        </button>
+                                                        <!-- <button onclick="copyToClipboard('{{ $img->url }}')"
+                                                            class="btn-action btn-copy" title="Copy URL">📋</button> -->
 
                                                         <!-- DELETE BUTTON -->
                                                         <form action="{{ route('gallery.delete', $img->id) }}" method="POST"
                                                             onsubmit="return confirm('Delete this image?')">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button class="btn-action btn-delete"
-                                                                title="Delete">🗑️</button>
+                                    
+                                                            <button type="submit" style="background:none;border:none;">
+                                                                <img src="{{ asset('images/delete-icon.png') }}" class="icon-btn" alt="Delete">
+                                                            </button>
                                                         </form>
                                                     </td>
                                                 </tr>

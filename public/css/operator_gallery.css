@@ -13,6 +13,16 @@
     font-size: 14px;
 }
 
+.icon-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    width: 24px;
+    display: inline-block;
+    margin: 0;
+}
+
 /* Placeholder Foto Profil (Bulat Kosong) */
 .profile-placeholder {
     width: 35px;

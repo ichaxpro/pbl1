@@ -43,7 +43,7 @@
                     <!-- <a href="{{ url('/operator_gallery') }}" 
                        class="menu-item {{ Request::is('operator_gallery') ? 'active' : '' }}"> -->
                     <a href="{{ url('/operator_gallery') }}" 
-                       class="menu-item {{ Request::is('gallery') ? 'active' : '' }}">
+                       class="menu-item {{ Request::is('operator_gallery') ? 'active' : '' }}">
                         <img src="{{ asset('images/gallery_icon.png') }}" class="sidebar-icon">
                         <span>Gallery</span>
                     </a>
