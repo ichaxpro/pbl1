@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
@@ -15,12 +16,20 @@ class NewsController extends Controller
         return view('news.news_page', compact('news'));
     }
 
-    public function show(string $slug)
+    public function show(Request $request, string $slug)
     {
-        $news = News::where('slug', $slug)
-            ->where('status', 'accepted')
-            ->firstOrFail();
+        // Check if this is a preview request from admin
+        $isPreview = $request->has('preview') && auth()->check();
 
-        return view('news.news_detail_page', compact('news'));
+        $query = News::where('slug', $slug);
+
+        // If not preview mode, only show accepted news
+        if (!$isPreview) {
+            $query->where('status', 'accepted');
+        }
+
+        $news = $query->firstOrFail();
+
+        return view('news.news_detail_page', compact('news', 'isPreview'));
     }
 }

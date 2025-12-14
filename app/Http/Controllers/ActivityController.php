@@ -12,7 +12,7 @@ class ActivityController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('profil_activity', compact('activities'));
+        return view('profile.profile_activities', compact('activities'));
     }
 }
 

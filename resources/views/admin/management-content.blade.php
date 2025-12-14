@@ -170,35 +170,37 @@
                                                 </svg>
                                             </a>
                                             
-                                            <!-- Approve Button -->
-                                            <form action="{{ url('/admin/content/' . $content->table . '/' . $content->id . '/approve') }}"
-                                                  method="POST" class="inline-form">
-                                                @csrf
-                                                <button type="submit" class="success" title="Approve">
-                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="1.5">
-                                                        <polyline points="20 6 9 17 4 12"/>
-                                                    </svg>
-                                                </button>
-                                            </form>
-                                            
-                                            <!-- Reject Form -->
-                                            <div class="reject-form-wrapper">
-                                                <button class="danger reject-toggle" title="Reject" data-id="{{ $content->id }}">
-                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="1.5">
-                                                        <line x1="18" y1="6" x2="6" y2="18"/>
-                                                        <line x1="6" y1="6" x2="18" y2="18"/>
-                                                    </svg>
-                                                </button>
-                                                <form id="reject-form-{{ $content->id }}"
-                                                      action="{{ url('/admin/content/' . $content->table . '/' . $content->id . '/reject') }}"
-                                                      method="POST" 
-                                                      style="display: none; position: absolute; background: white; padding: 10px; border: 1px solid #ddd; border-radius: 8px; z-index: 10;">
+                                            @if($content->status === 'requested')
+                                                <!-- Approve Button -->
+                                                <form action="{{ url('/admin/content/' . $content->table . '/' . $content->id . '/approve') }}"
+                                                      method="POST" class="inline-form">
                                                     @csrf
-                                                    <input type="text" name="note_admin" placeholder="Reason for rejection" 
-                                                           class="border px-2 py-1 text-sm rounded" style="min-width: 200px;">
-                                                    <button type="submit" class="ml-2 text-red-600 text-sm font-medium">Submit</button>
+                                                    <button type="submit" class="success" title="Approve">
+                                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="1.5">
+                                                            <polyline points="20 6 9 17 4 12"/>
+                                                        </svg>
+                                                    </button>
                                                 </form>
-                                            </div>
+                                                
+                                                <!-- Reject Form -->
+                                                <div class="reject-form-wrapper">
+                                                    <button class="danger reject-toggle" title="Reject" data-id="{{ $content->id }}">
+                                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="1.5">
+                                                            <line x1="18" y1="6" x2="6" y2="18"/>
+                                                            <line x1="6" y1="6" x2="18" y2="18"/>
+                                                        </svg>
+                                                    </button>
+                                                    <form id="reject-form-{{ $content->id }}"
+                                                          action="{{ url('/admin/content/' . $content->table . '/' . $content->id . '/reject') }}"
+                                                          method="POST" 
+                                                          style="display: none; position: absolute; background: white; padding: 10px; border: 1px solid #ddd; border-radius: 8px; z-index: 10;">
+                                                        @csrf
+                                                        <input type="text" name="note_admin" placeholder="Reason for rejection" 
+                                                               class="border px-2 py-1 text-sm rounded" style="min-width: 200px;">
+                                                        <button type="submit" class="ml-2 text-red-600 text-sm font-medium">Submit</button>
+                                                    </form>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </td>

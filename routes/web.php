@@ -22,7 +22,7 @@ use App\Models\Activity;
 use App\Http\Controllers\ActivityController;
 
 Route::get('/profile/activity', [ActivityController::class, 'index'])
-    ->name('profile.activity');
+    ->name('profile.profile.activities');
 use App\Http\Controllers\FacilityListController;
 use App\Http\Controllers\PublicationArticleController;
 use App\Http\Controllers\FacilityPublicController;

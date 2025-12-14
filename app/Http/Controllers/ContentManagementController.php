@@ -164,19 +164,26 @@ class ContentManagementController extends Controller
             abort(404);
         }
         
-        // Menentukan nama route publik yang benar
+        // Menentukan nama route publik yang benar dan parameter
         switch ($table) {
             case 'news':
                 $routeName = 'news.show';
+                // Get the slug from the news table
+                $item = DB::table('news')->where('id', $id)->first();
+                if (!$item) abort(404);
+                $routeParam = ['slug' => $item->slug];
                 break;
             case 'activities':
                 $routeName = 'activities.show';
+                $routeParam = ['id' => $id];
                 break;
             case 'facilities':
                 $routeName = 'facilities.show';
+                $routeParam = ['id' => $id];
                 break;
             case 'publications':
                 $routeName = 'publications.show1';
+                $routeParam = ['id' => $id];
                 break;
             default:
                 abort(404);
@@ -188,7 +195,7 @@ class ContentManagementController extends Controller
         }
 
         // 1. Generate URL ke halaman publik yang sebenarnya
-        $publicUrl = route($routeName, ['id' => $id]);
+        $publicUrl = route($routeName, $routeParam);
 
         // 2. Tambahkan parameter query 'preview=true' ke URL
         $previewUrl = $publicUrl . '?preview=true';
