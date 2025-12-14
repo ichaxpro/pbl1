@@ -84,7 +84,7 @@
                             <div class="content-body">
                                 <h1>Gallery</h1>
 
-                                <div class="actions-toolbar">
+                                <!-- <div class="actions-toolbar">
                                     <div class="search-input">
                                         <span class="icon-placeholder-small"></span>
                                         <input type="text" placeholder="Search...">
@@ -92,7 +92,29 @@
                                     <a href="/operator/gallery/create" class="btn-add"
                                         style="text-decoration: none; display: flex; align-items: center; justify-content: center; padding: 0 16px;">+
                                         Add</a>
+                                </div> -->
+
+                                <div class="toolbar">
+                                    <div class="search-box">
+                                        <img src="{{ asset('images/search_icon.png') }}" class="search-icon">
+                                        <input type="text" name="search" placeholder="Search..." class="search-text">
+                                    </div>
+                                            
+                                    <a href="/operator/gallery/create">
+                                        <button class="btn-add text-[#1E4A52]">
+                                            <span class="plus-icon">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                </svg>
+                                            </span>
+                                            Add
+                                        </button>
+                                    </a>
                                 </div>
+
 
                                 <div class="table-wrapper">
                                     <table>

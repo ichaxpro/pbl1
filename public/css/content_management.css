@@ -70,6 +70,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
+    right: 10px;
 }
 
 .filter-label {
@@ -235,7 +236,6 @@ tbody td {
 .filter-dropdown-menu {
     position: absolute;
     top: 100%;
-    left: 0;
     background: white;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -248,6 +248,7 @@ tbody td {
     min-width: 180px;
     padding: 12px;
     border: 1px solid #eef1f2;
+    right: 10px;
 }
 
 .filter-dropdown.active .filter-dropdown-menu {
