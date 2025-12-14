@@ -33,29 +33,37 @@
 
                     <h2 class="page-title">User Management</h2>
 
-                    <div class="top-bar">
-<form action="{{ route('user.management') }}" method="GET">
-    <div class="search-box">
+         <div class="top-bar flex justify-between items-center gap-4">
+    <!-- Search + Add -->
+<div class="flex items-center gap-2">
+    <form action="{{ route('user.management') }}" method="GET">
         <input type="text" name="search" value="{{ $search }}" placeholder="Search..."
-            class="search-text">
-    </div>
-</form>
+            class="add-btn text-left">
+    </form>
 
-                        <!-- <div class="search-box">
-                            <img src="{{ asset('images/search_icon.png') }}" class="search-icon">
-                            <input type="text" placeholder="Search..." class="search-text">
-                        </div> -->
+    <button class="add-btn" onclick="openModalAdd()">
+        <span class="plus-icon">＋</span> Add
+    </button>
+</div>
 
-                        <button class="add-btn" onclick="openModalAdd()">
-                            <span class="plus-icon">＋</span> Add
-                        </button>
+    <!-- Filter di kanan -->
+    <form action="{{ route('user.management') }}" method="GET" class="flex gap-2 items-center">
+        <select name="role" class="form-select">
+            <option value="">All Types</option>
+            <option value="admin" {{ $filterRole == 'admin' ? 'selected' : '' }}>Admin</option>
+            <option value="operator" {{ $filterRole == 'operator' ? 'selected' : '' }}>Operator</option>
+        </select>
 
-                        <div class="filter-group">
-                            <span class="filter-label">Filters:</span>
-                            <button class="filter-btn">Type</button>
-                            <button class="filter-btn">Status</button>
-                        </div>
-                    </div>
+        <select name="status" class="form-select">
+            <option value="">All Status</option>
+            <option value="active" {{ $filterStatus == 'active' ? 'selected' : '' }}>Active</option>
+            <option value="nonactive" {{ $filterStatus == 'nonactive' ? 'selected' : '' }}>Nonactive</option>
+        </select>
+
+        <button type="submit" class="filter-btn">Filter</button>
+    </form>
+</div>
+
 
                     <div class="table-wrapper">
                         <table class="custom-table">
@@ -201,10 +209,10 @@
                     @csrf
 
                     @if ($errors->any())
-    <div class="bg-red-100 text-red-700 p-2 rounded">
-        {{ $errors->first() }}
-    </div>
-@endif
+                        <div class="bg-red-100 text-red-700 p-2 rounded">
+                            {{ $errors->first() }}
+                        </div>
+                    @endif
 
 
                     <label class="form-label">Name</label>
@@ -363,13 +371,13 @@
         });
 
     </script>
-        @if ($errors->any())
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        openModalAdd();
-    });
-</script>
-@endif
+    @if ($errors->any())
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                openModalAdd();
+            });
+        </script>
+    @endif
 
 
 </body>

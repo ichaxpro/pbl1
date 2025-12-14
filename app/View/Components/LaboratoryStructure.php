@@ -9,19 +9,20 @@ use Illuminate\View\Component;
 
 class LaboratoryStructure extends Component
 {
-    public $head;
-    public $researchers;
+public $heads;
+public $researchers;
 
-    public function __construct()
-    {
-        $this->head = Member::whereHas('position', function ($query) {
-            $query->where('name', 'Head Lab');
-        })->first();
+public function __construct($heads = null, $researchers = null)
+{
+    $this->heads = $heads ?? Member::where('status', 'active')
+        ->whereHas('position', fn($q) => $q->where('name', 'Head Lab'))
+        ->get();
 
-        $this->researchers = Member::whereHas('position', function ($query) {
-            $query->where('name', 'Researcher');
-        })->get();
-    }
+    $this->researchers = $researchers ?? Member::where('status', 'active')
+        ->whereHas('position', fn($q) => $q->where('name', 'Researcher'))
+        ->get();
+}
+
 
     public function render(): View|Closure|string
     {
