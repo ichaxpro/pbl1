@@ -34,7 +34,8 @@
                     <h2 class="page-title">User Management</h2>
 
                     <div class="top-bar">
-                        <form action="{{ route('user.management') }}" method="GET">
+                        <form action="{{ route('user.store') }}" method="POST" class="edit-form"
+                            enctype="multipart/form-data">
                             <div class="search-box">
                                 <input type="text" name="search" value="{{ $search }}" placeholder="Search..."
                                     class="search-text">
@@ -196,25 +197,41 @@
                     <h2>Add Member</h2>
                 </div>
 
-                <form class="edit-form">
+                <form action="{{ route('user.store') }}" method="POST" class="edit-form" enctype="multipart/form-data">
+                    @csrf
+
                     <label class="form-label">Name</label>
-                    <input type="text" class="form-input">
+                    <input type="text" name="name" class="form-input" required>
 
                     <label class="form-label">Email</label>
-                    <input type="email" class="form-input">
+                    <input type="email" name="email" class="form-input" required>
 
                     <div class="row-2">
                         <div class="select-box">
                             <label class="form-label">Role</label>
-                            <select class="form-select">
-                                <option>Admin</option>
-                                <option>User</option>
+                            <select name="role" class="form-select" required>
+                                <option value="admin">Admin</option>
+                                <option value="operator">Operator</option>
                             </select>
                         </div>
                     </div>
 
-                    <button type="button" class="btn-save" onclick="closeModalAdd()">Save</button>
+                    <label class="form-label">Photo</label>
+                    <input type="file" name="photo" class="form-input" accept="image/*">
+
+
+                    <div class="select-box">
+                        <label class="form-label">Position</label>
+                        <select name="position_id" class="form-select" required>
+                            <option value="d209da0d-b183-4f24-9f79-547c79eb6afe">Head Lab</option>
+                            <option value="c1b51b18-7cd4-46dc-85d5-bbab8dc1ac9d">Researcher</option>
+                        </select>
+                    </div>
+
+
+                    <button type="submit" class="btn-save">Save</button>
                 </form>
+
             </div>
         </div>
 
