@@ -58,19 +58,19 @@
                             </div>
                             <div class="filter-option">
                                 <input type="checkbox" id="type-article" data-value="article">
-                                <label for="type-article">Article</label>
+                                <label for="type-article">Activities</label>
                             </div>
                             <div class="filter-option">
                                 <input type="checkbox" id="type-tutorial" data-value="tutorial">
-                                <label for="type-tutorial">Tutorial</label>
+                                <label for="type-tutorial">Facilities</label>
                             </div>
                             <div class="filter-option">
                                 <input type="checkbox" id="type-guide" data-value="guide">
-                                <label for="type-guide">Guide</label>
+                                <label for="type-guide">News</label>
                             </div>
                             <div class="filter-option">
                                 <input type="checkbox" id="type-whitepaper" data-value="whitepaper">
-                                <label for="type-whitepaper">Whitepaper</label>
+                                <label for="type-whitepaper">Publication</label>
                             </div>
                             <div class="filter-actions">
                                 <button class="filter-clear">Clear</button>
@@ -196,7 +196,7 @@
                                                     <form id="reject-form-{{ $contentKey }}"
                                                           action="{{ url('/admin/content/' . $content->table . '/' . $contentKey . '/reject') }}"
                                                           method="POST" 
-                                                          style="display: none; position: absolute; background: white; padding: 10px; border: 1px solid #ddd; border-radius: 8px; z-index: 10;">
+                                                          style="display: none; position: absolute; right: 10px; background: white; padding: 10px; border: 1px solid #ddd; border-radius: 8px; z-index: 10;">
                                                         @csrf
                                                         <input type="text" name="note_admin" placeholder="Reason for rejection" 
                                                                class="border px-2 py-1 text-sm rounded" style="min-width: 200px;">

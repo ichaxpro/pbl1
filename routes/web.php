@@ -60,6 +60,10 @@ Route::get('/navbar', function () {
     return view('/navbar');
 });
 
+Route::get('/topbar', function () {
+    return view('admin/topbar');
+});
+
 Route::get('/publications/article/{id}', [PublicationArticleController::class, 'show'])->name('publications.show');
 Route::get('/publications/article/preview/{id}', [PublicationArticleController::class, 'show1'])->name('publications.show1');
 Route::get('/facilities/{id}', [FacilityPublicController::class, 'show'])->name('facilities.show');

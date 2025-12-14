@@ -16,7 +16,7 @@
                 <li>
                     <a href="{{ route('operator.dashboard') }}" 
                        class="menu-item {{ Request::is('operator/dashboard') ? 'active' : '' }}">
-                        <img src="{{ asset('images/Dashboard_Logo.png') }}" class="icon">
+                        <img src="{{ asset('images/Dashboard_Logo.png') }}" class="sidebar-icon">
                         <span>Dashboard</span>
                     </a>
                 </li>
@@ -24,27 +24,27 @@
                 <li>
                     <a href="{{ route('operator.content_management') }}" 
                        class="menu-item {{ Request::is('content-management') ? 'active' : '' }}">
-                        <img src="{{ asset('images/Management_Content_Logo.png') }}" class="icon2">
+                        <img src="{{ asset('images/Management_Content_Logo.png') }}" class="sidebar-icon">
                         <span>Management Content</span>
                     </a>
                 </li>
             
                 <li>
-                    <a href="{{ url('/approval_status') }}" 
-                       class="menu-item {{ Request::is('approval_status') ? 'active' : '' }}">
+                    <!-- <a href="{{ url('/approval_status') }}" 
+                       class="menu-item {{ Request::is('approval_status') ? 'active' : '' }}"> -->
                     <a href="{{ url('/approval-status') }}" 
                        class="menu-item {{ Request::is('approval-status') ? 'active' : '' }}">
-                        <img src="{{ asset('images/approval_icon.png') }}" class="icon4">
+                        <img src="{{ asset('images/approval_icon.png') }}" class="sidebar-icon">
                         <span>Approval Status</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ url('/operator_gallery') }}" 
-                       class="menu-item {{ Request::is('operator_gallery') ? 'active' : '' }}">
+                    <!-- <a href="{{ url('/operator_gallery') }}" 
+                       class="menu-item {{ Request::is('operator_gallery') ? 'active' : '' }}"> -->
                     <a href="{{ url('/operator_gallery') }}" 
                        class="menu-item {{ Request::is('gallery') ? 'active' : '' }}">
-                        <img src="{{ asset('images/gallery_icon.png') }}" class="icon4">
+                        <img src="{{ asset('images/gallery_icon.png') }}" class="sidebar-icon">
                         <span>Gallery</span>
                     </a>
                 </li>

@@ -1,36 +1,42 @@
+/* ========================
+   RESET
+======================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
 
+/* ========================
+   SIDEBAR BASE
+======================== */
 .sidebar {
     width: 300px;
-    height: 100%;
-    background-color: #215C66;
     height: 100vh;
+    background-color: #215C66;
     padding: 20px;
     color: white;
     font-family: "Poppins", sans-serif;
+    flex-shrink: 0;
 }
 
-
+/* ========================
+   HEADER
+======================== */
 .sidebar-header {
     display: flex;
-    align-items: center;   /* vertically center text + logo */
-    gap: 12px;             /* spacing between logo and text */
-    margin-bottom: 2px;
-    text-align: left;      /* make text align normally */
+    align-items: center;
+    gap: 12px;
+    text-align: left;
 }
 
 .logo {
     width: 80px;
-    margin-bottom: -17px;
     margin-top: -10px;
+    margin-bottom: -17px;
 }
 
-.header-text{
-    margin-bottom: -10;
+.header-text {
     margin-left: -13px;
 }
 
@@ -40,80 +46,114 @@
     margin-bottom: 4px;
 }
 
-
 .subtitle {
     font-size: 12px;
     opacity: 0.8;
-    margin-bottom: -10px;
 }
 
+/* ========================
+   DIVIDER
+======================== */
+.divider {
+    border: none;
+    border-top: 2px solid rgba(255, 255, 255, 0.4);
+    margin: 20px 0;
+}
 
+/* ========================
+   MENU
+======================== */
 .menu {
     list-style: none;
     padding: 0;
 }
 
-
 .menu-item {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 2px 15px;
+    padding: 10px 15px;
     border-radius: 8px;
     margin-bottom: 8px;
     cursor: pointer;
     transition: 0.2s ease;
     opacity: 0.8;
+    color: white;
+    text-decoration: none;
+    height: 40px;            /* KUNCI TINGGI */
+    padding: 0 15px;
 }
 
-
-.menu-item:hover {
-    background-color: #063F46;
-    opacity: 1;
-}
-
-
+.menu-item:hover,
 .menu-item.active {
     background-color: #063F46;
     opacity: 1;
 }
 
-
-.icon {
-    width: 27px;
+/* ========================
+   ICONS
+======================== */
+.sidebar-icon {
+    width: 35px;
+    height: 35px;
     object-fit: contain;
-    margin-bottom: -4px;
-    margin-top: -4px;
+    flex-shrink: 0;
 }
 
-.icon2 {
-    font-size: 18px;
-    width : 55px;
-    margin-left: -15px;
-    margin-top: -13px;
-    margin-bottom: -13px;
-    margin-right: -10px;
-}
-    
 
-.icon3 {
-    font-size: 18px;
-    width : 35px;
-    margin-top: -8px;
-    margin-bottom: -8px;
-    margin-left: -5px;
-}
+/* ========================
+   TABLET RESPONSIVE
+======================== */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 240px;
+        padding: 15px;
+    }
 
-.icon4 {
-    font-size: 18px;
-    width : 35px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-left: -5px;
+    .logo {
+        width: 70px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .subtitle {
+        font-size: 11px;
+    }
 }
 
-.divider {
-    border: none;
-    border-top: 2px solid rgba(255, 255, 255, 0.4);
-    margin: 20px 0;
+/* ========================
+   MOBILE RESPONSIVE
+======================== */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 80px;
+        padding: 10px;
+    }
+
+    .header-text {
+        display: none;
+    }
+
+    .menu-item span {
+        display: none;
+    }
+
+    .menu-item {
+        justify-content: center;
+        padding: 12px;
+    }
+
+    .sidebar-icon {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+
+    .divider {
+        margin: 15px 0;
+    }
 }

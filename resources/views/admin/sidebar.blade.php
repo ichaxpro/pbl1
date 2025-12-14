@@ -14,7 +14,7 @@
         <li>
             <a href="{{ route('admin.dashboard') }}"
                 class="menu-item {{ Request::is('admin/dashboard') ? 'active' : '' }}">
-                <img src="{{ asset('images/Dashboard_Logo.png') }}" class="icon">
+                <img src="{{ asset('images/Dashboard_Logo.png') }}" class="sidebar-icon">
                 <span>Dashboard</span>
             </a>
         </li>
@@ -22,7 +22,7 @@
         <li>
             <a href="{{ route('content.management') }}"
                 class="menu-item {{ Request::routeIs('content.management') ? 'active' : '' }}">
-                <img src="{{ asset('images/Management_Content_Logo.png') }}" class="icon2">
+                <img src="{{ asset('images/Management_Content_Logo.png') }}" class="sidebar-icon">
                 <span>Management Content</span>
             </a>
             <!-- <a href="{{ url('/content-management-admin') }}" 
@@ -35,7 +35,7 @@
         <li>
             <a href="{{ url('/user-management') }}"
                 class="menu-item {{ Request::is('user-management') ? 'active' : '' }}">
-                <img src="{{ asset('images/approval_icon.png') }}" class="icon4">
+                <img src="{{ asset('images/approval_icon.png') }}" class="sidebar-icon">
                 <span>User Management</span>
             </a>
         </li>

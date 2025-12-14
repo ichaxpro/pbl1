@@ -1,4 +1,6 @@
-/* TOPBAR */
+/* =========================
+   BASE TOPBAR (DESKTOP)
+========================= */
 .topbar {
     width: 100%;
     background: #215C66;
@@ -7,68 +9,150 @@
     justify-content: flex-end;
     align-items: center;
     color: white;
-    font-family: Poppins, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Kanan */
 .topbar-right {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-/* Nama user */
+/* USER NAME */
 .user-name {
     font-size: 16px;
     margin-right: 5px;
     font-family: 'Montserrat', sans-serif;
+    white-space: nowrap;
 }
 
-/* Avatar */
+/* AVATAR */
 .user-avatar {
     width: 35px;
     height: 35px;
     border-radius: 50%;
     cursor: pointer;
     border: 2px solid white;
+    object-fit: cover;
 }
 
-/* Dropdown */
+/* =========================
+   DROPDOWN
+========================= */
+.user-menu {
+    position: relative;
+}
+
 .dropdown {
     position: absolute;
-    top: 55px;
-    right: 20px;
+    top: 48px;
+    right: 0;
     background: white;
     border-radius: 6px;
     padding: 8px 0;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     min-width: 140px;
+
     display: none;
-
     opacity: 0;
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     transition: 0.2s ease;
-
     z-index: 9999;
 }
 
-/* Muncul */
 .dropdown.show {
     display: block;
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Item dropdown */
 .dropdown-item {
     display: block;
+    width: 100%;
     padding: 8px 15px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+
     color: #333;
-    text-decoration: none;
     font-size: 14px;
     font-family: 'Montserrat', sans-serif;
 }
 
 .dropdown-item:hover {
     background: #f0f0f0;
+}
+
+/* =========================
+   TABLET (≤ 1024px)
+========================= */
+@media (max-width: 1024px) {
+
+    .topbar {
+        padding: 8px 16px;
+    }
+
+    .user-name {
+        font-size: 14px;
+    }
+
+    .user-avatar {
+        width: 32px;
+        height: 32px;
+    }
+
+    .dropdown-item {
+        font-size: 13px;
+    }
+}
+
+/* =========================
+   MOBILE (≤ 768px)
+========================= */
+@media (max-width: 768px) {
+
+    .topbar {
+        padding: 8px 12px;
+    }
+
+    /* fokus ke avatar saja */
+    .user-name {
+        display: none;
+    }
+
+    .user-avatar {
+        width: 34px;
+        height: 34px;
+    }
+
+    .dropdown {
+        top: 44px;
+        min-width: 120px;
+    }
+}
+
+/* =========================
+   SMALL MOBILE (≤ 480px)
+========================= */
+@media (max-width: 480px) {
+
+    .topbar {
+        padding: 6px 10px;
+    }
+
+    .user-avatar {
+        width: 30px;
+        height: 30px;
+        border-width: 1.5px;
+    }
+
+    .dropdown {
+        top: 40px;
+    }
+
+    .dropdown-item {
+        font-size: 12px;
+        padding: 7px 12px;
+    }
 }
