@@ -202,7 +202,7 @@
                     <!-- ============================= -->
                     <!-- ROW 2: Approval + Notification -->
                     <!-- ============================= -->
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
 
                         <div class="bg-white card rounded-xl shadow-sm p-6 border border-gray-100 lg:col-span-2">
                             <h3 class="text-lg font-semibold text-gray-800 mb-6 section-title">
@@ -256,7 +256,7 @@
                         </div>
 
                         <!-- Notification -->
-                        <div class="bg-white card rounded-xl shadow-sm p-6 border border-gray-100">
+                        <!-- <div class="bg-white card rounded-xl shadow-sm p-6 border border-gray-100">
                             <h3 class="text-lg font-semibold text-gray-800 mb-6">Notification</h3>
                             <div class="space-y-4">
                                 <div
@@ -283,7 +283,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- Monthly Statistic -->
                         <div class="bg-white card rounded-xl shadow-sm p-6 border border-gray-100 lg:col-span-2">
