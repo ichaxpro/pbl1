@@ -13,16 +13,18 @@
 <!-- <body>  -->
 
 @if(isset($isPreview) && $isPreview)
-    <div style="background: #FEF3C7; border-left: 4px solid #F59E0B; padding: 16px; margin: 20px auto; max-width: 1200px; border-radius: 8px;">
+    <div
+        style="background: #FEF3C7; border-left: 4px solid #F59E0B; padding: 16px; margin: 20px auto; max-width: 1200px; border-radius: 8px;">
         <div style="display: flex; align-items: center; gap: 12px;">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                <circle cx="12" cy="12" r="3"/>
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
             </svg>
             <div>
                 <strong style="color: #92400E; font-size: 16px;">Preview Mode</strong>
                 <p style="color: #78350F; margin: 4px 0 0 0; font-size: 14px;">
-                    You are viewing this content in preview mode. Status: <span style="font-weight: 600;">{{ ucfirst($news->status) }}</span>
+                    You are viewing this content in preview mode. Status: <span
+                        style="font-weight: 600;">{{ ucfirst($news->status) }}</span>
                 </p>
             </div>
         </div>
