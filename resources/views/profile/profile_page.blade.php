@@ -12,7 +12,7 @@
     @include('profile/profile_vision_mission')
     @include('profile/research_focus')
    <x-laboratory-structure />
-    @include('profile/profile_activities')
+    @include('profile.profile_activities', ['activities' => $activities])
     @include('profile/profile_facilities')
     @include('footer')
 </body>
