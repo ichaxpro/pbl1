@@ -25,6 +25,11 @@ class Member extends Authenticatable
 
     protected $hidden = ['password'];
 
+    protected $casts = [
+    'id' => 'string',
+];
+
+
     // AUTO GENERATE UUID
     protected static function boot()
     {

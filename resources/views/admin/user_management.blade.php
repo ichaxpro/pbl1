@@ -34,13 +34,13 @@
                     <h2 class="page-title">User Management</h2>
 
                     <div class="top-bar">
-                        <form action="{{ route('user.store') }}" method="POST" class="edit-form"
-                            enctype="multipart/form-data">
-                            <div class="search-box">
-                                <input type="text" name="search" value="{{ $search }}" placeholder="Search..."
-                                    class="search-text">
-                            </div>
-                        </form>
+<form action="{{ route('user.management') }}" method="GET">
+    <div class="search-box">
+        <input type="text" name="search" value="{{ $search }}" placeholder="Search..."
+            class="search-text">
+    </div>
+</form>
+
                         <!-- <div class="search-box">
                             <img src="{{ asset('images/search_icon.png') }}" class="search-icon">
                             <input type="text" placeholder="Search..." class="search-text">
@@ -200,8 +200,19 @@
                 <form action="{{ route('user.store') }}" method="POST" class="edit-form" enctype="multipart/form-data">
                     @csrf
 
+                    @if ($errors->any())
+    <div class="bg-red-100 text-red-700 p-2 rounded">
+        {{ $errors->first() }}
+    </div>
+@endif
+
+
                     <label class="form-label">Name</label>
                     <input type="text" name="name" class="form-input" required>
+
+                    <label class="form-label">Sinta Link</label>
+                    <input type="url" name="sinta_link" class="form-input"
+                        placeholder="https://sinta.kemdikbud.go.id/authors/xxxx">
 
                     <label class="form-label">Email</label>
                     <input type="email" name="email" class="form-input" required>
@@ -214,20 +225,19 @@
                                 <option value="operator">Operator</option>
                             </select>
                         </div>
+
+                        <div class="select-box">
+                            <label class="form-label">Position</label>
+                            <select name="position_id" class="form-select" required>
+                                <option value="d209da0d-b183-4f24-9f79-547c79eb6afe">Head Lab</option>
+                                <option value="c1b51b18-7cd4-46dc-85d5-bbab8dc1ac9d">Researcher</option>
+                            </select>
+                        </div>
                     </div>
+
 
                     <label class="form-label">Photo</label>
                     <input type="file" name="photo" class="form-input" accept="image/*">
-
-
-                    <div class="select-box">
-                        <label class="form-label">Position</label>
-                        <select name="position_id" class="form-select" required>
-                            <option value="d209da0d-b183-4f24-9f79-547c79eb6afe">Head Lab</option>
-                            <option value="c1b51b18-7cd4-46dc-85d5-bbab8dc1ac9d">Researcher</option>
-                        </select>
-                    </div>
-
 
                     <button type="submit" class="btn-save">Save</button>
                 </form>
@@ -267,7 +277,7 @@
                     <label>Status</label>
                     <select name="status" id="edit_status" class="form-select">
                         <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
+                        <option value="nonactive">Inactive</option>
                     </select>
 
                     <button type="submit" class="btn-save">Save</button>
@@ -352,8 +362,16 @@
             this.submit();
         });
 
-
     </script>
+        @if ($errors->any())
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        openModalAdd();
+    });
+</script>
+@endif
+
+
 </body>
 
 </html>

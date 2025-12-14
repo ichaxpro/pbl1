@@ -18,33 +18,27 @@ class ActivityController extends Controller
         return view('profile.profile_activities', compact('activities'));
     }
 
-    // 🔥 INI YANG KAMU BUTUHKAN
-    public function profile()
-    {
-        $activities = Activity::where('status', 'accepted')
-            ->orderBy('created_at', 'desc')
-            ->get();
+public function profile()
+{
+    $activities = Activity::where('status', 'accepted')->get();
+    $facilities = Facility::where('status', 'accepted')->get();
 
-        $facilities = Facility::where('status', 'accepted')->get();
+    // Head Lab (HANYA ACTIVE)
+    $head = Member::where('status', 'active')
+        ->whereHas('position', fn ($q) => $q->where('name', 'Head Lab'))
+        ->first();
 
-        $members = Member::where('status', 'active')->get();
+    // Researchers (HANYA ACTIVE)
+    $researchers = Member::where('status', 'active')
+        ->whereHas('position', fn ($q) => $q->where('name', 'Researcher'))
+        ->get();
 
-        // Ambil head lab
-        $head = Member::whereHas('position', function ($query) {
-            $query->where('name', 'Head Lab');
-        })->first();
+    return view('profile.profile_page', compact(
+        'activities',
+        'facilities',
+        'head',
+        'researchers'
+    ));
+}
 
-        // Ambil researchers
-        $researchers = Member::whereHas('position', function ($query) {
-            $query->where('name', 'Researcher');
-        })->get();
-
-        return view('profile.profile_page', compact(
-            'activities',
-            'facilities',
-            'members',
-            'head',       // tambahkan
-            'researchers' // tambahkan
-        ));
-    }
 }
