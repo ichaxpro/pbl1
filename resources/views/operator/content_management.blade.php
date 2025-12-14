@@ -108,10 +108,10 @@
                         <div class="overlay-box">
                             <h2 class="overlay-header">Add Content</h2>
 
-                            <a href="{{ asset('addActivities') }}" class="overlay-btn">Add Activities</a>
-                            <a href="{{ asset('addPublications') }}" class="overlay-btn">Add Publication</a>
-                            <a href="{{ asset('addNews') }}" class="overlay-btn">Add News</a>
-                            <a href="{{ asset('addFacilities') }}" class="overlay-btn">Add Facilities</a>
+                            <a href="{{ url('/add-activities') }}" class="overlay-btn">Add Activities</a>
+                            <a href="{{ route('operator.publication.create') }}" class="overlay-btn">Add Publication</a>
+                            <a href="{{ route('operator.news.create') }}" class="overlay-btn">Add News</a>
+                            <a href="{{ url('/add-facilities') }}" class="overlay-btn">Add Facilities</a>
 
                             <button class="close-overlay">Close</button>
                         </div>
