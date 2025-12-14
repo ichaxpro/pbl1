@@ -106,11 +106,13 @@ Route::get('/footer', function () {
 });
 
 Route::get('/profile', function () {
-    $activities = Activity::where('status', 'accepted') // ✅ INI YANG BENAR
+    $activities = Activity::where('status', 'accepted')
         ->orderBy('created_at', 'desc')
         ->get();
+    
+    $facilities = \App\Models\Facility::where('status', 'accepted')->get();
 
-    return view('profile.profile_page', compact('activities'));
+    return view('profile.profile_page', compact('activities', 'facilities'));
 });
 
 Route::get('/sidebar-admin', function () {
