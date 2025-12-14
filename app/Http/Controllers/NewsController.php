@@ -7,11 +7,33 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $news = News::where('status', 'accepted')
-            ->orderByDesc('published_at')
-            ->get();
+        $query = News::where('status', 'accepted');
+
+        // Search functionality
+        if ($request->has('search') && $request->search) {
+            $searchTerm = $request->search;
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('title', 'ILIKE', '%' . $searchTerm . '%')
+                  ->orWhere('content', 'ILIKE', '%' . $searchTerm . '%');
+            });
+        }
+
+        // Filter by year
+        if ($request->has('year') && $request->year) {
+            $query->whereYear('published_at', $request->year);
+        }
+
+        // Sort functionality
+        $sortOrder = $request->get('sort', 'newest');
+        if ($sortOrder === 'oldest') {
+            $query->orderBy('published_at', 'asc');
+        } else {
+            $query->orderByDesc('published_at');
+        }
+
+        $news = $query->get();
 
         return view('news.news_page', compact('news'));
     }

@@ -52,6 +52,11 @@
     margin-bottom: 5px;
 }
 
+.news-title a{
+    text-decoration: none;
+    color: #000;
+}
+
 .news-date {
     font-size: 12px;
     letter-spacing: 1px;

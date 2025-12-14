@@ -19,6 +19,6 @@ class FacilityPublicController extends Controller
 
         $facility = $query->firstOrFail();
 
-        return view('facilities.show', compact('facility'));
+        return view('facilities.show', compact('facility', 'isPreview'));
     }
 }

@@ -108,10 +108,10 @@
                         <div class="overlay-box">
                             <h2 class="overlay-header">Add Content</h2>
 
-                            <a href="{{ url('/add-activities') }}" class="overlay-btn">Add Activities</a>
+                            <a href="{{ route('activity.create') }}" class="overlay-btn">Add Activities</a>
                             <a href="{{ route('operator.publication.create') }}" class="overlay-btn">Add Publication</a>
                             <a href="{{ route('operator.news.create') }}" class="overlay-btn">Add News</a>
-                            <a href="{{ url('/add-facilities') }}" class="overlay-btn">Add Facilities</a>
+                            <a href="{{ route('facility.create') }}" class="overlay-btn">Add Facilities</a>
 
                             <button class="close-overlay">Close</button>
                         </div>
@@ -201,17 +201,19 @@
                                     </td>
 
                                     <td class="actions">
-                                        <form action="{{ route('operator.content.delete', [$item->table, $item->id]) }}"
-                                            method="POST"
-                                            onsubmit="return confirm('Are you sure you want to delete this content?');">
+                                        @if ($item->status == 'rejected')
+                                            <form action="{{ route('operator.content.delete', [$item->table, $item->id]) }}"
+                                                method="POST"
+                                                onsubmit="return confirm('Are you sure you want to delete this content?');">
 
-                                            @csrf
-                                            @method('DELETE')
+                                                @csrf
+                                                @method('DELETE')
 
-                                            <button type="submit" style="background:none;border:none;">
-                                                <img src="{{ asset('images/delete-icon.png') }}" class="icon-btn">
-                                            </button>
-                                        </form>
+                                                <button type="submit" style="background:none;border:none;">
+                                                    <img src="{{ asset('images/delete-icon.png') }}" class="icon-btn" alt="Delete">
+                                                </button>
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
