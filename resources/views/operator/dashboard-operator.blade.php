@@ -320,17 +320,17 @@
                                     </div>
                                 </div>
 
-                                <!-- Member Stat -->
+                                <!-- Facility Stat -->
                                 <div>
                                     <div class="flex justify-between items-center mb-1">
-                                        <span class="text-sm text-gray-600">Member</span>
-                                        <span class="text-sm font-medium text-gray-800">{{ $monthlyMembers }}</span>
+                                        <span class="text-sm text-gray-600">Facility</span>
+                                        <span class="text-sm font-medium text-gray-800">{{ $monthlyFacilities }}</span>
                                     </div>
                                     <div class="w-full bg-gray-200 rounded-full h-2">
                                         @php
-                                            $memberWidth = $totalMembers > 0 ? min(($monthlyMembers / $totalMembers) * 100, 100) : 0;
+                                            $facilityWidth = $totalFacilities > 0 ? min(($monthlyFacilities / $totalFacilities) * 100, 100) : 0;
                                         @endphp
-                                        <div class="bg-purple-500 h-2 rounded-full" style="width: {{ $memberWidth }}%">
+                                        <div class="bg-purple-500 h-2 rounded-full" style="width: {{ $facilityWidth }}%">
                                         </div>
                                     </div>
                                 </div>

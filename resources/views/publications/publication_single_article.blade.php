@@ -8,17 +8,17 @@
             <div class="publication-item">
                 
                 {{-- Detail Publikasi Utama --}}
-                <p class="article-category">Journal of Temporal Anomalies</p>
-                <h2 class="article-title">The Paradoxical Effect of Yesterday's Coffee on Tomorrow's Existential Dread</h2>
+                <p class="article-category">Journal of Information Technology</p>
+                <h2 class="article-title">{{ $publication->title }}</h2>
                 
                 {{-- Detail Tambahan --}}
                 <div class="article-details">
                     
                     {{-- Penulis (Tetap di baris pertama detail) --}}
-                    <span class="article-authors">Dr. Elara Vance, Dr. Silas Kael, Prof. Chronos</span> 
+                    <span class="article-authors">{{ $publication->author ?? 'Author Unknown' }}</span> 
                     
                     {{-- Link DOI (Dipaksa ke baris baru oleh CSS) --}}
-                    <a href="https://doi.paradox.999" class="article-link">https://doi.paradox.999</a>
+                    <a href="{{ $publication->file_url }}" class="article-link">{{ $publication->file_url }}</a>
                 </div>
                 
                 <hr>
@@ -28,13 +28,15 @@
 
                 {{-- Bacaan Panjang (Isi Abstrak) --}}
                 <p class="article-abstract-content">
-                    Penelitian ini mencoba untuk menghitung tingkat elastisitas realitas saat terpapar getaran frekuensi rendah yang dihasilkan dari pemikiran seekor bebek karet. Hipotesis utama menyatakan bahwa jika Anda mencoba menghitung jumlah pasir di Mars sambil mendengarkan lagu pop tahun 90-an secara terbalik, waktu akan berputar 3 derajat ke kiri, menyebabkan semua kucing di galaksi mulai berbicara dalam bahasa Sanskerta kuno. Data dikumpulkan melalui observasi telepati pada jam 03:00 WIB, tepat saat lemari es mulai berbisik tentang teori konspirasi alien yang menculik kaus kaki kiri. Hasilnya menunjukkan korelasi terbalik antara konsumsi acar timun dan kemampuan untuk memprediksi jatuhnya dadu kosmik. Disimpulkan bahwa untuk menjaga stabilitas dimensi, semua sikat gigi harus disetel ke mode vibrasi yang sama pada hari Selasa.
+                    {{ $publication->abstract ?? 'No description available.' }}
                 </p>
                 
                 {{-- KATA KUNCI DENGAN LABEL BOLD --}}
-                <p class="article-abstract-content">
-                    <strong>Kata Kunci:</strong> Paradoks Temporal, Bebek Karet, Kuantum, Existential Dread, Kucing Sanskerta.
-                </p>
+                @if(property_exists($publication, 'keywords') && $publication->keywords)
+                    <p class="article-abstract-content">
+                        <strong>Kata Kunci:</strong> {{ $publication->keywords }}
+                    </p>
+                @endif
                 
             </div>
 

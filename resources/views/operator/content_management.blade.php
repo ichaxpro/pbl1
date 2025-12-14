@@ -191,7 +191,7 @@
                                     <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d F Y') }}</td>
 
                                     <td>
-                                        @if ($item->status == 'approved')
+                                        @if (in_array($item->status, ['approved', 'accepted']))
                                             <span class="badge approved">Approved</span>
                                         @elseif ($item->status == 'rejected')
                                             <span class="badge rejected">Rejected</span>

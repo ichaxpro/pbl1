@@ -18,19 +18,19 @@ class AdminDashboardController extends Controller
         $yesterday = Carbon::yesterday();
 
         // Total counts
-        $totalNews = News::count();
-        $totalPublications = Publication::count();
-        $totalMembers = Member::count();
+        $totalNews = News::where('status', 'accepted')->count();
+        $totalPublications = Publication::where('status', 'accepted')->count();
+        $totalMembers = Member::where('status', 'active')->count();
         
         // Counts for today
-        $todayNews = News::whereDate('created_at', $today)->count();
-        $todayPublications = Publication::whereDate('created_at', $today)->count();
-        $todayMembers = Member::whereDate('created_at', $today)->count();
+        $todayNews = News::whereDate('created_at', $today)->where('status', 'accepted')->count();
+        $todayPublications = Publication::whereDate('created_at', $today)->where('status', 'accepted')->count();
+        $todayMembers = Member::whereDate('created_at', $today)->where('status', 'active')->count();
         
         // Counts for yesterday
-        $yesterdayNews = News::whereDate('created_at', $yesterday)->count();
-        $yesterdayPublications = Publication::whereDate('created_at', $yesterday)->count();
-        $yesterdayMembers = Member::whereDate('created_at', $yesterday)->count();
+        $yesterdayNews = News::whereDate('created_at', $yesterday)->where('status', 'accepted')->count();
+        $yesterdayPublications = Publication::whereDate('created_at', $yesterday)->where('status', 'accepted')->count();
+        $yesterdayMembers = Member::whereDate('created_at', $yesterday)->where('status', 'active')->count();
         
         // Differences
         $newsDiff = $todayNews - $yesterdayNews;
@@ -92,10 +92,14 @@ class AdminDashboardController extends Controller
         $currentMonth = now()->month;
         $currentYear = now()->year;
 
-        $monthlyNews = News::whereMonth('created_at', $currentMonth)->whereYear('created_at', $currentYear)->count();
-        $monthlyPublications = Publication::whereMonth('created_at', $currentMonth)->whereYear('created_at', $currentYear)->count();
-        $monthlyMembers = Member::whereMonth('created_at', $currentMonth)->whereYear('created_at', $currentYear)->count();
-        $monthlyActivities = Activity::whereMonth('created_at', $currentMonth)->whereYear('created_at', $currentYear)->count();
+        $monthlyNews = News::whereMonth('created_at', $currentMonth)->whereYear('created_at', $currentYear)->where('status', 'accepted')
+            ->count();
+        $monthlyPublications = Publication::whereMonth('created_at', $currentMonth)->whereYear('created_at', $currentYear)->where('status', 'accepted')
+            ->count();
+        $monthlyMembers = Member::whereMonth('created_at', $currentMonth)->whereYear('created_at', $currentYear)->where('status', 'active')
+            ->count();
+        $monthlyActivities = Activity::whereMonth('created_at', $currentMonth)->whereYear('created_at', $currentYear)->where('status', 'accepted')
+            ->count();
 
         return view('admin.dashboard', compact(
             'totalNews',

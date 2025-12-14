@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DTO\ContentItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 
 class ContentManagementController extends Controller
 {
@@ -135,7 +136,7 @@ class ContentManagementController extends Controller
     public function approve(Request $request, $table, $id)
     {
         DB::table($table)->where('id', $id)->update([
-            'status' => 'approved',
+            'status' => DB::raw("'accepted'"),
             'approved_by' => auth()->id(),
         ]);
 
@@ -146,11 +147,53 @@ class ContentManagementController extends Controller
     public function reject(Request $request, $table, $id)
     {
         DB::table($table)->where('id', $id)->update([
-            'status' => 'rejected',
+            'status' => DB::raw("'rejected'"),
             'rejected_by' => auth()->id(),
             'note_admin' => $request->note_admin,
         ]);
 
         return back()->with('success', 'Content rejected');
+    }
+
+    // --------------------- Preview Content (UPDATED) ---------------------
+    public function preview(Request $request, $table, $id)
+    {
+        $allowedTables = ['news', 'activities', 'facilities', 'publications'];
+
+        if (!in_array($table, $allowedTables)) {
+            abort(404);
+        }
+        
+        // Menentukan nama route publik yang benar
+        switch ($table) {
+            case 'news':
+                $routeName = 'news.show';
+                break;
+            case 'activities':
+                $routeName = 'activities.show';
+                break;
+            case 'facilities':
+                $routeName = 'facilities.show';
+                break;
+            case 'publications':
+                $routeName = 'publications.show1';
+                break;
+            default:
+                abort(404);
+        }
+
+        // Stop early if the target route does not exist
+        if (!Route::has($routeName)) {
+            abort(404);
+        }
+
+        // 1. Generate URL ke halaman publik yang sebenarnya
+        $publicUrl = route($routeName, ['id' => $id]);
+
+        // 2. Tambahkan parameter query 'preview=true' ke URL
+        $previewUrl = $publicUrl . '?preview=true';
+
+        // 3. Redirect admin ke URL dengan mode preview
+        return redirect($previewUrl);
     }
 }
