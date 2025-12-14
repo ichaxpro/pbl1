@@ -5,6 +5,7 @@ namespace App\DTO;
 class ContentItem
 {
     public string $id;
+    public ?string $slug;
     public string $title;
     public string $type;
     public string $date;
@@ -16,6 +17,7 @@ class ContentItem
     public function __construct(array $data)
     {
         $this->id = $data['id'];
+        $this->slug = $data['slug'] ?? null;
         $this->title = $data['title'];
         $this->type = $data['type'];
         $this->date = $data['date'];

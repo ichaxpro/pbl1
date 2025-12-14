@@ -171,8 +171,11 @@
                                             </a>
                                             
                                             @if($content->status === 'requested')
-                                                <!-- Approve Button -->
-                                                <form action="{{ url('/admin/content/' . $content->table . '/' . $content->id . '/approve') }}"
+                                                                                        <!-- Approve Button -->
+                                                                                        @php
+                                                                                                $contentKey = $content->table === 'news' && $content->slug ? $content->slug : $content->id;
+                                                                                        @endphp
+                                                                                        <form action="{{ url('/admin/content/' . $content->table . '/' . $contentKey . '/approve') }}"
                                                       method="POST" class="inline-form">
                                                     @csrf
                                                     <button type="submit" class="success" title="Approve">
@@ -184,14 +187,14 @@
                                                 
                                                 <!-- Reject Form -->
                                                 <div class="reject-form-wrapper">
-                                                    <button class="danger reject-toggle" title="Reject" data-id="{{ $content->id }}">
+                                                    <button class="danger reject-toggle" title="Reject" data-id="{{ $contentKey }}">
                                                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="1.5">
                                                             <line x1="18" y1="6" x2="6" y2="18"/>
                                                             <line x1="6" y1="6" x2="18" y2="18"/>
                                                         </svg>
                                                     </button>
-                                                    <form id="reject-form-{{ $content->id }}"
-                                                          action="{{ url('/admin/content/' . $content->table . '/' . $content->id . '/reject') }}"
+                                                    <form id="reject-form-{{ $contentKey }}"
+                                                          action="{{ url('/admin/content/' . $content->table . '/' . $contentKey . '/reject') }}"
                                                           method="POST" 
                                                           style="display: none; position: absolute; background: white; padding: 10px; border: 1px solid #ddd; border-radius: 8px; z-index: 10;">
                                                         @csrf
@@ -917,6 +920,27 @@
                     noDataMessage.textContent = 'No content found matching your filters';
                     tableWrapper.appendChild(noDataMessage);
                 }
+            });
+        });
+
+        // Toggle reject reason form and focus the input
+        document.addEventListener('DOMContentLoaded', function () {
+            const rejectButtons = document.querySelectorAll('.reject-toggle');
+            rejectButtons.forEach((btn) => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const id = this.dataset.id;
+                    const form = document.getElementById(`reject-form-${id}`);
+                    if (!form) return;
+
+                    const isVisible = form.style.display === 'block';
+                    form.style.display = isVisible ? 'none' : 'block';
+
+                    const noteInput = form.querySelector('input[name="note_admin"]');
+                    if (noteInput && !isVisible) {
+                        noteInput.focus();
+                    }
+                });
             });
         });
     </script>
