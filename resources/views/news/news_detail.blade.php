@@ -26,42 +26,10 @@
                 </p>
             </div>
         </div>
-        @if($news->status === 'requested')
-            <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid #FCD34D; display: flex; gap: 12px;">
-                <form action="{{ url('/admin/content/news/' . $news->id . '/approve') }}" method="POST" style="display: inline;">
-                    @csrf
-                    <button type="submit" style="background: #10B981; color: white; padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">
-                        ✓ Approve
-                    </button>
-                </form>
-                <button onclick="showRejectForm()" style="background: #EF4444; color: white; padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">
-                    ✗ Reject
-                </button>
-                <a href="{{ route('content.management') }}" style="background: #6B7280; color: white; padding: 8px 16px; border: none; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: 500;">
-                    ← Back to Management
-                </a>
-            </div>
-            <form id="rejectForm" action="{{ url('/admin/content/news/' . $news->id . '/reject') }}" method="POST" style="display: none; margin-top: 12px; padding: 12px; background: white; border-radius: 6px;">
-                @csrf
-                <input type="text" name="note_admin" placeholder="Enter reason for rejection" required style="width: 100%; padding: 8px; border: 1px solid #D1D5DB; border-radius: 4px; margin-bottom: 8px;">
-                <div style="display: flex; gap: 8px;">
-                    <button type="submit" style="background: #EF4444; color: white; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer;">Submit Rejection</button>
-                    <button type="button" onclick="hideRejectForm()" style="background: #9CA3AF; color: white; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer;">Cancel</button>
-                </div>
-            </form>
-            <script>
-                function showRejectForm() {
-                    document.getElementById('rejectForm').style.display = 'block';
-                }
-                function hideRejectForm() {
-                    document.getElementById('rejectForm').style.display = 'none';
-                }
-            </script>
-        @else
             <a href="{{ route('content.management') }}" style="display: inline-block; margin-top: 12px; background: #6B7280; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 500;">
                 ← Back to Management
             </a>
-        @endif
+        
     </div>
 @endif
 
