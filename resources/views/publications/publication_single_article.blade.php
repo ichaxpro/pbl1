@@ -28,7 +28,7 @@
 
                 {{-- Bacaan Panjang (Isi Abstrak) --}}
                 <p class="article-abstract-content">
-                    {{ $publication->abstract ?? 'No description available.' }}
+                    {!! $publication->abstract ?? 'No description available.' !!}
                 </p>
                 
                 {{-- KATA KUNCI DENGAN LABEL BOLD --}}
