@@ -8,7 +8,7 @@ class ActivityController extends Controller
 {
     public function index()
     {
-        $activities = Activity::where('status', 'approved_by')
+        $activities = Activity::where('status', 'accepted')
             ->orderBy('created_at', 'desc')
             ->get();
 
