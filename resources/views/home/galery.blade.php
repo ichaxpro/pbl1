@@ -9,7 +9,16 @@
     <div class="gallery-wrapper no-left" style="background-color: white">
     <button class="gallery-arrow left" id="btnLeft" onclick="scrollGallery(-1)">&#10094;</button>
 
+    @php
+        $images = glob(public_path('storage/gallery_images/*'));
+    @endphp
+
     <div class="gallery-container" id="gallerySlider">
+    @foreach ($images as $image)
+        <img src="{{ asset('storage/gallery_images/' . basename($image)) }}" alt="Gallery Image">
+    @endforeach
+    </div>
+    <!-- <div class="gallery-container" id="gallerySlider">
         <img src="images/heroSection/1.jpg" alt="Lab 1">
         <img src="images/heroSection/2.jpg" alt="Lab 2">
         <img src="images/heroSection/3.jpg" alt="Lab 3">
@@ -18,7 +27,7 @@
         <img src="images/news/news2.jpeg" alt="Lab 4">
         <img src="images/news/news3.jpeg" alt="Lab 4">
         <img src="images/news/news4.jpeg" alt="Lab 4">
-    </div>
+    </div> -->
 
     <button class="gallery-arrow right" id="btnRight" onclick="scrollGallery(1)">&#10095;</button>
     </div>
