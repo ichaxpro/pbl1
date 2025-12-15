@@ -46,8 +46,6 @@
         class="search-text"
     >
 </form>
-
-
                 <!-- Filters -->
                 <div class="filters">
                     <span class="filter-label">Filters:</span>
