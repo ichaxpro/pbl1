@@ -86,7 +86,7 @@
                     <textarea id="title" name="title" placeholder="Write the title here"></textarea>
 
                     <div class="btn-group">
-                        <a href="{{ route('operator.approval_status') }}" class="btn cancel">
+                        <a href="{{ url('operator/dashboard') }}" class="btn cancel">
                             Cancel
                         </a>
                         <!-- HAPUS ONCLICK DARI SAVE BUTTON! -->
