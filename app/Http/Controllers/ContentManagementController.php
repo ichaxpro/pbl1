@@ -11,6 +11,9 @@ class ContentManagementController extends Controller
 {
     public function index(Request $request)
     {
+
+        // dd($request->all());
+
         $contentItems = collect();
 
         // ---------- NEWS ----------
@@ -105,15 +108,16 @@ class ContentManagementController extends Controller
             });
         }
 
-        // ---------- FILTER BY TYPE ----------
-        if ($request->type) {
-            $contentItems = $contentItems->where('type', $request->type);
-        }
+// ---------- FILTER BY TYPE ----------
+if ($request->filled('type')) {
+    $contentItems = $contentItems->whereIn('type', $request->type);
+}
 
-        // ---------- FILTER BY STATUS ----------
-        if ($request->status) {
-            $contentItems = $contentItems->where('status', $request->status);
-        }
+// ---------- FILTER BY STATUS ----------
+if ($request->filled('status')) {
+    $contentItems = $contentItems->whereIn('status', $request->status);
+}
+
 
         // ---------- SORT ----------
         $contentItems = $contentItems->sortByDesc('date')->values();

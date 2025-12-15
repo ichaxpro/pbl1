@@ -36,11 +36,16 @@
             <!-- TOP BAR -->
             <div class="top-bar">
                 <!-- Search -->
-                <div class="search-box">
-                    <img src="{{ asset('images/search_icon.png') }}" alt="Search" class="search-icon">
-                    <input type="text" placeholder="Search by title, operator..." class="search-text">
-                </div>
-
+                 <form method="GET" action="{{ url()->current() }}" class="search-box">
+    <img src="{{ asset('images/search_icon.png') }}" alt="Search" class="search-icon">
+    <input
+        type="text"
+        name="search"
+        value="{{ request('search') }}"
+        placeholder="Search by title, operator..."
+        class="search-text"
+    >
+</form>
                 <!-- Filters -->
                 <div class="filters">
                     <span class="filter-label">Filters:</span>
