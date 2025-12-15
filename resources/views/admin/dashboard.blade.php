@@ -8,6 +8,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/user_management.css') }}">
 
     <style>
         .card,
@@ -140,10 +141,8 @@
                     </div>
 
                     <!-- Add Member -->
-<div
-    onclick="openAddMember()"
-    class="bg-white card rounded-xl shadow-sm p-6 cursor-pointer transition-all duration-200 hover:scale-105"
->
+                    <div onclick="openAddMember()"
+                        class="bg-white card rounded-xl shadow-sm p-6 cursor-pointer transition-all duration-200 hover:scale-105">
                         <div class="flex flex-col items-center justify-center h-full text-gray-800">
                             <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-3">
                                 <i class="fas fa-user-plus text-blue-600 text-xl"></i>
@@ -152,6 +151,58 @@
                         </div>
                     </div>
                 </div>
+
+
+                <!-- Modal Overlay -->
+                <div id="addMemberOverlay" class="modal-overlay hidden"></div>
+
+      <div id="addMemberModal" class="modal-box hidden">
+    <div class="edit-container">
+
+        <div class="edit-header">
+            <h2>Add Member</h2>
+            <button class="close-btn" onclick="closeAddMember()">×</button> 
+        </div>
+
+        <form action="{{ route('user.store') }}" method="POST" class="edit-form"
+            enctype="multipart/form-data">
+            @csrf
+            <label class="form-label">Name</label>
+            <input type="text" name="name" class="form-input" required>
+
+            <label class="form-label">Sinta Link</label>
+            <input type="url" name="sinta_link" class="form-input"
+                placeholder="https://sinta.kemdikbud.go.id/authors/xxxx">
+
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-input" required>
+
+            <div class="row-2">
+                <div class="select-box">
+                    <label class="form-label">Role</label>
+                    <select name="role" class="form-select" required>
+                        <option value="admin">Admin</option>
+                        <option value="operator">Operator</option>
+                    </select>
+                </div>
+
+                <div class="select-box">
+                    <label class="form-label">Position</label>
+                    <select name="position_id" class="form-select" required>
+                        <option value="d209da0d-b183-4f24-9f79-547c79eb6afe">Head Lab</option>
+                        <option value="c1b51b18-7cd4-46dc-85d5-bbab8dc1ac9d">Researcher</option>
+                    </select>
+                </div>
+            </div>
+
+            <label class="form-label">Photo</label>
+            <input type="file" name="photo" class="form-input" accept="image/*">
+
+            <button type="submit" class="btn-save">Save</button>
+        </form>
+
+    </div>
+</div>
 
                 <!-- === Second Row: Approval & Notifications === -->
                 <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -339,19 +390,19 @@
     </script>
     <script>
 
-function openAddMember() {
-    document.getElementById('addMemberModal').classList.remove('hidden');
-    document.getElementById('addMemberOverlay').classList.remove('hidden');
-}
+        function openAddMember() {
+            document.getElementById('addMemberModal').classList.add('show');
+            document.getElementById('addMemberOverlay').classList.add('show');
+        }
 
-function closeAddMember() {
-    document.getElementById('addMemberModal').classList.add('hidden');
-    document.getElementById('addMemberOverlay').classList.add('hidden');
-}
-</script>
+        function closeAddMember() {
+            document.getElementById('addMemberModal').classList.remove('show');
+            document.getElementById('addMemberOverlay').classList.remove('show');
+        }
 
+    </script>
 
-@include('admin.add_member_modal')
+    @include('admin.add_member_modal')
 
 </body>
 
