@@ -14,9 +14,9 @@ class NewsController extends Controller
         // Search functionality
         if ($request->has('search') && $request->search) {
             $searchTerm = $request->search;
-            $query->where(function($q) use ($searchTerm) {
+            $query->where(function ($q) use ($searchTerm) {
                 $q->where('title', 'ILIKE', '%' . $searchTerm . '%')
-                  ->orWhere('content', 'ILIKE', '%' . $searchTerm . '%');
+                    ->orWhere('content', 'ILIKE', '%' . $searchTerm . '%');
             });
         }
 
@@ -53,5 +53,16 @@ class NewsController extends Controller
         $news = $query->firstOrFail();
 
         return view('news.news_detail_page', compact('news', 'isPreview'));
+    }
+
+    public function home()
+    {
+        $latestNews = News::where('status', 'accepted')
+            ->whereNotNull('published_at')
+            ->orderByDesc('published_at')
+            ->limit(8)
+            ->get();
+
+        return view('home.homepage', compact('latestNews'));
     }
 }
