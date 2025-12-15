@@ -20,13 +20,13 @@
 .search-box {
     position: relative;
     margin-bottom: 20px;
-    width: 260px;
+    width: 500px;
 }
 
 .search-box input {
     width: 100%;
     padding: 10px 12px 10px 36px;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     border-radius: 6px;
     font-size: 14px;
 }

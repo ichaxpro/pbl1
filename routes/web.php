@@ -50,9 +50,13 @@ Route::get('/profile', [ActivityController::class, 'profile']);
 
 
 Route::get('/test-db', [DatabaseController::class, 'test']);
-Route::get('/', function () {
-    return view('home/homepage');
-})->name('homepage');
+
+// Homepage
+Route::get('/', [NewsController::class, 'home'])->name('homepage');
+
+// Route::get('/', function () {
+//     return view('home/homepage');
+// })->name('homepage');
 Route::get('/header', function () {
     return view('/header/header');
 });

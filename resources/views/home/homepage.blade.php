@@ -10,7 +10,7 @@
     @include('navbar')
     @include('home/heroSection')
     @include('home/vision_mission')
-    @include('home/lastestNews')
+    @include('home.lastestNews', ['latestNews' => $latestNews])
     @include('home/lab_info')
     @include('home/galery')
     @include('footer')
