@@ -191,8 +191,6 @@
 
         </main>
 
-
-
         <!-- MODAL ADD MEMBER -->
         <div id="modalOverlay" class="modal-overlay"></div>
 
